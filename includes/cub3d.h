@@ -6,12 +6,12 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/08/01 20:37:42 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/15 12:51:34 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PROJECT_H
-# define PROJECT_H
+#ifndef CUB3D_H
+# define CUB3D_H
 # include "libft.h"
 
 #endif

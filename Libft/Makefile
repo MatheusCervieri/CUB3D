@@ -6,7 +6,7 @@
 #    By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/16 20:29:14 by mvieira-          #+#    #+#              #
-#    Updated: 2022/07/26 00:16:55 by mvieira-         ###   ########.fr        #
+#    Updated: 2022/09/15 12:55:41 by mvieira-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,18 +46,18 @@ FLAGS		=	-Wall -Wextra -Werror
 RM			=	rm -f
 
 .c.o:
-		cc ${FLAGS} -c $< -o ${<:.c=.o} 
+	@cc ${FLAGS} -c $< -o ${<:.c=.o} 
 
 $(NAME):	${OBJS} ${H_SRC}
-			ar -rcs $@ $^
+			@ar -rcs $@ $^
 
 all: ${NAME}
 
 clean:
-		${RM} ${OBJS}
+		@${RM} ${OBJS}
 
 fclean:	clean
-		${RM} ${NAME}
+		@${RM} ${NAME}
 
 re:		fclean all
 
