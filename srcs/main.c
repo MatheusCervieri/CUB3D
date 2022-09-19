@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matheuscervieri <matheuscervieri@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/15 12:52:01 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/19 12:34:02 by matheuscerv      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 int	main(void)
 {
@@ -33,4 +32,8 @@ int	main(void)
 					map_line);
 	}
 	ft_printf("%s", data->map_string);
+
+
+	data->player_nbs = 0; 
+	parse_map();
 }
