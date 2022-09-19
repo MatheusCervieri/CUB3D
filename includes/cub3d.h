@@ -6,7 +6,7 @@
 /*   By: matheuscervieri <matheuscervieri@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/19 12:33:49 by matheuscerv      ###   ########.fr       */
+/*   Updated: 2022/09/19 12:55:27 by matheuscerv      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 typedef struct s_data
 {
 	char		*map_string;
+    char        **map_array;
     int         player_nbs;
 }				t_data;
 
