@@ -79,30 +79,42 @@ void	check_first_and_last_collum_element(char *line)
 
 void check_sorrounded(size_t i, char *line, char *up_line, char *down_line)
 {
+	
 	if(i != 0)
 		if(line[i - 1] != ' ' && line[i - 1] != '1')
 			handle_error("The map is not sorrounded by Walls\n");
+
 	if (ft_strlen(line) > i)
-	if(line[i + 1] != ' ' && line[i + 1] != '1')
-		handle_error("The map is not sorrounded by Walls\n");
-	if (up_line && ft_strlen(up_line) > i)
-		if(up_line[i] != ' ' && up_line[i] != '1')
+		if(line[i + 1] != ' ' && line[i + 1] != '1')
 			handle_error("The map is not sorrounded by Walls\n");
-	if (up_line && ft_strlen(up_line) > i + 1)
-		if(up_line[i + 1] != ' ' && up_line[i + 1] != '1')
-			handle_error("The map is not sorrounded by Walls\n");
-	if (up_line && i != 0)
-		if(up_line[i - 1] != ' ' && up_line[i - 1] != '1')
-			handle_error("The map is not sorrounded by Walls\n");
+
 	if (down_line && ft_strlen(down_line) > i)
 		if(down_line[i] != ' ' && down_line[i] != '1')
+		{
+			
 			handle_error("The map is not sorrounded by Walls\n");
+		}
+	/*
 	if (down_line && ft_strlen(down_line) > i + 1)
 		if(down_line[i + 1] != ' ' && down_line[i + 1] != '1')
 			handle_error("The map is not sorrounded by Walls\n");
 	if (down_line && i != 0)
 		if(down_line[i - 1] != ' ' && down_line[i - 1] != '1')
 			handle_error("The map is not sorrounded by Walls\n");
+	*/
+	if (up_line && ft_strlen(up_line) > i)
+	{
+		if(up_line[i] != ' ' && up_line[i] != '1')
+			handle_error("The map is not sorrounded by Walls\n");
+	}
+	/*
+	if (up_line && ft_strlen(up_line) > i + 1)
+		if(up_line[i + 1] != ' ' && up_line[i + 1] != '1')
+			handle_error("The map is not sorrounded by Walls\n");
+	if (up_line && i != 0)
+		if(up_line[i - 1] != ' ' && up_line[i - 1] != '1')
+			handle_error("The map is not sorrounded by Walls\n");
+	*/
 }
 
 void check_valid_space_sorround_by_wall(char *line, char *up_line, char *down_line)
@@ -132,7 +144,7 @@ void iterate_map_array()
 		is_empty_line(data->map_array[i]);
 		check_first_and_last_collum_element(data->map_array[i]);
 		if(i == 0)
-		{
+		{		
 			check_valid_space_sorround_by_wall(data->map_array[i], NULL, data->map_array[i + 1]);
 		}
 		else if (i == last_map_lines(data->map_array) - 1)
