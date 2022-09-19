@@ -6,7 +6,7 @@
 /*   By: matheuscervieri <matheuscervieri@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/19 12:34:02 by matheuscerv      ###   ########.fr       */
+/*   Updated: 2022/09/19 16:50:54 by matheuscerv      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(void)
 	data = malloc(sizeof(t_data));
 	data->map_string = ft_strdup("");
 
-	ft_printf("Hello!\n");
 	fd = open("teste.txt", O_RDONLY);
 	map_line = get_next_line(fd);
 	data->map_string = ft_strjoin(data->map_string, map_line);
@@ -31,7 +30,6 @@ int	main(void)
 			data->map_string = ft_strjoin(data->map_string,
 					map_line);
 	}
-	ft_printf("%s", data->map_string);
 
 
 	data->player_nbs = 0; 

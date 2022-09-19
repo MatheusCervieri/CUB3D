@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: matheuscervieri <matheuscervieri@studen    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:25:34 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/07/26 00:17:26 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/19 16:25:06 by matheuscerv      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
