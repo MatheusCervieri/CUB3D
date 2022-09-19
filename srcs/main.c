@@ -12,8 +12,25 @@
 
 #include "cub3d.h"
 
+
 int	main(void)
 {
-	ft_printf("Hello World \n");
-	return (0);
+	int		fd;
+	char	*map_line;
+	data = malloc(sizeof(t_data));
+	data->map_string = ft_strdup("");
+
+	ft_printf("Hello!\n");
+	fd = open("teste.txt", O_RDONLY);
+	map_line = get_next_line(fd);
+	data->map_string = ft_strjoin(data->map_string, map_line);
+
+	while (map_line)
+	{
+		map_line = get_next_line(fd);
+		if(map_line)
+			data->map_string = ft_strjoin(data->map_string,
+					map_line);
+	}
+	ft_printf("%s", data->map_string);
 }

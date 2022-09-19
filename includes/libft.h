@@ -55,6 +55,7 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 char	*ft_strjoin_free(char const *s1, char const *s2);
+char	*ft_strjoin(char const *s1, char const *s2);
 char	*get_next_line(int fd);
 int		is_there_nl(char *str);
 int		ft_printf(const char *fmt, ...);

@@ -12,6 +12,16 @@
 
 #ifndef CUB3D_H
 # define CUB3D_H
+
 # include "libft.h"
+# include <fcntl.h>
+
+
+typedef struct s_data
+{
+	char		*map_string;
+}				t_data;
+
+t_data *data;
 
 #endif
