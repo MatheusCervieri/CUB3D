@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 12:16:51 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:34:32 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_data
     int         player_nbs;
 }				t_data;
 
-t_data *data;
+extern t_data	*data;
 
 void    parse_map();
 char **normalize_map(char **map_array);
