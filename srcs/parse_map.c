@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:19:05 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 10:10:20 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:11:57 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,11 +151,6 @@ void iterate_map_array()
 
 //pegar apenas a string que realmente corresponde ao mapa. 
 
-//Descobrir o tamanho da maior linha.
-//Descobrir a quantidad de linhas.
-//Alocar memória para cada uma das linhas e colocar espaço em cada um dos caracteres.
-//Colocar os caracteres do mapa em cada uma das linhas.
-
 
 void is_there_empty_line()
 {
@@ -169,9 +164,77 @@ void is_there_empty_line()
 	}
 }
 
+int	biggest_line_size(char **map_array)
+{
+	int i;
+	int tmp;
+	int aux;
+	i = 0;
+	while (map_array[i])
+	{
+		if(i == 0)
+			aux = ft_strlen(map_array[i]);
+		else
+		{
+			tmp = ft_strlen(map_array[i]);
+			if(tmp > aux)
+				aux = tmp;	
+		}	
+		i++;
+	}
+	return (aux);
+}
+
+int	lines_amount(char **map_array)
+{
+	int	i;
+	i = 0;
+	while(map_array[i])
+	{
+		i++;
+	}
+	return (i);
+}
+
+void	*ft_calloc_space(size_t nelem, size_t elsize)
+{
+	void	*allocated_memory;
+	int		over_handling;
+
+	over_handling = nelem * elsize;
+	if (nelem != 0 && over_handling / nelem != elsize)
+		return (NULL);
+	allocated_memory = (void *) malloc (nelem * elsize);
+	if (allocated_memory == NULL)
+		return (NULL);
+	ft_memset(allocated_memory, ' ' , nelem * elsize);
+	return (allocated_memory);
+}
+
+char **normalize_map(char **map_array)
+{
+	char	**normalized_map;
+	normalized_map = malloc(sizeof(char *) * lines_amount(map_array));
+	int i;
+	i = 0;
+	while (i < lines_amount(map_array))
+	{
+		normalized_map[i] = ft_calloc_space(biggest_line_size(map_array), sizeof(char));
+		i++;
+	}
+	i = 0;
+	while(normalized_map[i])
+	{
+		ft_memmove( normalized_map[i], map_array[i], ft_strlen(map_array[i]));
+		i++;
+	}
+	return(normalized_map);
+}
+
 void parse_map()
 {
 	size_t i;
+	char	**map_array;
 
 	i = 0;
 	while (data->map_string[i])
@@ -182,6 +245,8 @@ void parse_map()
 	}
 	is_there_empty_line();
 	valid_number_of_players();
-	data->map_array = ft_split(data->map_string, '\n');
+	map_array = ft_split(data->map_string, '\n');
+	data->map_array = normalize_map(map_array);
+	free(map_array);
 	iterate_map_array();
 }
