@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 20:44:21 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:24:44 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "libft.h"
 # include <fcntl.h>
 # include <mlx.h>
-
+# include <X11/keysym.h> 
+# include  <X11/X.h> 
 
 typedef struct s_data
 {
@@ -35,5 +36,6 @@ void handle_error(char *error_message);
 void iterate_map_array();
 void check_valid_space_sorround_by_wall(char *line, char *up_line, char *down_line);
 void	new_window();
+void	handle_hooks(void);
 
 #endif

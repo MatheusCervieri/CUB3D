@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 20:50:38 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:25:40 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ int	main(void)
 	}
 
 	
-	data->player_nbs = 0; 
+	data->player_nbs = 0;
+	data->mlx = NULL;
+	data->win_ptr = NULL;
 	new_window();
+	handle_hooks();
 	mlx_loop(data->mlx);
 	parse_map();
 }
