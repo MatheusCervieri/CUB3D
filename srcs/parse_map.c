@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:19:05 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 09:55:23 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/20 10:10:20 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,7 @@ void check_sorrounded(size_t i, char *line, char *up_line, char *down_line)
 
 	if (down_line && ft_strlen(down_line) > i)
 		if(down_line[i] != ' ' && down_line[i] != '1')
-		{
-			
 			handle_error("The map is not sorrounded by Walls\n");
-		}
 	if (up_line && ft_strlen(up_line) > i)
 	{
 		if(up_line[i] != ' ' && up_line[i] != '1')
@@ -152,12 +149,12 @@ void iterate_map_array()
 	}
 }
 
-//Checar se nao ha uma linha vazia no meio do mapa
+//pegar apenas a string que realmente corresponde ao mapa. 
 
 //Descobrir o tamanho da maior linha.
 //Descobrir a quantidad de linhas.
 //Alocar memória para cada uma das linhas e colocar espaço em cada um dos caracteres.
-// Colocar os caracteres do mapa em cada uma das linhas.
+//Colocar os caracteres do mapa em cada uma das linhas.
 
 
 void is_there_empty_line()
