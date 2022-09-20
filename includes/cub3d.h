@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matheuscervieri <matheuscervieri@studen    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/19 12:55:27 by matheuscerv      ###   ########.fr       */
+/*   Updated: 2022/09/20 19:16:50 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,12 @@ typedef struct s_data
 t_data *data;
 
 void    parse_map();
+
+//Arguments parsing
+
+int	validate_map_extension(char *map_name);
+int	validate_save_argument(char *save_param);
+//print a new error msg on stderr and returns 1
+int	msg_error(char *error);
 
 #endif
