@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 19:16:50 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/09/20 19:31:56 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void    parse_map();
 
 int	validate_map_extension(char *map_name);
 int	validate_save_argument(char *save_param);
+int validate_arguments(int argc, char **argv);
+
 //print a new error msg on stderr and returns 1
 int	msg_error(char *error);
 
