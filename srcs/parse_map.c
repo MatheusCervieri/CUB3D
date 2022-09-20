@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:19:05 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 11:11:57 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/20 11:52:28 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,28 @@ size_t last_map_lines()
 	}
 	return (i);
 }
+
+int	biggest_line_size(char **map_array)
+{
+	int i;
+	int tmp;
+	int aux;
+	i = 0;
+	while (map_array[i])
+	{
+		if(i == 0)
+			aux = ft_strlen(map_array[i]);
+		else
+		{
+			tmp = ft_strlen(map_array[i]);
+			if(tmp > aux)
+				aux = tmp;	
+		}	
+		i++;
+	}
+	return (aux);
+}
+
 
 void handle_error(char *error_message)
 {
@@ -96,19 +118,18 @@ void check_sorrounded(size_t i, char *line, char *up_line, char *down_line)
 	if(i != 0)
 		if(line[i - 1] != ' ' && line[i - 1] != '1')
 			handle_error("The map is not sorrounded by Walls\n");
-
-	if (ft_strlen(line) > i)
+	if((i + 1) < ft_strlen(line))
 		if(line[i + 1] != ' ' && line[i + 1] != '1')
+		{
+			printf("uhull\n");
 			handle_error("The map is not sorrounded by Walls\n");
-
-	if (down_line && ft_strlen(down_line) > i)
+		}
+	if (down_line)
 		if(down_line[i] != ' ' && down_line[i] != '1')
 			handle_error("The map is not sorrounded by Walls\n");
-	if (up_line && ft_strlen(up_line) > i)
-	{
+	if (up_line)
 		if(up_line[i] != ' ' && up_line[i] != '1')
 			handle_error("The map is not sorrounded by Walls\n");
-	}
 }
 
 void check_valid_space_sorround_by_wall(char *line, char *up_line, char *down_line)
@@ -164,26 +185,6 @@ void is_there_empty_line()
 	}
 }
 
-int	biggest_line_size(char **map_array)
-{
-	int i;
-	int tmp;
-	int aux;
-	i = 0;
-	while (map_array[i])
-	{
-		if(i == 0)
-			aux = ft_strlen(map_array[i]);
-		else
-		{
-			tmp = ft_strlen(map_array[i]);
-			if(tmp > aux)
-				aux = tmp;	
-		}	
-		i++;
-	}
-	return (aux);
-}
 
 int	lines_amount(char **map_array)
 {
