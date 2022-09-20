@@ -6,7 +6,7 @@
 #    By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/12 11:06:29 by mvieira-          #+#    #+#              #
-#    Updated: 2022/09/20 13:37:19 by mvieira-         ###   ########.fr        #
+#    Updated: 2022/09/20 20:43:08 by mvieira-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ SRC_FILES = main.c \
 			normalize_map.c \
 			map_utils.c \
 			iterate_map.c \
-			handle_errors.c 
+			handle_errors.c \
+			new_window.c
 
 LIBFT_A = $(LIBS_PATH)libft.a 
 SOURCES = $(addprefix $(SRCS_PATH), $(SRC_FILES))
@@ -38,7 +39,7 @@ $(LIBFT_A):
 	@cd $(LIBS_PATH) && $(MAKE_NOPRINT)
 	
 $(NAME): $(LIBFT_A) $(OBJECTS) 
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LIBFT_A)  
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LIBFT_A) -lmlx -lXext -lX11
 
 #-lmlx -lXext -lX11 
 

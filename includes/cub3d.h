@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 20:34:32 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/20 20:44:21 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <fcntl.h>
+# include <mlx.h>
 
 
 typedef struct s_data
@@ -22,6 +23,8 @@ typedef struct s_data
 	char		*map_string;
     char        **map_array;
     int         player_nbs;
+	void		*mlx;
+	void		*win_ptr;
 }				t_data;
 
 extern t_data	*data;
@@ -31,5 +34,6 @@ char **normalize_map(char **map_array);
 void handle_error(char *error_message);
 void iterate_map_array();
 void check_valid_space_sorround_by_wall(char *line, char *up_line, char *down_line);
+void	new_window();
 
 #endif
