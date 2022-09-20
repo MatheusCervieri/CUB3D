@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:04:34 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 21:26:25 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/20 21:36:03 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 int	close_game()
 {
+	free_mlx_core();
 	exit(0);
 }
 
 int	keypress(int keycode)
 {
 	if (keycode == XK_Escape || keycode == XK_q)
-		printf("ESC\n");
-	/*
+		close_game();
 	if (keycode == XK_Right || keycode == XK_d)
-		move_right(game);
+		move_right();
 	if (keycode == XK_Left || keycode == XK_a)
-		move_left(game);
+		move_left();
 	if (keycode == XK_Up || keycode == XK_w)
-		move_up(game);
+		move_up();
 	if (keycode == XK_Down || keycode == XK_s)
-		move_down(game);
-	*/
+		move_down();
+
 	return (0);
 }
 
