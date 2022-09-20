@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   validate_save_argument.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matheuscervieri <matheuscervieri@studen    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 03:54:36 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/19 16:25:16 by matheuscerv      ###   ########.fr       */
+/*   Created: 2022/09/20 19:19:49 by mamaro-d          #+#    #+#             */
+/*   Updated: 2022/09/20 19:20:20 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
-size_t	ft_strlen(const char *s)
+int	validate_save_argument(char *save_param)
 {
-	unsigned int	i;
-
-	i = 0;
-	while (*s != '\0')
-	{
-		i++;
-		s++;
-	}
-	return (i);
+	if(!ft_strncmp(save_param, "--save\0", 7))
+		return (1);
+	return (0);
 }

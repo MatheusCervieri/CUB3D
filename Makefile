@@ -3,15 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/12 11:06:29 by mvieira-          #+#    #+#              #
-#    Updated: 2022/09/15 12:53:39 by mvieira-         ###   ########.fr        #
+#    Updated: 2022/09/20 19:31:23 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 HEADERS_PATH = ./includes/
 SRCS_PATH = ./srcs/
+ERROR_PATH = error/
+CMD_PARSER_PATH = validate_arguments/
 OBJS_PATH = ./objs/
 LIBS_PATH = ./Libft/
 CC = cc
@@ -21,6 +23,11 @@ MKDIR = mkdir -p
 MAKE_NOPRINT = $(MAKE) --no-print-directory
 NAME = cub3D
 SRC_FILES = main.c \
+			parse_map.c \
+			$(ERROR_PATH)msg_error.c \
+			$(CMD_PARSER_PATH)validate_arguments.c \
+			$(CMD_PARSER_PATH)validate_map_extension.c \
+			$(CMD_PARSER_PATH)validate_save_argument.c
 
 LIBFT_A = $(LIBS_PATH)libft.a 
 SOURCES = $(addprefix $(SRCS_PATH), $(SRC_FILES))
@@ -39,6 +46,8 @@ $(NAME): $(LIBFT_A) $(OBJECTS)
 
 $(OBJS_PATH)%.o : $(SRCS_PATH)%.c
 	@$(MKDIR) $(OBJS_PATH)
+	@$(MKDIR) $(OBJS_PATH)$(ERROR_PATH)
+	@$(MKDIR) $(OBJS_PATH)$(CMD_PARSER_PATH)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: all

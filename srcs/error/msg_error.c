@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   msg_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matheuscervieri <matheuscervieri@studen    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/01 03:54:36 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/19 16:25:16 by matheuscerv      ###   ########.fr       */
+/*   Created: 2022/09/20 19:17:29 by mamaro-d          #+#    #+#             */
+/*   Updated: 2022/09/20 19:17:30 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "cub3d.h"
 
-size_t	ft_strlen(const char *s)
+int	msg_error(char *error)
 {
-	unsigned int	i;
+	int	len;
 
-	i = 0;
-	while (*s != '\0')
-	{
-		i++;
-		s++;
-	}
-	return (i);
+	len = ft_strlen(error);
+	write(2, error, len);
+	return (0);
 }
