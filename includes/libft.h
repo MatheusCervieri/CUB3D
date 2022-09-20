@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: matheuscervieri <matheuscervieri@studen    +#+  +:+       +#+        */
+/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/13 16:25:34 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/19 16:25:06 by matheuscerv      ###   ########.fr       */
+/*   Updated: 2022/09/20 09:29:32 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h> 
+# include <stdio.h>
 
 # define BUFFER_SIZE 42
 
