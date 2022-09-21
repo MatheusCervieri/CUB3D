@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 18:04:11 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/21 20:39:36 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,15 @@ int	main(void)
 			data->map_string = ft_strjoin(data->map_string,
 					map_line);
 	}
-
 	
 	data->player_nbs = 0;
 	data->mlx = NULL;
 	data->win_ptr = NULL;
+	parse_map();
 	new_window();
 	draw_minimap();
 	//mlx_destroy_image(data->mlx, data->img.mlx_img);
 	handle_hooks();
 	mlx_loop(data->mlx);
-	parse_map();
 }
 

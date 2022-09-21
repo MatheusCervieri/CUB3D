@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:19:05 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 12:19:35 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:02:51 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	parse_map(void)
 	size_t	i;
 	char	**map_array;
 
+
 	i = 0;
 	while (data->map_string[i])
 	{
@@ -55,10 +56,12 @@ void	parse_map(void)
 		only_valid_caracters(data->map_string[i]);
 		i++;
 	}
+
 	is_there_empty_line();
 	valid_number_of_players();
 	map_array = ft_split(data->map_string, '\n');
 	data->map_array = normalize_map(map_array);
+	
 	free(map_array);
 	iterate_map_array();
 }
