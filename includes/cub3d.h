@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 17:35:25 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:29:37 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,13 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_player
+{
+	t_img	img;
+	int		x;
+	int		y;
+}				t_player;
+
 typedef struct s_data
 {
 	char		*map_string;
@@ -35,8 +42,9 @@ typedef struct s_data
     int         player_nbs;
 	void		*mlx;
 	void		*win_ptr;
-	t_img		img;
-	t_img		img2; 
+	t_player	player;
+	t_img		mm_wall_img;
+	t_img		mm_bg_img;
 }				t_data;
 
 extern t_data	*data;
@@ -53,7 +61,10 @@ void	move_right(void);
 void	move_left(void);
 void	move_up(void);
 void	move_down(void);
+void	draw_minimap();
 
-void using_img(void);
+void	img_pix_put(t_img *img, int x, int y, int color);
+void	render_background(t_img *img, int color);
+void	render_square(t_img *img, int color, int x, int y);
 
 #endif

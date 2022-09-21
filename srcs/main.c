@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 16:48:55 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/21 18:04:11 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(void)
 	data->mlx = NULL;
 	data->win_ptr = NULL;
 	new_window();
-	using_img();
+	draw_minimap();
 	//mlx_destroy_image(data->mlx, data->img.mlx_img);
 	handle_hooks();
 	mlx_loop(data->mlx);
