@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:04:34 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 21:36:03 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/21 22:04:21 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,5 @@ void	handle_hooks(void)
 	mlx_hook(data->win_ptr, DestroyNotify,
 		NoEventMask, &close_game, NULL);
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, &keypress, NULL);
-	//mlx_loop_hook(game->mlx, &render_loop, game);
+	//mlx_loop_hook(data->mlx, &render_loop, NULL);
 }

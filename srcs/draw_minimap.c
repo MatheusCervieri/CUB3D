@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 21:25:34 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:56:27 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void init_img(t_img *img, int height, int width)
 			&img->line_len, &img->endian);
 }
 
+void draw_player_mini_map()
+{
+	mlx_put_image_to_window(data->mlx, data->win_ptr, data->player.img.mlx_img, data->player.x, data->player.y);
+}
+
 void draw_minimap()
 {
 	init_img(&data->player.img, PLAYER_SIZE , PLAYER_SIZE);
@@ -33,7 +38,7 @@ void draw_minimap()
 	render_square(&data->mm_wall_img, 000000, WALL_SIZE, WALL_SIZE);
 	render_square(&data->mm_bg_img, 0xFFFFFF, BACKGROUND_SIZE, BACKGROUND_SIZE);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
-	mlx_put_image_to_window(data->mlx, data->win_ptr, data->player.img.mlx_img, 64, 64);
+	
 	//mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_wall_img.mlx_img , 0, 0);
 	int i;
 	int j;
@@ -59,4 +64,5 @@ void draw_minimap()
 		height++;
 		i++;
 	}
+	draw_player_mini_map();
 }

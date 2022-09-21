@@ -1,41 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   movements.c                                        :+:      :+:    :+:   */
+/*   render_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/20 21:35:32 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 22:06:57 by mvieira-         ###   ########.fr       */
+/*   Created: 2022/09/21 21:47:18 by mvieira-          #+#    #+#             */
+/*   Updated: 2022/09/21 21:57:14 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	move_right(void)
+int render_loop(void)
 {
-	data->player.x = data->player.x + 1;
 	draw_minimap();
-	printf("move\n");
-}
-
-void	move_left(void)
-{
-	data->player.x = data->player.x - 1;
-	draw_minimap();
-	printf("move\n");
-}
-
-void	move_up(void)
-{
-	data->player.y = data->player.y + 1;
-	draw_minimap();
-	printf("move\n");
-}
-
-void	move_down(void)
-{
-	data->player.y = data->player.y - 1;
-	draw_minimap();
-	printf("move\n");
+	return (0);
 }
