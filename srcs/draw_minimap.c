@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 21:56:27 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:12:02 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define PLAYER_SIZE 32
 # define BACKGROUND_SIZE 300
 # define WALL_SIZE 32
-# define MINI_MAP_SIZE 32
+
 
 void init_img(t_img *img, int height, int width)
 {
@@ -23,6 +23,8 @@ void init_img(t_img *img, int height, int width)
 	img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp,
 			&img->line_len, &img->endian);
 }
+
+
 
 void draw_player_mini_map()
 {

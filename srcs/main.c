@@ -6,13 +6,42 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 20:39:36 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:12:44 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 t_data *data;
+
+void get_player_first_position()
+{
+	int i;
+	int j;
+	int height;
+	int width;
+
+	height = 0; 
+	width = 0;
+	i = 0;
+	while (data->map_array[i])
+	{
+		j = 0;
+		while (data->map_array[i][j])
+		{
+			if(data->map_array[i][j] == 'N') //Add all. 
+			{
+				data->player.x = width * MINI_MAP_SIZE;
+				data->player.y = height * MINI_MAP_SIZE;
+			}
+			width++;
+			j++;
+		}
+		width = 0;
+		height++;
+		i++;
+	}
+}
 
 int	main(void)
 {
@@ -37,7 +66,9 @@ int	main(void)
 	data->mlx = NULL;
 	data->win_ptr = NULL;
 	parse_map();
+	get_player_first_position();
 	new_window();
+	
 	draw_minimap();
 	//mlx_destroy_image(data->mlx, data->img.mlx_img);
 	handle_hooks();

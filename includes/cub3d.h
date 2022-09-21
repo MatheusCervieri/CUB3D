@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 23:08:33 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:12:06 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <mlx.h>
 # include <X11/keysym.h> 
 # include  <X11/X.h> 
+
+# define MINI_MAP_SIZE 32
 
 typedef struct s_img
 {
