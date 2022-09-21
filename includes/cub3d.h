@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 21:37:41 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/21 17:35:25 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@
 # include <X11/keysym.h> 
 # include  <X11/X.h> 
 
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp; /* bits per pixel */
+	int		line_len;
+	int		endian;
+}	t_img;
+
 typedef struct s_data
 {
 	char		*map_string;
@@ -26,6 +35,8 @@ typedef struct s_data
     int         player_nbs;
 	void		*mlx;
 	void		*win_ptr;
+	t_img		img;
+	t_img		img2; 
 }				t_data;
 
 extern t_data	*data;
@@ -42,5 +53,7 @@ void	move_right(void);
 void	move_left(void);
 void	move_up(void);
 void	move_down(void);
+
+void using_img(void);
 
 #endif
