@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 21:50:27 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:08:33 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,7 @@ int render_loop(void);
 void	img_pix_put(t_img *img, int x, int y, int color);
 void	render_background(t_img *img, int color);
 void	render_square(t_img *img, int color, int x, int y);
+void 	rotate_right(void);
+void 	rotate_left(void);
 
 #endif

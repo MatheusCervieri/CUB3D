@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:04:34 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 22:04:21 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:07:56 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,19 @@ int	keypress(int keycode)
 {
 	if (keycode == XK_Escape || keycode == XK_q)
 		close_game();
-	if (keycode == XK_Right || keycode == XK_d)
+	if (keycode == XK_d)
 		move_right();
-	if (keycode == XK_Left || keycode == XK_a)
+	if (keycode == XK_a)
 		move_left();
-	if (keycode == XK_Up || keycode == XK_w)
+	if (keycode == XK_w)
 		move_up();
-	if (keycode == XK_Down || keycode == XK_s)
+	if (keycode == XK_s)
 		move_down();
+	if (keycode == XK_Right)
+		rotate_right();
+	if (keycode == XK_Left)
+		rotate_left();
+
 
 	return (0);
 }
