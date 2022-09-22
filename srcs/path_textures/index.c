@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 19:56:23 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/09/21 20:41:42 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/09/22 20:35:26 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 
 int get_no_texture(char *no_path, t_data *data)
 {
-    if(!access(no_path, R_OK))
+	char	*parsed_path;
+	int		fd;
+
+	parsed_path = ft_strtrim(no_path, "NO \n");
+	fd = open(parsed_path, O_RDONLY);
+    if(fd != -1)
     {
-        data->no_texture = no_path;
+        data->no_path = parsed_path;
+		close(fd);
         return (1);
     }
     return (0);
@@ -24,9 +30,15 @@ int get_no_texture(char *no_path, t_data *data)
 
 int get_so_texture(char *so_path, t_data *data)
 {
-    if(!access(so_path, R_OK))
+   	char	*parsed_path;
+	int		fd;
+
+	parsed_path = ft_strtrim(so_path, "SO \n");
+	fd = open(parsed_path, O_RDONLY);
+    if(fd != -1)
     {
-        data->no_texture = so_path;
+        data->so_path = parsed_path;
+		close(fd);
         return (1);
     }
     return (0);
@@ -34,9 +46,15 @@ int get_so_texture(char *so_path, t_data *data)
 
 int get_ea_texture(char *ea_path, t_data *data)
 {
-    if(!access(ea_path, R_OK))
+   	char	*parsed_path;
+	int		fd;
+	
+	parsed_path = ft_strtrim(ea_path, "EA \n");
+	fd = open(parsed_path, O_RDONLY);
+    if(fd != -1)
     {
-        data->no_texture = ea_path;
+        data->ea_path = parsed_path;
+		close(fd);
         return (1);
     }
     return (0);
@@ -44,9 +62,15 @@ int get_ea_texture(char *ea_path, t_data *data)
 
 int get_we_texture(char *we_path, t_data *data)
 {
-    if(!access(we_path, R_OK))
+    char	*parsed_path;
+	int		fd;
+
+	parsed_path = ft_strtrim(we_path, "WE \n");
+	fd = open(parsed_path, O_RDONLY);
+    if(fd != -1)
     {
-        data->no_texture = we_path;
+        data->we_path = parsed_path;
+		close(fd);
         return (1);
     }
     return (0);

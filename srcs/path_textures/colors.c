@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:41:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/09/21 22:44:19 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/09/22 20:44:02 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	get_floor_color(char *rgb, t_data *data)
     {
 		tmp = ft_strdup(rgb_array[index]);
 		free(rgb_array[index]);
-        rgb_array[index] = ft_strtrim(tmp, " ");
+        rgb_array[index] = ft_strtrim(tmp, "F \n");
 		free(tmp);
         index++;
     }
@@ -63,7 +63,7 @@ int	get_ceiling_color(char *rgb, t_data *data)
     {
 		tmp = ft_strdup(rgb_array[index]);
 		free(rgb_array[index]);
-        rgb_array[index] = ft_strtrim(tmp, " ");
+        rgb_array[index] = ft_strtrim(tmp, "C \n");
 		free(tmp);
         index++;
     }
