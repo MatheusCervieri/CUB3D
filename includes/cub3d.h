@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 19:31:56 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:13:11 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,14 @@
 typedef struct s_data
 {
 	char		*map_string;
-    char        **map_array;
-    int         player_nbs;
+    char		**map_array;
+    int		 	player_nbs;
+    char		*no_texture;
+    char		*so_texture;
+    char		*we_texture;
+    char		*ea_texture;
+    int 		*floor_color;
+    int 		*ceiling_color;
 }				t_data;
 
 t_data *data;
@@ -34,7 +40,18 @@ int	validate_map_extension(char *map_name);
 int	validate_save_argument(char *save_param);
 int validate_arguments(int argc, char **argv);
 
+//Get textures path
+int get_no_texture(char *no_path, t_data *data);
+int get_so_texture(char *so_path, t_data *data);
+int get_ea_texture(char *ea_path, t_data *data);
+int get_we_texture(char *we_path, t_data *data);
+
+//set and validate rgb colors
+int	get_floor_color(char *rgb, t_data *data);
+
 //print a new error msg on stderr and returns 1
 int	msg_error(char *error);
+
+
 
 #endif
