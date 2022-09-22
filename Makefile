@@ -6,18 +6,19 @@
 #    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/12 11:06:29 by mvieira-          #+#    #+#              #
-#    Updated: 2022/09/20 19:31:23 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/09/21 21:14:55 by mamaro-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 HEADERS_PATH = ./includes/
 SRCS_PATH = ./srcs/
 ERROR_PATH = error/
+TEXTURES_PATH = path_textures/
 CMD_PARSER_PATH = validate_arguments/
 OBJS_PATH = ./objs/
 LIBS_PATH = ./Libft/
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I $(HEADERS_PATH)
+CFLAGS = -Wall -Wextra -Werror -g -I $(HEADERS_PATH)
 RM = rm -f
 MKDIR = mkdir -p
 MAKE_NOPRINT = $(MAKE) --no-print-directory
@@ -27,7 +28,9 @@ SRC_FILES = main.c \
 			$(ERROR_PATH)msg_error.c \
 			$(CMD_PARSER_PATH)validate_arguments.c \
 			$(CMD_PARSER_PATH)validate_map_extension.c \
-			$(CMD_PARSER_PATH)validate_save_argument.c
+			$(CMD_PARSER_PATH)validate_save_argument.c \
+			$(TEXTURES_PATH)index.c \
+			$(TEXTURES_PATH)colors.c
 
 LIBFT_A = $(LIBS_PATH)libft.a 
 SOURCES = $(addprefix $(SRCS_PATH), $(SRC_FILES))
@@ -48,6 +51,7 @@ $(OBJS_PATH)%.o : $(SRCS_PATH)%.c
 	@$(MKDIR) $(OBJS_PATH)
 	@$(MKDIR) $(OBJS_PATH)$(ERROR_PATH)
 	@$(MKDIR) $(OBJS_PATH)$(CMD_PARSER_PATH)
+	@$(MKDIR) $(OBJS_PATH)$(TEXTURES_PATH)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: all
