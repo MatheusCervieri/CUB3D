@@ -6,17 +6,20 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/22 18:25:55 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/22 22:34:40 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-# define PLAYER_SIZE 32
-# define BACKGROUND_SIZE 300
-# define WALL_SIZE 32
+# define PLAYER_SIZE 16
+# define BACKGROUND_SIZE 600
+# define WALL_SIZE 16
 # define DIR_SIZE 8
 
+//Pegar a quantidade de walls.
+//Salvar os pontos que tem walls. 
+//Checar as intercecções horizontais. 
 
 double distance_btw_two_points(float x1, float y1, float x2, float y2) 
 {

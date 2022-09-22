@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:19:05 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 21:02:51 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/22 22:40:04 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	parse_map(void)
 	i = 0;
 	while (data->map_string[i])
 	{
+		if(data->map_string[i] == '1')
+			data->walls_nbs++;
 		count_players(data->map_string[i]);
 		only_valid_caracters(data->map_string[i]);
 		i++;

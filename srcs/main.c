@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/22 18:20:42 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/22 22:51:28 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,20 @@ int	main(void)
 	data->player_nbs = 0;
 	data->mlx = NULL;
 	data->win_ptr = NULL;
+	data->walls_nbs = 0;
 	parse_map();
+
+	//Inicializa o array. 
+	data->walls_position = malloc(sizeof(double *) * data->walls_nbs);
+	int i;
+	i = 0;
+	while (i < data->walls_nbs)
+	{
+		data->walls_position[i] = malloc(sizeof(double) * 2);
+		i++;
+	}
+	save_walls_position();
+	printf("%f", data->walls_position[0][0]);
 	get_player_first_position();
 	data->player.dir_y = data->player.y - 54; 
 	data->player.dir_x = data->player.x + 13; 

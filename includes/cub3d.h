@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/22 18:26:11 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/22 22:58:25 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <math.h>
 
 # define PI 3.1415926535
-# define MINI_MAP_SIZE 32
+# define MINI_MAP_SIZE 16
 
 typedef struct s_img
 {
@@ -31,6 +31,14 @@ typedef struct s_img
 	int		line_len;
 	int		endian;
 }	t_img;
+
+typedef struct s_ray
+{
+	t_img	img;
+	double	x;
+	double	y;
+	double	rotation;
+}				t_ray;
 
 typedef struct s_player
 {
@@ -48,6 +56,8 @@ typedef struct s_data
 	char		*map_string;
     char        **map_array;
     int         player_nbs;
+	int			walls_nbs;
+	double		**walls_position;
 	void		*mlx;
 	void		*win_ptr;
 	t_player	player;
@@ -78,5 +88,7 @@ void	render_background(t_img *img, int color);
 void	render_square(t_img *img, int color, int x, int y);
 void 	rotate_right(void);
 void 	rotate_left(void);
+void	save_walls_position(void);
+
 
 #endif
