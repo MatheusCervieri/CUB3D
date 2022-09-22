@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/20 19:20:52 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/09/21 21:18:36 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,17 @@
 
 int	main(int argc, char **argv)
 {
+	t_data *data;
+
+    data = (t_data *)malloc(sizeof(t_data));
 	if(!validate_arguments(argc, argv))
 		return (1);
-	
+	if(!get_floor_color("255, 0, 255", data))
+		return(msg_error("Invalid RGB Color"));
+	printf("%d, ", data->floor_color[0]);
+	printf("%d, ", data->floor_color[1]);
+	printf("%d", data->floor_color[2]);
+    
 /* 	int		fd;
 	char	*map_line;
 	data = malloc(sizeof(t_data));
