@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 23:12:06 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/22 18:26:11 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 # include <mlx.h>
 # include <X11/keysym.h> 
 # include  <X11/X.h> 
+# include <math.h>
 
+# define PI 3.1415926535
 # define MINI_MAP_SIZE 32
 
 typedef struct s_img
@@ -33,8 +35,12 @@ typedef struct s_img
 typedef struct s_player
 {
 	t_img	img;
-	int		x;
-	int		y;
+	double	x;
+	double	y;
+	double	dir_x;
+	double	dir_y;
+	double	rotation;
+	t_img	dir_img; 
 }				t_player;
 
 typedef struct s_data
@@ -56,6 +62,7 @@ char **normalize_map(char **map_array);
 void handle_error(char *error_message);
 void iterate_map_array();
 void check_valid_space_sorround_by_wall(char *line, char *up_line, char *down_line);
+double rotate_player_dir(double speed, double *x, double *y, double *t);
 void	new_window();
 void	handle_hooks(void);
 void free_mlx_core(void);

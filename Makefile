@@ -6,7 +6,7 @@
 #    By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/12 11:06:29 by mvieira-          #+#    #+#              #
-#    Updated: 2022/09/21 23:08:17 by mvieira-         ###   ########.fr        #
+#    Updated: 2022/09/22 18:17:58 by mvieira-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ SRCS_PATH = ./srcs/
 OBJS_PATH = ./objs/
 LIBS_PATH = ./Libft/
 CC = cc
-CFLAGS = -g -Wall -Wextra -Werror -I $(HEADERS_PATH) -I mlx_linux
+CFLAGS = -g -lm -I $(HEADERS_PATH) -I mlx_linux
 RM = rm -f
 MKDIR = mkdir -p
 MAKE_NOPRINT = $(MAKE) --no-print-directory

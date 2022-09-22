@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 23:12:44 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/22 18:20:42 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void get_player_first_position()
 	}
 }
 
+
+
 int	main(void)
 {
 	int		fd;
@@ -61,12 +63,14 @@ int	main(void)
 			data->map_string = ft_strjoin(data->map_string,
 					map_line);
 	}
-	
 	data->player_nbs = 0;
 	data->mlx = NULL;
 	data->win_ptr = NULL;
 	parse_map();
 	get_player_first_position();
+	data->player.dir_y = data->player.y - 54; 
+	data->player.dir_x = data->player.x + 13; 
+	data->player.rotation = 0;
 	new_window();
 	
 	draw_minimap();

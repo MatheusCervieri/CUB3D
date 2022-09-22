@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:06:55 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 23:07:19 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/22 18:27:28 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 void rotate_right(void)
 {
-	printf("Rotate\n");
+	rotate_player_dir(0.1, &data->player.dir_x, &data->player.dir_y, &data->player.rotation);
+	draw_minimap();
 }
 
 void rotate_left(void)
 {
-	printf("Rotate\n");
+	rotate_player_dir(-0.1, &data->player.dir_x, &data->player.dir_y, &data->player.rotation);
+	draw_minimap();
 }
