@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 21:18:36 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/09/21 22:52:11 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ int	main(int argc, char **argv)
 	t_data *data;
 
     data = (t_data *)malloc(sizeof(t_data));
+	char *string = "1, 244, 0 | 250, 133, 93";
+	char **rgbs = ft_split(string, '|');
 	if(!validate_arguments(argc, argv))
 		return (1);
-	if(!get_floor_color("255, 0, 255", data))
-		return(msg_error("Invalid RGB Color"));
-	printf("%d, ", data->floor_color[0]);
-	printf("%d, ", data->floor_color[1]);
-	printf("%d", data->floor_color[2]);
+	if(!validate_rgb_colors(data, rgbs))
+		return(msg_error("Invalid RGB Color\n"));
+	printf("all params are good\n");
+    
+
     
 /* 	int		fd;
 	char	*map_line;
