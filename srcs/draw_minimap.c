@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/23 22:12:34 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:39:39 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ double rotate_player_dir(double speed, double *x, double *y, double *t)
 	*x = radius*cos(*t) + data->player.x;
 	*y = radius*sin(*t) + data->player.y;
 	data->player.rotation = data->player.rotation + speed;
+	return (data->player.rotation);
 }
 
 void init_img(t_img *img, int height, int width)
@@ -83,13 +84,17 @@ x=x+1;
 }
 }
 
-void draw_minimap()
+void init_imgs(void)
 {
 	init_img(&data->player.img, PLAYER_SIZE , PLAYER_SIZE);
 	init_img(&data->player.dir_img, DIR_SIZE , DIR_SIZE);
 	init_img(&data->test_img, DIR_SIZE , DIR_SIZE);
 	init_img(&data->mm_wall_img, WALL_SIZE , WALL_SIZE);
 	init_img(&data->mm_bg_img, BACKGROUND_SIZE , BACKGROUND_SIZE);
+}
+
+void draw_minimap()
+{
 	render_square(&data->test_img, 0xBF40BF, DIR_SIZE, DIR_SIZE);
 	render_square(&data->player.img, 0xFF00, PLAYER_SIZE, PLAYER_SIZE);
 	render_square(&data->player.dir_img, 0xFF0000, DIR_SIZE, DIR_SIZE);
@@ -98,8 +103,6 @@ void draw_minimap()
 	drawline(&data->mm_bg_img, data->player.x, data->player.y , data->player.test_x , data->player.test_y, 0xFF00);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
 	//mlx_put_image_to_window(data->mlx, data->win_ptr, data->line_img.mlx_img , 0, 0);
-	
-	
 	
 	//mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_wall_img.mlx_img , 0, 0);
 	int i;

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/22 22:51:28 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:16:52 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int	main(void)
 	data->player.dir_x = data->player.x + 13; 
 	data->player.rotation = 0;
 	new_window();
-	
+	init_imgs();
 	draw_minimap();
 	//mlx_destroy_image(data->mlx, data->img.mlx_img);
 	handle_hooks();

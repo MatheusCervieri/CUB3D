@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/23 21:29:59 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:34:46 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int	is_horizontal_wall(double x, double y)
 	{
 		if(data->walls_position[i][0] == floor(x/MINI_MAP_SIZE) && data->walls_position[i][1] == floor(y/MINI_MAP_SIZE))
 		{
-			printf("É igual uhulll %i\n", i);
 			return(1);
 		} 
 			
@@ -58,7 +57,7 @@ int	check_horizontal_intersections(void)
 	double	diference_btw_x;
 	
 	first_y = find_first_point_y();
-	first_x = (data->player.x + (data->player.y - first_y)/tan(data->player.rotation)); //I change the formula here, to make it works. I need to think more to use the correct formula.
+	first_x = (data->player.x + (data->player.y - first_y)/tan(data->player.rotation)); 
 	
 	diference_btw_x = MINI_MAP_SIZE/tan(data->player.rotation);
 
@@ -66,6 +65,8 @@ int	check_horizontal_intersections(void)
 
 	i = 0;
 	int horizontal_lines = lines_amount(data->map_array);
+	printf("OUR: X: %f\n", floor(first_x/64));
+	printf("OUR: Y: %f\n", floor(first_y/64));
 	while(i < horizontal_lines)
 	{
 		if(is_horizontal_wall(first_x, first_y) == 1)
@@ -82,8 +83,7 @@ int	check_horizontal_intersections(void)
 		i++;
 	}
 	return (0);
-	//printf("OUR: X: %f\n", floor(first_x/64));
-	//printf("OUR: Y: %f\n", floor(first_y/64));
+	
 }
 //Quarto quadrante: 3π/2 < x < 2π
 
@@ -115,23 +115,21 @@ void	check_vertical_intersections(void)
 	int i;
 	i = 0;
 	int vertical_lines = biggest_line_size(data->map_array);
-	printf("OUR: X: %f\n", floor(first_x));
-	printf("OUR: Y: %f\n", floor(first_y));
+
 	
 	while(i < vertical_lines)
 	{
 		if(is_horizontal_wall(first_x, first_y) == 1)
 		{
-		
 			data->player.test_x = first_x;
 			data->player.test_y = first_y;
 			break ;
 		}
 		first_y = first_y + diference_btw_y;
 		if(data->player.rotation > (3 * PI) / 2 && data->player.rotation < (2 * PI) || data->player.rotation > 0 && data->player.rotation < (PI)/2 ) //facing right.
-			first_x = first_x + MINI_MAP_SIZE;
-		else
 			first_x = first_x - MINI_MAP_SIZE;
+		else
+			first_x = first_x + MINI_MAP_SIZE;
 		i++;
 	}
 	//printf("OUR: X: %f\n", floor(first_x/64));

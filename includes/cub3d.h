@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/23 22:03:59 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:16:38 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	draw_minimap();
 int render_loop(void);
 int	lines_amount(char **map_array);
 int	biggest_line_size(char **map_array);
+void init_imgs(void);
 
 void	img_pix_put(t_img *img, int x, int y, int color);
 void	render_background(t_img *img, int color);
