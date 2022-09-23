@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/22 22:58:25 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/23 15:03:46 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ typedef struct s_player
 	double	y;
 	double	dir_x;
 	double	dir_y;
+	double 	test_x;
+	double	test_y;
 	double	rotation;
 	t_img	dir_img; 
 }				t_player;
@@ -63,6 +65,7 @@ typedef struct s_data
 	t_player	player;
 	t_img		mm_wall_img;
 	t_img		mm_bg_img;
+	t_img		test_img;
 }				t_data;
 
 extern t_data	*data;
@@ -89,6 +92,7 @@ void	render_square(t_img *img, int color, int x, int y);
 void 	rotate_right(void);
 void 	rotate_left(void);
 void	save_walls_position(void);
+void	check_horizontal_intersections(void);
 
 
 #endif
