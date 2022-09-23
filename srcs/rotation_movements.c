@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:06:55 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/23 16:01:15 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/23 20:55:43 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void rotate_right(void)
 	if(data->player.rotation > 2 * PI)
 		data->player.rotation = 0;
 	printf("%f\n", data->player.rotation);
-	check_horizontal_intersections();
+	check_vertical_intersections();
 	draw_minimap();
 }
 
@@ -30,6 +30,6 @@ void rotate_left(void)
 		data->player.rotation = 2 * PI;
 		
 	printf("%f\n", data->player.rotation);
-	check_horizontal_intersections();
+	check_vertical_intersections();
 	draw_minimap();
 }
