@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/23 17:57:36 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/23 22:12:34 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,37 @@ void draw_player_mini_map()
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->test_img.mlx_img , data->player.test_x, data->player.test_y);
 }
 
+
+/* I steel need to study the line algorithm */
+void drawline(t_img *img, int x0, int y0, int x1, int y1, int color)
+{
+    int dx, dy, p, x, y;
+ 
+dx=x1-x0;
+dy=y1-y0;
+ 
+x=x0;
+y=y0;
+ 
+p=2*dy-dx;
+ 
+while(x<x1)
+{
+if(p>=0)
+{
+img_pix_put(img, x, y, color);
+y=y+1;
+p=p+2*dy-2*dx;
+}
+else
+{
+img_pix_put(img, x, y, color);
+p=p+2*dy;
+}
+x=x+1;
+}
+}
+
 void draw_minimap()
 {
 	init_img(&data->player.img, PLAYER_SIZE , PLAYER_SIZE);
@@ -64,7 +95,9 @@ void draw_minimap()
 	render_square(&data->player.dir_img, 0xFF0000, DIR_SIZE, DIR_SIZE);
 	render_square(&data->mm_wall_img, 000000, WALL_SIZE, WALL_SIZE);
 	render_square(&data->mm_bg_img, 0xFFFFFF, BACKGROUND_SIZE, BACKGROUND_SIZE);
+	drawline(&data->mm_bg_img, data->player.x, data->player.y , data->player.test_x , data->player.test_y, 0xFF00);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
+	//mlx_put_image_to_window(data->mlx, data->win_ptr, data->line_img.mlx_img , 0, 0);
 	
 	
 	

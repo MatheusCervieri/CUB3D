@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/23 21:13:01 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/23 21:29:59 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	is_horizontal_wall(double x, double y)
 	1- We find first_x with a rectus triangle formula.
 	
 */
-void	check_horizontal_intersections(void)
+int	check_horizontal_intersections(void)
 {
 	double first_y;
 	double first_x;
@@ -72,7 +72,7 @@ void	check_horizontal_intersections(void)
 		{
 			data->player.test_x = first_x;
 			data->player.test_y = first_y;
-			break ;
+			return(1);
 		}
 		first_x = first_x + diference_btw_x;
 		if(data->player.rotation > (2 * PI)/2 && data->player.rotation < (2 * PI))
@@ -81,6 +81,7 @@ void	check_horizontal_intersections(void)
 			first_y = first_y + MINI_MAP_SIZE;
 		i++;
 	}
+	return (0);
 	//printf("OUR: X: %f\n", floor(first_x/64));
 	//printf("OUR: Y: %f\n", floor(first_y/64));
 }
@@ -99,11 +100,6 @@ double	find_first_point_x()
 	return (first_x);
 }
 
-void check_vertical_intersections()
-{
-	check_horizontal_intersections();
-	check_vertical_intersections();
-}
 
 void	check_vertical_intersections(void)
 {
@@ -119,8 +115,6 @@ void	check_vertical_intersections(void)
 	int i;
 	i = 0;
 	int vertical_lines = biggest_line_size(data->map_array);
-	data->player.test_x = first_x;
-	data->player.test_y = first_y;
 	printf("OUR: X: %f\n", floor(first_x));
 	printf("OUR: Y: %f\n", floor(first_y));
 	
@@ -144,8 +138,9 @@ void	check_vertical_intersections(void)
 	//printf("OUR: Y: %f\n", floor(first_y/64));
 }
 
-void check_vertical_intersections(void)
+void check_intersections(void)
 {
+	//Se os dois tem intersection, a intersection correta é o do ponto que está mais perto. 
 	check_horizontal_intersections();
 	check_vertical_intersections();
 }
