@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/23 22:16:52 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/26 12:52:39 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int	main(void)
 	get_player_first_position();
 	data->player.dir_y = data->player.y - 54; 
 	data->player.dir_x = data->player.x + 13; 
-	data->player.rotation = 0;
+	data->player.rotation = 0.1;
 	new_window();
 	init_imgs();
 	draw_minimap();

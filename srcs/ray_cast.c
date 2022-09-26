@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/23 22:34:46 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/26 13:19:15 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,10 @@ double	find_first_point_y()
 
 	rounded_down_number = floor(data->player.y / MINI_MAP_SIZE);
 	if(data->player.rotation > (2 * PI)/2 && data->player.rotation < (2 * PI))
+	{
+		
 		 first_y = rounded_down_number * (MINI_MAP_SIZE) - 1;
+	}
 	else
 		first_y = rounded_down_number * (MINI_MAP_SIZE) + MINI_MAP_SIZE;
 	return (first_y);
@@ -65,23 +68,35 @@ int	check_horizontal_intersections(void)
 
 	i = 0;
 	int horizontal_lines = lines_amount(data->map_array);
-	printf("OUR: X: %f\n", floor(first_x/64));
-	printf("OUR: Y: %f\n", floor(first_y/64));
 	while(i < horizontal_lines)
 	{
 		if(is_horizontal_wall(first_x, first_y) == 1)
 		{
+			printf("Is wall \n");
+			printf("OUR: X: %f\n", floor(first_x));
+			printf("OUR: Y: %f\n", floor(first_y));
 			data->player.test_x = first_x;
 			data->player.test_y = first_y;
 			return(1);
 		}
-		first_x = first_x + diference_btw_x;
+		//first_x = first_x - diference_btw_x;
 		if(data->player.rotation > (2 * PI)/2 && data->player.rotation < (2 * PI))
+		{
+			printf("Ta para cima\n");
+			first_x = first_x - diference_btw_x;
 			first_y = first_y - MINI_MAP_SIZE;
+		}
 		else
+		{
+			printf("Ta para baixo\n");
+			first_x = first_x + diference_btw_x;
 			first_y = first_y + MINI_MAP_SIZE;
+		}
 		i++;
 	}
+	printf("There is no wall \n");
+	printf("OUR: X: %f\n", floor(first_x));
+	printf("OUR: Y: %f\n", floor(first_y));
 	return (0);
 	
 }
@@ -140,7 +155,7 @@ void check_intersections(void)
 {
 	//Se os dois tem intersection, a intersection correta é o do ponto que está mais perto. 
 	check_horizontal_intersections();
-	check_vertical_intersections();
+
 }
 
 void	save_walls_position(void)
