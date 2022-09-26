@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/23 22:39:39 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:41:06 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,31 @@ void draw_player_mini_map()
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->test_img.mlx_img , data->player.test_x, data->player.test_y);
 }
 
+int abs(int n) { return ((n > 0) ? n : (n * (-1))); }
+ 
+// DDA Function for line generation
+void DDA(t_img *img, int X0, int Y0, int X1, int Y1, int color)
+{
+    // calculate dx & dy
+    int dx = X1 - X0;
+    int dy = Y1 - Y0;
+ 
+    // calculate steps required for generating pixels
+    int steps = abs(dx) > abs(dy) ? abs(dx) : abs(dy);
+ 
+    // calculate increment in x & y for each steps
+    float Xinc = dx / (float)steps;
+    float Yinc = dy / (float)steps;
+ 
+    // Put pixel for each step
+    float X = X0;
+    float Y = Y0;
+    for (int i = 0; i <= steps; i++) {
+    	 img_pix_put(img, X, Y, color); // put pixel at (X,Y)
+        X += Xinc; // increment in x at each step
+        Y += Yinc; // increment in y at each step
+    }
+}
 
 /* I steel need to study the line algorithm */
 void drawline(t_img *img, int x0, int y0, int x1, int y1, int color)
@@ -71,7 +96,7 @@ while(x<x1)
 {
 if(p>=0)
 {
-img_pix_put(img, x, y, color);
+
 y=y+1;
 p=p+2*dy-2*dx;
 }
@@ -100,7 +125,7 @@ void draw_minimap()
 	render_square(&data->player.dir_img, 0xFF0000, DIR_SIZE, DIR_SIZE);
 	render_square(&data->mm_wall_img, 000000, WALL_SIZE, WALL_SIZE);
 	render_square(&data->mm_bg_img, 0xFFFFFF, BACKGROUND_SIZE, BACKGROUND_SIZE);
-	drawline(&data->mm_bg_img, data->player.x, data->player.y , data->player.test_x , data->player.test_y, 0xFF00);
+	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->player.test_x , data->player.test_y, 0xFF00);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
 	//mlx_put_image_to_window(data->mlx, data->win_ptr, data->line_img.mlx_img , 0, 0);
 	

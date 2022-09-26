@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/26 13:19:15 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:32:02 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,15 +108,21 @@ double	find_first_point_x()
 	int		rounded_down_number;
 
 	rounded_down_number = floor(data->player.x / MINI_MAP_SIZE);
+	if( data->player.rotation > (PI)/2 && data->player.rotation < PI  || data->player.rotation > 0 && data->player.rotation < (PI)/2 ) //facing right.
+		first_x = rounded_down_number * (MINI_MAP_SIZE) + MINI_MAP_SIZE;
+	else
+		first_x = rounded_down_number * (MINI_MAP_SIZE) - 1;
+	/*
 	if(data->player.rotation > (3 * PI) / 2 && data->player.rotation < (2 * PI) || data->player.rotation > 0 && data->player.rotation < (PI)/2 ) //facing right.
 		first_x = rounded_down_number * (MINI_MAP_SIZE) + MINI_MAP_SIZE;
 	else
 		first_x = rounded_down_number * (MINI_MAP_SIZE) - 1;
+	*/
 	return (first_x);
 }
 
 
-void	check_vertical_intersections(void)
+int	check_vertical_intersections(void)
 {
 	double first_y;
 	double first_x;
@@ -126,7 +132,7 @@ void	check_vertical_intersections(void)
 	//A.y = Py + (Px-A.x)*tan(ALPHA)
 	first_y = (data->player.y + (data->player.x - first_x)/tan(data->player.rotation)); //I change the formula here, to make it works. I need to think more to use the correct formula.
 	
-	diference_btw_y = MINI_MAP_SIZE/tan(data->player.rotation);
+	diference_btw_y = MINI_MAP_SIZE * tan(data->player.rotation);
 	int i;
 	i = 0;
 	int vertical_lines = biggest_line_size(data->map_array);
@@ -136,25 +142,40 @@ void	check_vertical_intersections(void)
 	{
 		if(is_horizontal_wall(first_x, first_y) == 1)
 		{
+				printf("There is a wall \n");
+	printf("OUR: X: %f\n", floor(first_x));
+	printf("OUR: Y: %f\n", floor(first_y));
 			data->player.test_x = first_x;
 			data->player.test_y = first_y;
-			break ;
+			return (1);
 		}
-		first_y = first_y + diference_btw_y;
-		if(data->player.rotation > (3 * PI) / 2 && data->player.rotation < (2 * PI) || data->player.rotation > 0 && data->player.rotation < (PI)/2 ) //facing right.
-			first_x = first_x - MINI_MAP_SIZE;
-		else
+		
+		//if(data->player.rotation > (3 * PI) / 2 && data->player.rotation < (2 * PI) || data->player.rotation > 0 && data->player.rotation < (PI)/2 ) //facing right.
+			if( data->player.rotation > (PI)/2 && data->player.rotation < PI  || data->player.rotation > 0 && data->player.rotation < (PI)/2 ) //facing right.
+		{
+			
 			first_x = first_x + MINI_MAP_SIZE;
+		}
+		else
+		{
+			first_x = first_x - MINI_MAP_SIZE;
+		}
+	
 		i++;
 	}
+	printf("There is no wall \n");
+	printf("OUR: X: %f\n", floor(first_x));
+	printf("OUR: Y: %f\n", floor(first_y));
 	//printf("OUR: X: %f\n", floor(first_x/64));
 	//printf("OUR: Y: %f\n", floor(first_y/64));
+	return (0);
 }
 
 void check_intersections(void)
 {
 	//Se os dois tem intersection, a intersection correta é o do ponto que está mais perto. 
-	check_horizontal_intersections();
+	//check_horizontal_intersections();
+	check_vertical_intersections();
 
 }
 
