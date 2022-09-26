@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/26 14:44:10 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/26 18:48:49 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 	We just need to find where the player is. 
 */
 
-double	find_first_point_y()
+double	find_first_point_y(double ray_rotation)
 {
 	double first_y;
 	int		rounded_down_number;
 
 	rounded_down_number = floor(data->player.y / MINI_MAP_SIZE);
-	if(data->player.rotation > (2 * PI)/2 && data->player.rotation < (2 * PI))
+	if(ray_rotation >= (2 * PI)/2 && ray_rotation <= (2 * PI))
 	{
 		
 		 first_y = rounded_down_number * (MINI_MAP_SIZE) - 1;
@@ -53,50 +53,60 @@ int	is_horizontal_wall(double x, double y)
 	1- We find first_x with a rectus triangle formula.
 	
 */
-int	check_horizontal_intersections(void)
+int	check_horizontal_intersections(double *new_x, double *new_y, double rotation)
 {
 	double first_y;
 	double first_x;
 	double	diference_btw_x;
+	double ray_rotation;
+	ray_rotation = rotation + data->player.rotation;
+	//Checar se passa de 2pi ou não. 
+	first_y = find_first_point_y(ray_rotation);
+	printf("----------------------------\n");
+	printf("Rotation ray: %f \n", rotation);
+	printf("Rotation player: %f \n", data->player.rotation);
+	printf("Data Player x: %f\n", data->player.x);
+	printf("Data Player y: %f \n", data->player.y);
+	if(ray_rotation >= 0.1 && ray_rotation <= 0.2)
+		ray_rotation = 0.2;
+	first_x = (data->player.x + (data->player.y - first_y)/tan(ray_rotation)); //Se passar substituir o valor. 
 	
-	first_y = find_first_point_y();
-	first_x = (data->player.x + (data->player.y - first_y)/tan(data->player.rotation)); 
-	
-	diference_btw_x = MINI_MAP_SIZE/tan(data->player.rotation);
-
+	printf("First x: %f\n", first_x);
+	printf("First y: %f\n", first_y);
+	printf("Tan rotation %f\n", tan(ray_rotation));
+	diference_btw_x = MINI_MAP_SIZE/tan(ray_rotation);
 	int i;
 
 	i = 0;
 	int horizontal_lines = lines_amount(data->map_array);
 	while(i < horizontal_lines)
 	{
+
 		if(is_horizontal_wall(first_x, first_y) == 1)
 		{
 			printf("Is wall \n");
+			printf("Rotation: %f\n", ray_rotation);
 			printf("OUR: X: %f\n", floor(first_x));
 			printf("OUR: Y: %f\n", floor(first_y));
-			data->player.test_x = first_x;
-			data->player.test_y = first_y;
+			*new_x = first_x;
+			*new_y = first_y;
 			return(1);
 		}
 		//first_x = first_x - diference_btw_x;
-		if(data->player.rotation > (2 * PI)/2 && data->player.rotation < (2 * PI))
+		if(ray_rotation > (2 * PI)/2 && ray_rotation < (2 * PI))
 		{
-			printf("Ta para cima\n");
 			first_x = first_x - diference_btw_x;
 			first_y = first_y - MINI_MAP_SIZE;
 		}
 		else
 		{
-			printf("Ta para baixo\n");
 			first_x = first_x + diference_btw_x;
 			first_y = first_y + MINI_MAP_SIZE;
 		}
+		
 		i++;
 	}
-	printf("There is no wall \n");
-	printf("OUR: X: %f\n", floor(first_x));
-	printf("OUR: Y: %f\n", floor(first_y));
+
 	return (0);
 	
 }
@@ -179,8 +189,8 @@ int	check_vertical_intersections(void)
 void check_intersections(void)
 {
 	//Se os dois tem intersection, a intersection correta é o do ponto que está mais perto. 
-	//check_horizontal_intersections();
-	check_vertical_intersections();
+	check_horizontal_intersections(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
+	//check_vertical_intersections();
 
 }
 

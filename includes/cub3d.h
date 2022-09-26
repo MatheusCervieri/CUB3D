@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/26 13:53:34 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/26 15:29:21 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef struct s_data
 	double		**walls_position;
 	void		*mlx;
 	void		*win_ptr;
+	t_ray		rays[10];
 	t_img		line_img;
 	t_player	player;
 	t_img		mm_wall_img;
@@ -96,7 +97,7 @@ void	render_square(t_img *img, int color, int x, int y);
 void 	rotate_right(void);
 void 	rotate_left(void);
 void	save_walls_position(void);
-int	check_horizontal_intersections(void);
+int	check_horizontal_intersections(double *new_x, double *new_y, double rotation);
 int	check_vertical_intersections(void);
 void check_intersections(void);
 
