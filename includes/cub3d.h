@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/26 15:29:21 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/26 18:58:53 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ void 	rotate_right(void);
 void 	rotate_left(void);
 void	save_walls_position(void);
 int	check_horizontal_intersections(double *new_x, double *new_y, double rotation);
-int	check_vertical_intersections(void);
+int	check_vertical_intersections(double *new_x, double *new_y, double rotation);
 void check_intersections(void);
 
 
