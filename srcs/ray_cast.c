@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/26 14:32:02 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/26 14:44:10 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,11 @@ double	find_first_point_x()
 	return (first_x);
 }
 
+/*
+Aqui no vertical interesections eu mudei o angulo para se adequar ao circulo vertical, entretanto seria mais interessante 
+receber o rotation e mudar ele aqui acrescentando PI ao valor, dessa forma tanto a checagem vertical quando horizontal estão
+corretas
+*/
 
 int	check_vertical_intersections(void)
 {
