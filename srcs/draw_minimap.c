@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/26 15:53:48 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:52:27 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void draw_minimap()
 	render_square(&data->mm_wall_img, 000000, WALL_SIZE, WALL_SIZE);
 	render_square(&data->mm_bg_img, 0xFFFFFF, BACKGROUND_SIZE, BACKGROUND_SIZE);
 	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[0].x , data->rays[0].y, 0xFF00);
+	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[1].x , data->rays[1].y, 0xFF0000);
 	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->player.dir_x , data->player.dir_y, 0xBF40BF);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
 	//mlx_put_image_to_window(data->mlx, data->win_ptr, data->line_img.mlx_img , 0, 0);

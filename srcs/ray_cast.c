@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/26 19:29:04 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:51:48 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ int	check_horizontal_intersections(double *new_x, double *new_y, double rotation
 	printf("Rotation player: %f \n", data->player.rotation);
 	printf("Data Player x: %f\n", data->player.x);
 	printf("Data Player y: %f \n", data->player.y);
-	if(ray_rotation >= 0.1 && ray_rotation <= 0.2)
-		ray_rotation = 0.2; //I need to undesetand thist. 
+	//if(ray_rotation >= 0.1 && ray_rotation <= 0.2)
+		//ray_rotation = 0.2; //I need to undesetand thist. 
 	first_x = (data->player.x + (data->player.y - first_y)/tan(ray_rotation)); //Se passar substituir o valor. 
 	
 	printf("First x: %f\n", first_x);
@@ -92,7 +92,7 @@ int	check_horizontal_intersections(double *new_x, double *new_y, double rotation
 			return(1);
 		}
 		//first_x = first_x - diference_btw_x;
-		if(ray_rotation > (2 * PI)/2 && ray_rotation < (2 * PI))
+		if(ray_rotation > PI)
 		{
 			first_x = first_x - diference_btw_x;
 			first_y = first_y - MINI_MAP_SIZE;
@@ -117,40 +117,78 @@ double	find_first_point_x(double ray_rotation)
 	int		rounded_down_number;
 
 	rounded_down_number = floor(data->player.x / MINI_MAP_SIZE);
-	if( ray_rotation > (PI)/2 && ray_rotation < PI  || ray_rotation > 0 && ray_rotation < (PI)/2 ) //facing right.
+	if(sin(ray_rotation) > 0.001 )
 		first_x = rounded_down_number * (MINI_MAP_SIZE) + MINI_MAP_SIZE;
-	else
+	else if(sin(ray_rotation) < -0.001)
 		first_x = rounded_down_number * (MINI_MAP_SIZE) - 1;
-	/*
-	if(data->player.rotation > (3 * PI) / 2 && data->player.rotation < (2 * PI) || data->player.rotation > 0 && data->player.rotation < (PI)/2 ) //facing right.
-		first_x = rounded_down_number * (MINI_MAP_SIZE) + MINI_MAP_SIZE;
-	else
-		first_x = rounded_down_number * (MINI_MAP_SIZE) - 1;
-	*/
 	return (first_x);
 }
-
-
-
-
-
 
 int	check_vertical_intersections(double *new_x, double *new_y, double rotation)
 {
 	double first_y;
 	double first_x;
 	double	diference_btw_y;
-	double ray_rotation;
+	float ray_rotation;
+	int vertical_lines;
 	ray_rotation = rotation + data->player.rotation;
-	//Checar se passa de 2pi ou não. 
-	first_x = find_first_point_x(ray_rotation); 
-	first_y = (data->player.y + (data->player.x - first_x)/tan(data->player.rotation));
+
+
+
+	first_x = find_first_point_x(ray_rotation);
+	//A.y = Py + (Px-A.x)*tan(ALPHA);
+	first_y = ((data->player.x - first_x) * tan(ray_rotation)) + data->player.y ;
+	diference_btw_y = MINI_MAP_SIZE * tan(ray_rotation);
+	printf("---Tan----: %f \n", tan(ray_rotation));	
+	if(first_x == data->player.x)
+		first_y = data->player.y;
 	
-	diference_btw_y = MINI_MAP_SIZE * tan(data->player.rotation);
+
+	
+	if(sin(ray_rotation) > 0.001 )
+	{
+		first_y = first_y + diference_btw_y;
+		first_x = first_x + MINI_MAP_SIZE;
+	}
+	else
+	{
+		first_y = first_y - diference_btw_y;
+		first_x = first_x - MINI_MAP_SIZE;
+	}
+	
+		
+	if(sin(ray_rotation) > 0.001 )
+	{
+		first_y = first_y + diference_btw_y;
+		first_x = first_x + MINI_MAP_SIZE;
+	}
+	else
+	{
+		first_y = first_y - diference_btw_y;
+		first_x = first_x - MINI_MAP_SIZE;
+	}
+	
+
+
+	printf("----------------------");
+	printf("Rotation: %f \n", ray_rotation);
+	printf("First x: %f\n", first_x);
+	printf("First y: %f \n", first_y);	
+	if(first_x == data->player.x)
+	{
+		
+	}
+	else
+	{	
+	*new_x = first_x;
+	*new_y = first_y;
+	}
+	/*
 	int i;
 
 	i = 0;
-	int vertical_lines = biggest_line_size(data->map_array);
+
+	vertical_lines = biggest_line_size(data->map_array);
 	while(i < vertical_lines)
 	{
 
@@ -160,24 +198,14 @@ int	check_vertical_intersections(double *new_x, double *new_y, double rotation)
 			*new_y = first_y;
 			return(1);
 		}
-		
-	first_y = first_y + diference_btw_y;
-		if( data->player.rotation > (PI)/2 && data->player.rotation < PI  || data->player.rotation > 0 && data->player.rotation < (PI)/2 ) //facing right.
-		{
-			//first_y = first_y - diference_btw_y;
-		
-			first_x = first_x + MINI_MAP_SIZE;
-		}
-		else
-		{
-				//first_y = first_y + diference_btw_y;
+		first_y = first_y + diference_btw_y;
+		if( sin(ray_rotation) > 0.001 )
 			first_x = first_x - MINI_MAP_SIZE;
-		}
-	
-		
+		else
+			first_x = first_x + MINI_MAP_SIZE;
 		i++;
 	}
-
+*/
 	return (0);
 	
 }
@@ -245,7 +273,7 @@ void check_intersections(void)
 {
 	//Se os dois tem intersection, a intersection correta é o do ponto que está mais perto. 
 	check_horizontal_intersections(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
-	//check_vertical_intersections(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
+	check_vertical_intersections(&data->rays[1].x, &data->rays[1].y , data->rays[1].rotation);
 
 }
 

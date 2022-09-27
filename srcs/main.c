@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/26 16:18:03 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/27 20:50:42 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,9 @@ int	main(void)
 	data->rays[0].x = 0;
 	data->rays[0].y = 0;
 	data->rays[0].rotation = 0.0;
+	data->rays[1].x = 0;
+	data->rays[1].y = 0;
+	data->rays[1].rotation = 0.0;
 	new_window();
 	init_imgs();
 	draw_minimap();
