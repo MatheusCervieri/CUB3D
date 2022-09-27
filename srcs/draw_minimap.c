@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 00:21:31 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 00:39:04 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ void init_img(t_img *img, int height, int width)
 void draw_player_mini_map()
 {
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->player.img.mlx_img, data->player.x, data->player.y);
-	mlx_put_image_to_window(data->mlx, data->win_ptr, data->player.dir_img.mlx_img, data->player.dir_x, data->player.dir_y);
-	mlx_put_image_to_window(data->mlx, data->win_ptr, data->test_img.mlx_img , data->player.test_x, data->player.test_y);
 }
 
 int abs(int n) { return ((n > 0) ? n : (n * (-1))); }
@@ -155,6 +153,22 @@ void draw_minimap()
 		height++;
 		i++;
 	}
+	
+	i = 0;
+	while (i < lines_amount(data->map_array))
+	{
+		DDA(&data->mm_bg_img, 0, MINI_MAP_SIZE * i , 600 , MINI_MAP_SIZE * i, 000003);
+		i++;
+	}
+	
+	i = 0;
+	while (i < biggest_line_size(data->map_array))
+	{
+		DDA(&data->mm_bg_img, MINI_MAP_SIZE * i, 0 , MINI_MAP_SIZE * i , 600, 000003);
+		i++;
+	}
+	//int	biggest_line_size(char **map_array)
+	//int	lines_amount(char **map_array)
 	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[0].x , data->rays[0].y, 0xFF00);
 	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[1].x , data->rays[1].y, 0xFF0000);
 	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->player.dir_x , data->player.dir_y, 0xBF40BF);

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 00:25:22 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 00:28:28 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ int	is_horizontal_wall(double x, double y)
 	return (0);
 }
 
-void check_intersections_2()
+void check_intersections_2(double *new_x, double *new_y, double rotation)
 {
-	
+	float ray_rotation;
+	ray_rotation = rotation + data->player.rotation;
+	float aTan = -1/tan(ray_rotation); 
 }
 
 /*
