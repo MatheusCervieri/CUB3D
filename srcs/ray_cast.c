@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 00:28:28 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 01:02:04 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 double	find_first_point_y(double ray_rotation)
 {
 	double first_y;
-	int		rounded_down_number;
+	float		rounded_down_number;
 
 	rounded_down_number = floor(data->player.y / MINI_MAP_SIZE);
 	if(ray_rotation > PI)
@@ -52,7 +52,66 @@ void check_intersections_2(double *new_x, double *new_y, double rotation)
 {
 	float ray_rotation;
 	ray_rotation = rotation + data->player.rotation;
-	float aTan = -1/tan(ray_rotation); 
+	float aTan = -1/tan(ray_rotation);
+	float ry;
+	float rx;
+	float yo;
+	float xo;
+	float		rounded_down_number;
+	int			loop;
+	int			i = 0;
+	loop = lines_amount(data->map_array);
+	rounded_down_number = floor(data->player.y / MINI_MAP_SIZE);
+	if (ray_rotation > PI)
+	{
+		ry = rounded_down_number * (MINI_MAP_SIZE) - 1;
+		rx = (data->player.y - ry) * aTan + data->player.x; 
+		yo = - MINI_MAP_SIZE;
+		xo = -yo * aTan;
+	}
+	else if (ray_rotation < PI)
+	{ 
+		ry = rounded_down_number * (MINI_MAP_SIZE) + MINI_MAP_SIZE;
+		rx = (data->player.y - ry) * aTan + data->player.x; 
+		yo = MINI_MAP_SIZE;
+		xo = -yo * aTan;
+	}
+	if(ray_rotation == 0 || ray_rotation == PI)
+	{
+		rx=data->player.x;
+		ry= data->player.y;
+		i = lines_amount(data->map_array);
+	}
+	while (i < loop)
+	{
+			
+		if(is_horizontal_wall(rx, ry) == 1)
+		{
+			*new_x = rx;
+			*new_y = ry;
+			break ;
+		}
+		else
+		{
+			rx = rx + xo;
+			ry = ry + yo;
+		}
+		i++;
+	}
+	if (rx >= 600)
+		rx = 600;
+	if (rx <= 0)
+		rx = 0;
+	if (ry <= 0)
+		ry = 0;	
+	if (ry >= 600)
+		ry = 600;
+	printf("-----------------------");
+	printf("Angle: %f", ray_rotation);
+	printf("RX: %f\n", rx);
+	printf("RY: %f \n", ry);
+	*new_x = rx;
+	*new_y = ry;
 }
 
 /*
@@ -282,8 +341,9 @@ int	check_vertical_intersections(void)
 void check_intersections(void)
 {
 	//Se os dois tem intersection, a intersection correta é o do ponto que está mais perto. 
-	check_horizontal_intersections(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
+	//check_horizontal_intersections(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
 	//check_vertical_intersections(&data->rays[1].x, &data->rays[1].y , data->rays[1].rotation);
+	check_intersections_2(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
 
 }
 
