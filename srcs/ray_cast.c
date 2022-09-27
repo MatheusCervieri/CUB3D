@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 01:02:04 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 01:36:51 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,72 @@ void check_intersections_2(double *new_x, double *new_y, double rotation)
 		rx=data->player.x;
 		ry= data->player.y;
 		i = lines_amount(data->map_array);
+	}
+	while (i < loop)
+	{
+			
+		if(is_horizontal_wall(rx, ry) == 1)
+		{
+			*new_x = rx;
+			*new_y = ry;
+			break ;
+		}
+		else
+		{
+			rx = rx + xo;
+			ry = ry + yo;
+		}
+		i++;
+	}
+	if (rx >= 600)
+		rx = 600;
+	if (rx <= 0)
+		rx = 0;
+	if (ry <= 0)
+		ry = 0;	
+	if (ry >= 600)
+		ry = 600;
+	printf("-----------------------");
+	printf("Angle: %f", ray_rotation);
+	printf("RX: %f\n", rx);
+	printf("RY: %f \n", ry);
+	*new_x = rx;
+	*new_y = ry;
+}
+
+void check_intersections_2_vertical(double *new_x, double *new_y, double rotation)
+{
+	float ray_rotation;
+	ray_rotation = rotation + data->player.rotation;
+	float aTan = -tan(ray_rotation);
+	float ry;
+	float rx;
+	float yo;
+	float xo;
+	float		rounded_down_number;
+	int			loop;
+	int			i = 0;
+	loop = biggest_line_size(data->map_array);
+	rounded_down_number = floor(data->player.x / MINI_MAP_SIZE);
+	if (ray_rotation > PI/2 && ray_rotation < 3*PI/2)
+	{
+		rx =  rounded_down_number * (MINI_MAP_SIZE) - 1;
+		ry = (data->player.x - rx) * aTan + data->player.y; 
+		xo = - MINI_MAP_SIZE;
+		yo = -xo * aTan;
+	}
+	if (ray_rotation < PI/2 || ray_rotation > 3*PI/2)
+	{ 
+		rx = rounded_down_number * (MINI_MAP_SIZE) + MINI_MAP_SIZE;
+		ry = (data->player.x - rx) * aTan + data->player.y; 
+		xo = MINI_MAP_SIZE;
+		yo = -xo * aTan;
+	}
+	if(ray_rotation == 0 || ray_rotation == PI)
+	{
+		rx=data->player.x;
+		ry= data->player.y;
+		i = biggest_line_size(data->map_array);
 	}
 	while (i < loop)
 	{
@@ -343,7 +409,7 @@ void check_intersections(void)
 	//Se os dois tem intersection, a intersection correta é o do ponto que está mais perto. 
 	//check_horizontal_intersections(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
 	//check_vertical_intersections(&data->rays[1].x, &data->rays[1].y , data->rays[1].rotation);
-	check_intersections_2(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
+	check_intersections_2_vertical(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
 
 }
 
