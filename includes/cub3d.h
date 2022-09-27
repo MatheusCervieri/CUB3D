@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/26 18:58:53 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 00:20:50 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ int render_loop(void);
 int	lines_amount(char **map_array);
 int	biggest_line_size(char **map_array);
 void init_imgs(void);
+void	render_square(t_img *img, int color, int x, int y, int real_x, int real_y);
 
 void	img_pix_put(t_img *img, int x, int y, int color);
 void	render_background(t_img *img, int color);
-void	render_square(t_img *img, int color, int x, int y);
 void 	rotate_right(void);
 void 	rotate_left(void);
 void	save_walls_position(void);

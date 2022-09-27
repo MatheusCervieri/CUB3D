@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/27 20:52:27 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 00:21:31 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,15 +120,13 @@ void init_imgs(void)
 
 void draw_minimap()
 {
-	render_square(&data->test_img, 0xBF40BF, DIR_SIZE, DIR_SIZE);
-	render_square(&data->player.img, 0xFF00, PLAYER_SIZE, PLAYER_SIZE);
-	render_square(&data->player.dir_img, 0xFF0000, DIR_SIZE, DIR_SIZE);
-	render_square(&data->mm_wall_img, 000000, WALL_SIZE, WALL_SIZE);
-	render_square(&data->mm_bg_img, 0xFFFFFF, BACKGROUND_SIZE, BACKGROUND_SIZE);
-	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[0].x , data->rays[0].y, 0xFF00);
-	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[1].x , data->rays[1].y, 0xFF0000);
-	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->player.dir_x , data->player.dir_y, 0xBF40BF);
-	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
+	render_square(&data->test_img, 0xBF40BF, DIR_SIZE, DIR_SIZE, 0 ,0);
+	render_square(&data->player.img, 0xFF00, PLAYER_SIZE, PLAYER_SIZE, 0 , 0);
+	render_square(&data->player.dir_img, 0xFF0000, DIR_SIZE, DIR_SIZE, 0 , 0);
+	render_square(&data->mm_wall_img, 000000, WALL_SIZE, WALL_SIZE, 0 , 0);
+	render_square(&data->mm_bg_img, 0xFFFFFF, BACKGROUND_SIZE, BACKGROUND_SIZE, 0, 0);
+	
+	
 	//mlx_put_image_to_window(data->mlx, data->win_ptr, data->line_img.mlx_img , 0, 0);
 	
 	//mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_wall_img.mlx_img , 0, 0);
@@ -147,7 +145,8 @@ void draw_minimap()
 		{
 			if(data->map_array[i][j] == '1')
 			{
-				mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_wall_img.mlx_img , width * MINI_MAP_SIZE, height * MINI_MAP_SIZE);
+				render_square(&data->mm_bg_img, 000000, WALL_SIZE, WALL_SIZE, height * MINI_MAP_SIZE, width * MINI_MAP_SIZE);
+				
 			}
 			width++;
 			j++;
@@ -156,5 +155,9 @@ void draw_minimap()
 		height++;
 		i++;
 	}
+	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[0].x , data->rays[0].y, 0xFF00);
+	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[1].x , data->rays[1].y, 0xFF0000);
+	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->player.dir_x , data->player.dir_y, 0xBF40BF);
+	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
 	draw_player_mini_map();
 }

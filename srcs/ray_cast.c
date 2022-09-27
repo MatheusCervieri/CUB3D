@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/27 21:23:43 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 00:25:22 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,11 @@ int	is_horizontal_wall(double x, double y)
 		i++;
 	}
 	return (0);
+}
+
+void check_intersections_2()
+{
+	
 }
 
 /*
