@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/27 20:51:48 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/27 21:23:43 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ int	check_horizontal_intersections(double *new_x, double *new_y, double rotation
 
 	i = 0;
 	int horizontal_lines = lines_amount(data->map_array);
+
+
 	while(i < horizontal_lines)
 	{
 
@@ -105,6 +107,7 @@ int	check_horizontal_intersections(double *new_x, double *new_y, double rotation
 		
 		i++;
 	}
+
 
 	return (0);
 	
@@ -273,7 +276,7 @@ void check_intersections(void)
 {
 	//Se os dois tem intersection, a intersection correta é o do ponto que está mais perto. 
 	check_horizontal_intersections(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
-	check_vertical_intersections(&data->rays[1].x, &data->rays[1].y , data->rays[1].rotation);
+	//check_vertical_intersections(&data->rays[1].x, &data->rays[1].y , data->rays[1].rotation);
 
 }
 
