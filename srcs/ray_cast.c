@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 11:32:10 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:52:57 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -266,7 +266,6 @@ int	check_vertical_intersections(double *new_x, double *new_y, double rotation)
 	//A.y = Py + (Px-A.x)*tan(ALPHA);
 	first_y = ((data->player.x - first_x) * tan(ray_rotation)) + data->player.y ;
 	diference_btw_y = MINI_MAP_SIZE * tan(ray_rotation);
-	printf("---Tan----: %f \n", tan(ray_rotation));	
 	if(first_x == data->player.x)
 		first_y = data->player.y;
 	
@@ -407,7 +406,6 @@ void check_intersections(void)
 		data->rays[i].rotation+= 2*PI;
 	if(data->rays[i].rotation > 2*PI)
 		data->rays[i].rotation-=2*PI;
-	printf("Ray angle %i : %f\n",i, data->rays[i].rotation);
 	check_intersections_2(&data->rays[i].h_x, &data->rays[i].h_y , data->rays[i].rotation);
 	check_intersections_2_vertical(&data->rays[i].v_x, &data->rays[i].v_y , data->rays[i].rotation);	
 	distance_horizontal = distance_btw_two_points(data->player.x, data->player.y, data->rays[i].h_x, data->rays[i].h_y);
@@ -424,10 +422,16 @@ void check_intersections(void)
 		data->rays[i].y = data->rays[i].v_y;
 		data->rays[i].distance_to_wall = distance_vertical;
 	}
+	//Projected Slice Height = 64 / Distance to the Slice * 277 (Part 5);
+	//data->rays[i].line_height = MINI_MAP_SIZE / (data->rays[i].distance_to_wall * (WINDOW_WIDTH/2)/tan(DG*30)); 
+	
+	//data->rays[i].line_o = WINDOW_HEIGHT/2 - data->rays[i].line_height/2;
+	
 	data->rays[i].line_height = (MINI_MAP_SIZE * WINDOW_WIDTH)/data->rays[i].distance_to_wall;
 	if(data->rays[i].line_height > WINDOW_WIDTH)
 		data->rays[i].line_height = WINDOW_WIDTH;
-	data->rays[i].line_o = WINDOW_HEIGHT - data->rays[i].line_height/2;
+	data->rays[i].line_o = WINDOW_HEIGHT/2 - data->rays[i].line_height/2;
+	
 	i++;
 	}
 }	

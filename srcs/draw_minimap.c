@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 11:53:31 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 12:52:20 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,11 +187,14 @@ void draw_minimap()
 
 	while (i < 320)
 	{
-	//printf("RAY X: %f Y: %f\n", data->rays[i].x, data->rays[i].y);
+
+		/*
 	printf("OFFSET %f\n", data->rays[i].line_o);
 	printf("distance to wall %f\n", data->rays[i].distance_to_wall);
 	printf("sum: %f\n", data->rays[i].line_o + data->rays[i].distance_to_wall);
-	DDA(&data->game_img, 0 + i, 0 , 0 + i, data->rays[i].distance_to_wall, 0xFF00);
+	*/
+	printf("distance to wall %f\n", data->rays[i].line_height);
+	DDA(&data->game_img, 0 + i, data->rays[i].line_o, 0 + i, data->rays[i].line_height + data->rays[i].line_o, 0xFF00);
 	i++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->game_img.mlx_img , 0, 300);
