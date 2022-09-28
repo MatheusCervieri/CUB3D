@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 12:52:57 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 13:06:56 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -426,7 +426,13 @@ void check_intersections(void)
 	//data->rays[i].line_height = MINI_MAP_SIZE / (data->rays[i].distance_to_wall * (WINDOW_WIDTH/2)/tan(DG*30)); 
 	
 	//data->rays[i].line_o = WINDOW_HEIGHT/2 - data->rays[i].line_height/2;
-	
+	//diference entre player angle and ray angle;
+	data->rays[i].diference_angle = data->player.rotation - data->rays[i].rotation;
+	if(data->rays[i].diference_angle < 0)
+		data->rays[i].diference_angle+= 2*PI;
+	if(data->rays[i].diference_angle > 2*PI)
+		data->rays[i].diference_angle-=2*PI;
+	data->rays[i].distance_to_wall = data->rays[i].distance_to_wall * cos(data->rays[i].diference_angle);
 	data->rays[i].line_height = (MINI_MAP_SIZE * WINDOW_WIDTH)/data->rays[i].distance_to_wall;
 	if(data->rays[i].line_height > WINDOW_WIDTH)
 		data->rays[i].line_height = WINDOW_WIDTH;

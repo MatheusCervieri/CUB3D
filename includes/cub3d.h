@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 11:30:13 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 13:02:33 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_ray
 	double line_height;
 	double line_o;
 	double	rotation;
+	double diference_angle;
 }				t_ray;
 
 typedef struct s_player
