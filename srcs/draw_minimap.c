@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 10:45:12 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:53:31 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ x=x+1;
 void init_imgs(void)
 {
 	init_img(&data->player.img, PLAYER_SIZE , PLAYER_SIZE);
+	init_img(&data->game_img, WINDOW_WIDTH , WINDOW_HEIGHT);
 	init_img(&data->player.dir_img, DIR_SIZE , DIR_SIZE);
 	init_img(&data->test_img, DIR_SIZE , DIR_SIZE);
 	init_img(&data->mm_wall_img, WALL_SIZE , WALL_SIZE);
@@ -179,4 +180,20 @@ void draw_minimap()
 	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->player.dir_x , data->player.dir_y, 0xBF40BF);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
 	draw_player_mini_map();
+
+	/* DRAW 3D WORLD */
+	render_square(&data->game_img, 000000, WINDOW_WIDTH, WINDOW_HEIGHT, 0 , 0);
+	i = 0;
+
+	while (i < 320)
+	{
+	//printf("RAY X: %f Y: %f\n", data->rays[i].x, data->rays[i].y);
+	printf("OFFSET %f\n", data->rays[i].line_o);
+	printf("distance to wall %f\n", data->rays[i].distance_to_wall);
+	printf("sum: %f\n", data->rays[i].line_o + data->rays[i].distance_to_wall);
+	DDA(&data->game_img, 0 + i, 0 , 0 + i, data->rays[i].distance_to_wall, 0xFF00);
+	i++;
+	}
+	mlx_put_image_to_window(data->mlx, data->win_ptr, data->game_img.mlx_img , 0, 300);
+	
 }

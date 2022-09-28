@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 11:01:55 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:32:10 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -416,13 +416,18 @@ void check_intersections(void)
 	{
 		data->rays[i].x = data->rays[i].h_x;
 		data->rays[i].y = data->rays[i].h_y;
-		//data->rays[i].distance_to_wall 
+		data->rays[i].distance_to_wall = distance_horizontal;
 	}
 	else
 	{
 		data->rays[i].x = data->rays[i].v_x;
 		data->rays[i].y = data->rays[i].v_y;
+		data->rays[i].distance_to_wall = distance_vertical;
 	}
+	data->rays[i].line_height = (MINI_MAP_SIZE * WINDOW_WIDTH)/data->rays[i].distance_to_wall;
+	if(data->rays[i].line_height > WINDOW_WIDTH)
+		data->rays[i].line_height = WINDOW_WIDTH;
+	data->rays[i].line_o = WINDOW_HEIGHT - data->rays[i].line_height/2;
 	i++;
 	}
 }	

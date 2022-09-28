@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 11:01:08 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:30:13 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ typedef struct s_ray
 	double	v_x;
 	double 	v_y;
 	double distance_to_wall;
+	double line_height;
+	double line_o;
 	double	rotation;
 }				t_ray;
 
@@ -71,6 +73,7 @@ typedef struct s_data
 	void		*mlx;
 	void		*win_ptr;
 	t_ray		rays[320];
+	t_img		game_img;
 	t_img		line_img;
 	t_player	player;
 	t_img		mm_wall_img;
