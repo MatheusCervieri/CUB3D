@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 12:52:20 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 14:03:10 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,9 @@ void draw_minimap()
 
 	/* DRAW 3D WORLD */
 	render_square(&data->game_img, 000000, WINDOW_WIDTH, WINDOW_HEIGHT, 0 , 0);
+	
+	//render_square(&data->game_img, 0xffa500, WINDOW_WIDTH, WINDOW_HEIGHT/2, 0 , 0);
+	
 	i = 0;
 
 	while (i < 320)

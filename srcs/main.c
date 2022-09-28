@@ -6,13 +6,28 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 10:45:08 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 15:18:24 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 t_data *data;
+
+/*
+	-Arrumar a movimentação do player. O player precisa andar para uma direção especifica. 
+	-Deixar o programa rodando em tempo real.  
+	-Criar um mapa aleatório e verificar os raios que estão passando entre dois blocos, descobrir o porque e concertar.
+	-Concertar os segfaults e ir em busca dos segfaults.
+	-Colocar o mapa no tamanho certo 64 bits. 
+	-Colocar o tamanho da janela certo e desenhar já da forma certa na tela. 
+
+	-Descobrir como colocar texturas nos blocos. 
+	
+	-Organizar o código que foi feito. 
+	-Inicializar variáveis...
+	-Conectar com a parte da dupla.
+*/
 
 void get_player_first_position()
 {
