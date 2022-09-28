@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 02:14:48 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:01:08 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,10 @@
 # include <math.h>
 
 # define PI 3.1415926535
-# define DG 0,0174533
+# define DG 0.0174533
 # define MINI_MAP_SIZE 16
+# define WINDOW_WIDTH 320
+# define WINDOW_HEIGHT 200
 
 typedef struct s_img
 {
@@ -42,6 +44,7 @@ typedef struct s_ray
 	double	h_y;
 	double	v_x;
 	double 	v_y;
+	double distance_to_wall;
 	double	rotation;
 }				t_ray;
 
@@ -67,7 +70,7 @@ typedef struct s_data
 	double		**walls_position;
 	void		*mlx;
 	void		*win_ptr;
-	t_ray		rays[10];
+	t_ray		rays[320];
 	t_img		line_img;
 	t_player	player;
 	t_img		mm_wall_img;

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 02:31:34 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:45:08 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int	main(void)
 	data->player.rotation = 0.0;
 	
 	i = 0;
-	while (i < 10)
+	while (i < 320)
 	{
 	data->rays[i].x = 0;
 	data->rays[i].y = 0;

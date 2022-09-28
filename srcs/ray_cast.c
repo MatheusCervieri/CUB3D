@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 02:44:06 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 11:01:55 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -400,9 +400,9 @@ void check_intersections(void)
 	//Se os dois tem intersection, a intersection correta é o do ponto que está mais perto. 
 	//check_horizontal_intersections(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
 	i = 0;
-	while (i < 10)
+	while (i < 320)
 	{
-	data->rays[i].rotation = data->player.rotation - 0.1*i;
+	data->rays[i].rotation = data->player.rotation - 30*DG + (DG*60/320)*i;
 	if(data->rays[i].rotation < 0)
 		data->rays[i].rotation+= 2*PI;
 	if(data->rays[i].rotation > 2*PI)
@@ -412,10 +412,11 @@ void check_intersections(void)
 	check_intersections_2_vertical(&data->rays[i].v_x, &data->rays[i].v_y , data->rays[i].rotation);	
 	distance_horizontal = distance_btw_two_points(data->player.x, data->player.y, data->rays[i].h_x, data->rays[i].h_y);
 	distance_vertical = distance_btw_two_points(data->player.x, data->player.y, data->rays[i].v_x, data->rays[i].v_y);
-	if (distance_horizontal < distance_vertical)
+	if (distance_horizontal <= distance_vertical)
 	{
 		data->rays[i].x = data->rays[i].h_x;
 		data->rays[i].y = data->rays[i].h_y;
+		//data->rays[i].distance_to_wall 
 	}
 	else
 	{

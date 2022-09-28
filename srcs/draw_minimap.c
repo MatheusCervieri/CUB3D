@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 02:36:12 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 10:45:12 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ void draw_minimap()
 	//int	biggest_line_size(char **map_array)
 	//int	lines_amount(char **map_array)
 	i = 0;
-	while (i < 10)
+	while (i < 320)
 	{
 	//printf("RAY X: %f Y: %f\n", data->rays[i].x, data->rays[i].y);
 	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[i].x, data->rays[i].y, 0xFF00);
