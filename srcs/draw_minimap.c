@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 02:07:00 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 02:36:12 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,8 +169,13 @@ void draw_minimap()
 	}
 	//int	biggest_line_size(char **map_array)
 	//int	lines_amount(char **map_array)
-	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[0].x , data->rays[0].y, 0xFF00);
-	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[1].x , data->rays[1].y, 0xFF0000);
+	i = 0;
+	while (i < 10)
+	{
+	//printf("RAY X: %f Y: %f\n", data->rays[i].x, data->rays[i].y);
+	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[i].x, data->rays[i].y, 0xFF00);
+	i++;
+	}
 	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->player.dir_x , data->player.dir_y, 0xBF40BF);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
 	draw_player_mini_map();

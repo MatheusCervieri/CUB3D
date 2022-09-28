@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 02:06:09 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 02:44:06 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	is_horizontal_wall(double x, double y)
 void check_intersections_2(double *new_x, double *new_y, double rotation)
 {
 	float ray_rotation;
-	ray_rotation = rotation + data->player.rotation;
+	ray_rotation = rotation;
 	float aTan = -1/tan(ray_rotation);
 	float ry;
 	float rx;
@@ -106,10 +106,6 @@ void check_intersections_2(double *new_x, double *new_y, double rotation)
 		ry = 0;	
 	if (ry >= 600)
 		ry = 600;
-	printf("-----------------------");
-	printf("Angle: %f", ray_rotation);
-	printf("RX: %f\n", rx);
-	printf("RY: %f \n", ry);
 	*new_x = rx;
 	*new_y = ry;
 }
@@ -117,7 +113,7 @@ void check_intersections_2(double *new_x, double *new_y, double rotation)
 void check_intersections_2_vertical(double *new_x, double *new_y, double rotation)
 {
 	float ray_rotation;
-	ray_rotation = rotation + data->player.rotation;
+	ray_rotation = rotation;
 	float aTan = -tan(ray_rotation);
 	float ry;
 	float rx;
@@ -172,10 +168,6 @@ void check_intersections_2_vertical(double *new_x, double *new_y, double rotatio
 		ry = 0;	
 	if (ry >= 600)
 		ry = 600;
-	printf("-----------------------");
-	printf("Angle: %f", ray_rotation);
-	printf("RX: %f\n", rx);
-	printf("RY: %f \n", ry);
 	*new_x = rx;
 	*new_y = ry;
 }
@@ -304,11 +296,6 @@ int	check_vertical_intersections(double *new_x, double *new_y, double rotation)
 	}
 	
 
-
-	printf("----------------------");
-	printf("Rotation: %f \n", ray_rotation);
-	printf("First x: %f\n", first_x);
-	printf("First y: %f \n", first_y);	
 	if(first_x == data->player.x)
 	{
 		
@@ -408,21 +395,34 @@ void check_intersections(void)
 {
 	double distance_horizontal;
 	double distance_vertical;
+	double ray_angle;
+	int		i;
 	//Se os dois tem intersection, a intersection correta é o do ponto que está mais perto. 
 	//check_horizontal_intersections(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
-	check_intersections_2(&data->rays[1].h_x, &data->rays[1].h_y , data->rays[1].rotation);
-	check_intersections_2_vertical(&data->rays[1].v_x, &data->rays[1].v_y , data->rays[1].rotation);	
-	distance_horizontal = distance_btw_two_points(data->player.x, data->player.y, data->rays[1].h_x, data->rays[1].h_y);
-	distance_vertical = distance_btw_two_points(data->player.x, data->player.y, data->rays[1].v_x, data->rays[1].v_y);
+	i = 0;
+	while (i < 10)
+	{
+	data->rays[i].rotation = data->player.rotation - 0.1*i;
+	if(data->rays[i].rotation < 0)
+		data->rays[i].rotation+= 2*PI;
+	if(data->rays[i].rotation > 2*PI)
+		data->rays[i].rotation-=2*PI;
+	printf("Ray angle %i : %f\n",i, data->rays[i].rotation);
+	check_intersections_2(&data->rays[i].h_x, &data->rays[i].h_y , data->rays[i].rotation);
+	check_intersections_2_vertical(&data->rays[i].v_x, &data->rays[i].v_y , data->rays[i].rotation);	
+	distance_horizontal = distance_btw_two_points(data->player.x, data->player.y, data->rays[i].h_x, data->rays[i].h_y);
+	distance_vertical = distance_btw_two_points(data->player.x, data->player.y, data->rays[i].v_x, data->rays[i].v_y);
 	if (distance_horizontal < distance_vertical)
 	{
-		data->rays[1].x = data->rays[1].h_x;
-		data->rays[1].y = data->rays[1].h_y;
+		data->rays[i].x = data->rays[i].h_x;
+		data->rays[i].y = data->rays[i].h_y;
 	}
 	else
 	{
-		data->rays[1].x = data->rays[1].v_x;
-		data->rays[1].y = data->rays[1].v_y;
+		data->rays[i].x = data->rays[i].v_x;
+		data->rays[i].y = data->rays[i].v_y;
+	}
+	i++;
 	}
 }	
 

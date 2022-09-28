@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/27 20:50:42 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 02:31:34 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,16 @@ int	main(void)
 	data->player.dir_y = data->player.y - 50; 
 	data->player.dir_x = data->player.x; 
 	data->player.rotation = 0.0;
-	data->rays[0].x = 0;
-	data->rays[0].y = 0;
-	data->rays[0].rotation = 0.0;
-	data->rays[1].x = 0;
-	data->rays[1].y = 0;
-	data->rays[1].rotation = 0.0;
+	
+	i = 0;
+	while (i < 10)
+	{
+	data->rays[i].x = 0;
+	data->rays[i].y = 0;
+	data->rays[i].rotation = 0.0;
+	i++;
+	}
+	
 	new_window();
 	init_imgs();
 	draw_minimap();

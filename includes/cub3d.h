@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 02:07:12 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 02:14:48 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <math.h>
 
 # define PI 3.1415926535
+# define DG 0,0174533
 # define MINI_MAP_SIZE 16
 
 typedef struct s_img
