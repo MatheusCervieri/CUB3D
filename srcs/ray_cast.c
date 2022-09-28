@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 01:36:51 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 02:06:09 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -406,12 +406,25 @@ int	check_vertical_intersections(void)
 */
 void check_intersections(void)
 {
+	double distance_horizontal;
+	double distance_vertical;
 	//Se os dois tem intersection, a intersection correta é o do ponto que está mais perto. 
 	//check_horizontal_intersections(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
-	//check_vertical_intersections(&data->rays[1].x, &data->rays[1].y , data->rays[1].rotation);
-	check_intersections_2_vertical(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
-
-}
+	check_intersections_2(&data->rays[1].h_x, &data->rays[1].h_y , data->rays[1].rotation);
+	check_intersections_2_vertical(&data->rays[1].v_x, &data->rays[1].v_y , data->rays[1].rotation);	
+	distance_horizontal = distance_btw_two_points(data->player.x, data->player.y, data->rays[1].h_x, data->rays[1].h_y);
+	distance_vertical = distance_btw_two_points(data->player.x, data->player.y, data->rays[1].v_x, data->rays[1].v_y);
+	if (distance_horizontal < distance_vertical)
+	{
+		data->rays[1].x = data->rays[1].h_x;
+		data->rays[1].y = data->rays[1].h_y;
+	}
+	else
+	{
+		data->rays[1].x = data->rays[1].v_x;
+		data->rays[1].y = data->rays[1].v_y;
+	}
+}	
 
 void	save_walls_position(void)
 {

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 00:20:50 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/28 02:07:12 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ typedef struct s_ray
 	t_img	img;
 	double	x;
 	double	y;
+	double	h_x;
+	double	h_y;
+	double	v_x;
+	double 	v_y;
 	double	rotation;
 }				t_ray;
 
@@ -92,6 +96,7 @@ int	biggest_line_size(char **map_array);
 void init_imgs(void);
 void	render_square(t_img *img, int color, int x, int y, int real_x, int real_y);
 
+double distance_btw_two_points(float x1, float y1, float x2, float y2);
 void	img_pix_put(t_img *img, int x, int y, int color);
 void	render_background(t_img *img, int color);
 void 	rotate_right(void);
