@@ -115,13 +115,7 @@ x=x+1;
 }
 }
 
-void init_textures(t_img *img, int height, int width, char *dir)
-{
-	img->mlx_img = mlx_xpm_file_to_image(data->mlx, dir, &width, &height);
-	img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp,
-			&img->line_len, &img->endian);
-	printf("Width %i", width);
-}
+
 
 void init_imgs(void)
 {
@@ -133,7 +127,6 @@ void init_imgs(void)
 	init_img(&data->mm_bg_img, BACKGROUND_SIZE , BACKGROUND_SIZE);
 	int width = 64;
 	int height = 64;
-	init_textures(&data->texture_img, 64 , 64, "texture.xpm");
 	printf("%i\n", width);
 	printf("%i\n", height);
 }
@@ -262,8 +255,8 @@ void draw_minimap()
 		float y_texture_step;
 
 		y_texture = 0;
-		y_texture_step = 32/(float)data->rays[i].line_height; //32 é o tamanho da textura
-		 //Multiplicamos por 2 porque o nosso minimap é 16;
+		y_texture_step = 64/(float)data->rays[i].line_height; //32 é o tamanho da textura
+		
 		j = 0;
 		while(j < data->rays[i].line_height)
 		{

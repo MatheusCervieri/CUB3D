@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/29 20:46:12 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/29 21:06:13 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,17 @@ typedef struct s_data
 	double		**walls_position;
 	void		*mlx;
 	void		*win_ptr;
+	int 		*floor_color;
+    int 		*ceiling_color;
+	char		*no_texture;
+    char		*so_texture;
+    char		*we_texture;
+    char		*ea_texture;
 	t_ray		rays[320];
 	t_img		texture_img;
+	t_img		texture_img2;
+	t_img		texture_img3;
+	t_img		texture_img4;
 	t_img		game_img;
 	t_img		line_img;
 	t_player	player;

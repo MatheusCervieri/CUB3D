@@ -415,14 +415,14 @@ void check_intersections(void)
 		data->rays[i].x = data->rays[i].h_x;
 		data->rays[i].y = data->rays[i].h_y;
 		data->rays[i].distance_to_wall = distance_horizontal;
-		data->rays[i].x_texture = (int)(data->rays[i].x*2) % 32;
+		data->rays[i].x_texture = (int)(data->rays[i].x*4) % 64;  //Multiplicamos por 2 porque o nosso minimap é 16; 32 é o tamanho da textura. 
 	}
 	else
 	{
 		data->rays[i].x = data->rays[i].v_x;
 		data->rays[i].y = data->rays[i].v_y;
 		data->rays[i].distance_to_wall = distance_vertical;
-		data->rays[i].x_texture = (int)(data->rays[i].y*2) % 32;
+		data->rays[i].x_texture = (int)(data->rays[i].y*4) % 64;  //Multiplicamos por 2 porque o nosso minimap é 16; 32 é o tamanho da textura. 
 	}
 	//Projected Slice Height = 64 / Distance to the Slice * 277 (Part 5);
 	//data->rays[i].line_height = MINI_MAP_SIZE / (data->rays[i].distance_to_wall * (WINDOW_WIDTH/2)/tan(DG*30)); 

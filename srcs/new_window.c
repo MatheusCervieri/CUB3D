@@ -12,6 +12,22 @@
 
 #include "cub3d.h"
 
+void init_textures(t_img *img, int height, int width, char *dir)
+{
+	img->mlx_img = mlx_xpm_file_to_image(data->mlx, dir, &width, &height);
+	img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp,
+			&img->line_len, &img->endian);
+	printf("Width %i", width);
+}
+
+void	texture_initialization()
+{
+	init_textures(&data->texture_img, 64 , 64, data->no_texture);
+	//init_textures(&data->texture_img2, 64 , 64, data->so_texture);
+	//init_textures(&data->texture_img3, 64 , 64, data->we_texture);
+	//init_textures(&data->texture_img4, 64 , 64, data->ea_texture);
+}
+
 void	new_window()
 {
 	int	width;
@@ -23,4 +39,5 @@ void	new_window()
 	width = 64;
 	height = 64;
 	data->win_ptr = mlx_new_window(data->mlx, 700, 700, "CUB3D");
+	texture_initialization();
 }
