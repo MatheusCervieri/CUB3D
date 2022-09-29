@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:41:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/09/22 20:44:02 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/09/29 10:57:46 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ int	get_floor_color(char *rgb, t_data *data)
 {
 	char	**rgb_array;
 	int		index;
-    int     int_rgb_array[3];
+    int     *int_rgb_array;
 	char	*tmp;
 
 	rgb_array = ft_split(rgb, ',');
+	int_rgb_array = (int *)malloc(sizeof(int) * 3);
     index = 0;
     while(rgb_array[index])
     {
@@ -54,11 +55,12 @@ int	get_ceiling_color(char *rgb, t_data *data)
 {
 	char	**rgb_array;
 	int		index;
-    int     int_rgb_array[3];
+    int     *int_rgb_array;
 	char	*tmp;
 
 	rgb_array = ft_split(rgb, ',');
     index = 0;
+	int_rgb_array = (int *)malloc(sizeof(int) * 3);
     while(rgb_array[index])
     {
 		tmp = ft_strdup(rgb_array[index]);
