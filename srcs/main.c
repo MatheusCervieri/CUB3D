@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 15:18:24 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/29 12:46:47 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 t_data *data;
 
 /*
-	-Arrumar a movimentação do player. O player precisa andar para uma direção especifica. 
+	-Arrumar a movimentação do player. Falta fazer o player andar para a direita e para a esquerda. 
 	-Deixar o programa rodando em tempo real.  
 	-Criar um mapa aleatório e verificar os raios que estão passando entre dois blocos, descobrir o porque e concertar.
 	-Concertar os segfaults e ir em busca dos segfaults.
 	-Colocar o mapa no tamanho certo 64 bits. 
 	-Colocar o tamanho da janela certo e desenhar já da forma certa na tela. 
-
+	
 	-Descobrir como colocar texturas nos blocos. 
 	
 	-Organizar o código que foi feito. 

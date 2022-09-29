@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/29 12:01:31 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/29 15:08:05 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,14 @@ x=x+1;
 }
 }
 
+void init_textures(t_img *img, int height, int width, char *dir)
+{
+	img->mlx_img = mlx_xpm_file_to_image(data->mlx, dir, &width, &height);
+	img->addr = mlx_get_data_addr(img->mlx_img, &img->bpp,
+			&img->line_len, &img->endian);
+	printf("Width %i", width);
+}
+
 void init_imgs(void)
 {
 	init_img(&data->player.img, PLAYER_SIZE , PLAYER_SIZE);
@@ -115,6 +123,57 @@ void init_imgs(void)
 	init_img(&data->test_img, DIR_SIZE , DIR_SIZE);
 	init_img(&data->mm_wall_img, WALL_SIZE , WALL_SIZE);
 	init_img(&data->mm_bg_img, BACKGROUND_SIZE , BACKGROUND_SIZE);
+	int width = 64;
+	int height = 64;
+	init_textures(&data->texture_img, 64 , 64, "texture.xpm");
+	printf("%i\n", width);
+	printf("%i\n", height);
+}
+
+void manipulate_img()
+{
+	int *data2; 
+	int count_h;
+	int count_w;
+		count_h = -1;
+	data2 = (int *)data->texture_img.addr;
+	int i = 0;
+	printf("Line len%d\n", data->texture_img.line_len);
+	printf("BPP %d\n", data->texture_img.bpp);
+	printf("endian %d\n", data->texture_img.bpp);
+	//int pos = (y * size_line + x * (bits_per_pixel / 8));
+	//int pos = (y * data->texture_img.line_len + x * (data->texture_img.bpp / 8));
+	//index = line_len * y + x * (bpp / 8)
+	int pos = (2 * data->texture_img.line_len + 15 * (data->texture_img.bpp / 8));
+	data2[pos] = 0xBF40BF;
+	data2[pos + 1] = 0xBF40BF;
+	data2[pos + 2] = 0xBF40BF;
+	data2[pos + 3] = 0xBF40BF;
+	data2[pos + 4] = 0xBF40BF;
+	data2[pos + 5] = 0xBF40BF;
+	data2[pos + 6] = 0xBF40BF;
+	/*
+	while (i < 32)
+	{
+		data2[i] = 0xBF40BF;
+		i++;
+	}
+	*/
+	DDA(&data->mm_bg_img, 0 , 0, 100, 100, data2[500]);
+	
+	/*
+		while (++count_h < 64)
+		{
+			count_w = -1;
+			while (++count_w < 64 / 2)
+			{
+				if (count_w % 2)
+					data2[count_h * 64 + count_w] = 0xFFFFFF;
+				else
+					data2[count_h * 64 + count_w] = 0xFF0000;
+			}
+		}
+	*/	
 }
 
 void draw_minimap()
@@ -125,7 +184,7 @@ void draw_minimap()
 	render_square(&data->mm_wall_img, 000000, WALL_SIZE, WALL_SIZE, 0 , 0);
 	render_square(&data->mm_bg_img, 0xFFFFFF, BACKGROUND_SIZE, BACKGROUND_SIZE, 0, 0);
 	
-	
+	manipulate_img();
 	//mlx_put_image_to_window(data->mlx, data->win_ptr, data->line_img.mlx_img , 0, 0);
 	
 	//mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_wall_img.mlx_img , 0, 0);
@@ -196,10 +255,10 @@ void draw_minimap()
 	printf("distance to wall %f\n", data->rays[i].distance_to_wall);
 	printf("sum: %f\n", data->rays[i].line_o + data->rays[i].distance_to_wall);
 	*/
-	printf("distance to wall %f\n", data->rays[i].line_height);
 	DDA(&data->game_img, 0 + i, data->rays[i].line_o, 0 + i, data->rays[i].line_height + data->rays[i].line_o, 0xFF00);
 	i++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->game_img.mlx_img , 0, 300);
+	mlx_put_image_to_window(data->mlx, data->win_ptr, data->texture_img.mlx_img , 0, 0);
 	
 }

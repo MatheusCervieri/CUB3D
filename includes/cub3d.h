@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/29 12:08:01 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/29 13:05:39 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_data
 	void		*mlx;
 	void		*win_ptr;
 	t_ray		rays[320];
+	t_img		texture_img;
 	t_img		game_img;
 	t_img		line_img;
 	t_player	player;
