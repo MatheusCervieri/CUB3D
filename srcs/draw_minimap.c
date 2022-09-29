@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/29 18:32:39 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:42:36 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -258,10 +258,16 @@ void draw_minimap()
 	while (i < 320)
 	{
 		int j;
+		int y_texture;
+		y_texture = 0;
 		j = 0;
 		while(j < data->rays[i].line_height)
 		{
+			if (y_texture >= 32)
+				y_texture = 0;
+			pixeloficial = img_pix_get(&data->texture_img, 0, y_texture);
 			img_pix_put(&data->game_img, 0 + i, j + data->rays[i].line_o, pixeloficial);
+			y_texture++;
 			j++;
 		}
 		/*
