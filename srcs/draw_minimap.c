@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/29 18:42:36 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/29 20:09:40 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,20 +254,23 @@ void draw_minimap()
 	render_square(&data->game_img, 0xffa500, WINDOW_WIDTH, WINDOW_HEIGHT/2, 0 , 0);
 	
 	i = 0;
-	int pixeloficial = img_pix_get(&data->texture_img, 16, 16);
+	int pixeloficial;
 	while (i < 320)
 	{
 		int j;
-		int y_texture;
+		float y_texture;
+		float y_texture_step;
+		float x_texture;
+
 		y_texture = 0;
+		y_texture_step = 32/(float)data->rays[i].line_height; //32 é o tamanho da textura
+		x_texture = (int)(data->rays[i].x*2) % 32; //Multiplicamos por 2 porque o nosso minimap é 16;
 		j = 0;
 		while(j < data->rays[i].line_height)
 		{
-			if (y_texture >= 32)
-				y_texture = 0;
-			pixeloficial = img_pix_get(&data->texture_img, 0, y_texture);
+			pixeloficial = img_pix_get(&data->texture_img, (int) x_texture, (int)y_texture);
 			img_pix_put(&data->game_img, 0 + i, j + data->rays[i].line_o, pixeloficial);
-			y_texture++;
+			y_texture+= y_texture_step; 
 			j++;
 		}
 		/*
