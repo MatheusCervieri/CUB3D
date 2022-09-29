@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/28 13:02:33 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/29 12:08:01 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct s_player
 	t_img	img;
 	double	x;
 	double	y;
+	double 	dx;
+	double	dy;
 	double	dir_x;
 	double	dir_y;
 	double 	test_x;
