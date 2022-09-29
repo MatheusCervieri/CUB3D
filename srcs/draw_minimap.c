@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/29 15:08:05 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/29 18:32:39 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@
 //Pegar a quantidade de walls.
 //Salvar os pontos que tem walls. 
 //Checar as intercecções horizontais. 
+
+int	img_pix_get(t_img *img, int x, int y)
+{
+	char    *pixel;
+
+    pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	return(*(int *)pixel);
+}
 
 double distance_btw_two_points(float x1, float y1, float x2, float y2) 
 {
@@ -246,16 +254,22 @@ void draw_minimap()
 	render_square(&data->game_img, 0xffa500, WINDOW_WIDTH, WINDOW_HEIGHT/2, 0 , 0);
 	
 	i = 0;
-
+	int pixeloficial = img_pix_get(&data->texture_img, 16, 16);
 	while (i < 320)
 	{
-
+		int j;
+		j = 0;
+		while(j < data->rays[i].line_height)
+		{
+			img_pix_put(&data->game_img, 0 + i, j + data->rays[i].line_o, pixeloficial);
+			j++;
+		}
 		/*
 	printf("OFFSET %f\n", data->rays[i].line_o);
 	printf("distance to wall %f\n", data->rays[i].distance_to_wall);
 	printf("sum: %f\n", data->rays[i].line_o + data->rays[i].distance_to_wall);
 	*/
-	DDA(&data->game_img, 0 + i, data->rays[i].line_o, 0 + i, data->rays[i].line_height + data->rays[i].line_o, 0xFF00);
+	//DDA(&data->game_img, 0 + i, data->rays[i].line_o, 0 + i, data->rays[i].line_height + data->rays[i].line_o, pixeloficial);
 	i++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->game_img.mlx_img , 0, 300);
