@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/29 13:05:39 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/29 20:46:12 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_ray
 	double	h_y;
 	double	v_x;
 	double 	v_y;
+	double	x_texture;
 	double distance_to_wall;
 	double line_height;
 	double line_o;

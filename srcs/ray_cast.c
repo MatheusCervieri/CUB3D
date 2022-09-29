@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/29 20:05:15 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/29 20:48:01 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -415,12 +415,14 @@ void check_intersections(void)
 		data->rays[i].x = data->rays[i].h_x;
 		data->rays[i].y = data->rays[i].h_y;
 		data->rays[i].distance_to_wall = distance_horizontal;
+		data->rays[i].x_texture = (int)(data->rays[i].x*2) % 32;
 	}
 	else
 	{
 		data->rays[i].x = data->rays[i].v_x;
 		data->rays[i].y = data->rays[i].v_y;
 		data->rays[i].distance_to_wall = distance_vertical;
+		data->rays[i].x_texture = (int)(data->rays[i].y*2) % 32;
 	}
 	//Projected Slice Height = 64 / Distance to the Slice * 277 (Part 5);
 	//data->rays[i].line_height = MINI_MAP_SIZE / (data->rays[i].distance_to_wall * (WINDOW_WIDTH/2)/tan(DG*30)); 
