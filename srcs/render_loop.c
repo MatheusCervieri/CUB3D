@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 21:47:18 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/21 21:57:14 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:13:09 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int render_loop(void)
 {
+	check_intersections();
 	draw_minimap();
 	return (0);
 }

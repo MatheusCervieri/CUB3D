@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/30 14:58:43 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:16:10 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_data
 	char		*map_string;
     char        **map_array;
     int         player_nbs;
+	int			player_dir;
 	int			walls_nbs;
 	double		**walls_position;
 	void		*mlx;

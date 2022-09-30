@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:04:34 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/30 16:04:43 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:07:04 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ int	keypress(int keycode)
 		rotate_right();
 	if (keycode == XK_Left)
 		rotate_left();
-
-
 	return (0);
 }
 

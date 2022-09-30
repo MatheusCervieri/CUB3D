@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/30 16:00:56 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:24:38 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_data *data;
 /*
 
 	-Inicializações e posição inicial do player. 
-	-Deixar o programa rodando em tempo real.
 	-Criar um mapa aleatório e verificar os raios que estão passando entre dois blocos, descobrir o porque e concertar.
 	-Concertar os segfaults e ir em busca dos segfaults.
 	-Colocar o mapa no tamanho certo 64 bits. (Não me parece necessário).
@@ -53,6 +52,25 @@ void get_player_first_position()
 			{
 				data->player.x = width * MINI_MAP_SIZE;
 				data->player.y = height * MINI_MAP_SIZE;
+				data->player.rotation = 3*PI/2;
+			}
+			if(data->map_array[i][j] == 'S') //Add all. 
+			{
+				data->player.x = width * MINI_MAP_SIZE;
+				data->player.y = height * MINI_MAP_SIZE;
+				data->player.rotation = PI/2;
+			}
+			if(data->map_array[i][j] == 'E') //Add all. 
+			{
+				data->player.x = width * MINI_MAP_SIZE;
+				data->player.y = height * MINI_MAP_SIZE;
+				data->player.rotation = 0;
+			}
+			if(data->map_array[i][j] == 'W') //Add all. 
+			{
+				data->player.x = width * MINI_MAP_SIZE;
+				data->player.y = height * MINI_MAP_SIZE;
+				data->player.rotation = 2*PI;
 			}
 			width++;
 			j++;
@@ -61,6 +79,7 @@ void get_player_first_position()
 		height++;
 		i++;
 	}
+		
 }
 
 
@@ -110,10 +129,7 @@ int	main(void)
 	save_walls_position();
 	printf("%f", data->walls_position[0][0]);
 	get_player_first_position();
-	data->player.dir_y = data->player.y - 50; 
-	data->player.dir_x = data->player.x; 
-	data->player.rotation = 0.0;
-	
+
 	i = 0;
 	while (i < 320)
 	{
@@ -124,6 +140,7 @@ int	main(void)
 	i++;
 	}
 	
+	check_intersections();
 	new_window();
 	init_imgs();
 	draw_minimap();
