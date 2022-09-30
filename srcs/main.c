@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/30 15:40:08 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:51:59 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,11 @@ int	main(void)
     data->so_texture = ft_strdup("texture2.xpm");
     data->we_texture = ft_strdup("texture3.xpm");
     data->ea_texture = ft_strdup("texture4.xpm");
+	data->floor_color = malloc (sizeof(int) * 1);
+	data->ceiling_color = malloc (sizeof(int) * 1);
+	*data->floor_color = 0x4169e1;
+	*data->ceiling_color = 0x87ceeb;
+
 	parse_map();
 
 	//Inicializa o array. 
