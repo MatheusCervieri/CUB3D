@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/30 16:24:38 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:27:52 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ t_data *data;
 
 /*
 
-	-Inicializações e posição inicial do player. 
 	-Criar um mapa aleatório e verificar os raios que estão passando entre dois blocos, descobrir o porque e concertar.
 	-Concertar os segfaults e ir em busca dos segfaults.
+	-Bug texturas. 
 	-Colocar o mapa no tamanho certo 64 bits. (Não me parece necessário).
 	-Colocar o tamanho da janela certo e desenhar já da forma certa na tela. 
 	

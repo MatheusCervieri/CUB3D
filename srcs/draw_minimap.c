@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/30 15:51:12 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:32:53 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,33 @@ void init_imgs(void)
 	init_img(&data->test_img, DIR_SIZE , DIR_SIZE);
 	init_img(&data->mm_wall_img, WALL_SIZE , WALL_SIZE);
 	init_img(&data->mm_bg_img, BACKGROUND_SIZE , BACKGROUND_SIZE);
-	int width = 64;
-	int height = 64;
-	printf("%i\n", width);
-	printf("%i\n", height);
+}
+
+void draw_3d_world()
+{
+	int	i;
+	int j;
+	float y_texture;
+	float y_texture_step;
+	
+	render_square(&data->game_img, *data->ceiling_color, WINDOW_WIDTH, WINDOW_HEIGHT, 0 , 0);	
+	render_square(&data->game_img, *data->floor_color, WINDOW_WIDTH, WINDOW_HEIGHT/2, 0 , 0);	
+	i = 0;
+	while (i < 320)
+	{
+		y_texture = 0;
+		y_texture_step = 64/(float)data->rays[i].line_height; //32 é o tamanho da textura
+	
+		j = 0;
+		while(j < data->rays[i].line_height)
+		{
+			data->rays[i].pixel = img_pix_get(&data->texture_img[data->rays[i].position], (int) data->rays[i].x_texture , (int)y_texture);
+			img_pix_put(&data->game_img, 0 + i, j + data->rays[i].line_o, data->rays[i].pixel);
+			y_texture+= y_texture_step; 
+			j++;
+		}
+	i++;
+	}
 }
 
 
@@ -195,37 +218,8 @@ void draw_minimap()
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
 	draw_player_mini_map();
 
-	/* DRAW 3D WORLD */
-	render_square(&data->game_img, *data->ceiling_color, WINDOW_WIDTH, WINDOW_HEIGHT, 0 , 0);
+	draw_3d_world();
 	
-	render_square(&data->game_img, *data->floor_color, WINDOW_WIDTH, WINDOW_HEIGHT/2, 0 , 0);
-	
-	i = 0;
-	while (i < 320)
-	{
-		int j;
-		float y_texture;
-		float y_texture_step;
-
-		y_texture = 0;
-		y_texture_step = 64/(float)data->rays[i].line_height; //32 é o tamanho da textura
-		
-		j = 0;
-		while(j < data->rays[i].line_height)
-		{
-			data->rays[i].pixel = img_pix_get(&data->texture_img[data->rays[i].position], (int) data->rays[i].x_texture , (int)y_texture);
-			img_pix_put(&data->game_img, 0 + i, j + data->rays[i].line_o, data->rays[i].pixel);
-			y_texture+= y_texture_step; 
-			j++;
-		}
-		/*
-	printf("OFFSET %f\n", data->rays[i].line_o);
-	printf("distance to wall %f\n", data->rays[i].distance_to_wall);
-	printf("sum: %f\n", data->rays[i].line_o + data->rays[i].distance_to_wall);
-	*/
-	//DDA(&data->game_img, 0 + i, data->rays[i].line_o, 0 + i, data->rays[i].line_height + data->rays[i].line_o, pixeloficial);
-	i++;
-	}
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->game_img.mlx_img , 0, 300);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->texture_img[0].mlx_img , 0, 0);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->texture_img[1].mlx_img , 64, 0);
