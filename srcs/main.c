@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/30 15:53:59 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/30 16:00:56 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ t_data *data;
 
 /*
 
-	-Arrumar a movimentação do player. Falta fazer o player andar para a direita e para a esquerda. 
 	-Inicializações e posição inicial do player. 
 	-Deixar o programa rodando em tempo real.
 	-Criar um mapa aleatório e verificar os raios que estão passando entre dois blocos, descobrir o porque e concertar.
