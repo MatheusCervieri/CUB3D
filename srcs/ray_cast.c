@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/29 20:48:01 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:32:42 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -416,6 +416,11 @@ void check_intersections(void)
 		data->rays[i].y = data->rays[i].h_y;
 		data->rays[i].distance_to_wall = distance_horizontal;
 		data->rays[i].x_texture = (int)(data->rays[i].x*4) % 64;  //Multiplicamos por 2 porque o nosso minimap é 16; 32 é o tamanho da textura. 
+		if(data->rays[i].rotation > 0 && data->rays[i].rotation < PI)
+			data->rays[i].position = 1; //Horizontal cima. 
+		else
+			data->rays[i].position = 0;
+			 //Horizontal baixo. 
 	}
 	else
 	{
@@ -423,6 +428,11 @@ void check_intersections(void)
 		data->rays[i].y = data->rays[i].v_y;
 		data->rays[i].distance_to_wall = distance_vertical;
 		data->rays[i].x_texture = (int)(data->rays[i].y*4) % 64;  //Multiplicamos por 2 porque o nosso minimap é 16; 32 é o tamanho da textura. 
+		if(data->rays[i].rotation < PI/2 || data->rays[i].rotation > 3*PI/2)
+			data->rays[i].position = 2; //vertical direita. 
+		else
+			data->rays[i].position = 3; //Vertical esquerda. 
+
 	}
 	//Projected Slice Height = 64 / Distance to the Slice * 277 (Part 5);
 	//data->rays[i].line_height = MINI_MAP_SIZE / (data->rays[i].distance_to_wall * (WINDOW_WIDTH/2)/tan(DG*30)); 

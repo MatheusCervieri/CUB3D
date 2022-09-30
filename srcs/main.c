@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/29 21:03:14 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/09/30 15:40:08 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 t_data *data;
 
 /*
-	-Adicionar as texturas conforme a direção do player
-		Criar função que inicializa as testuras conforme o caminho delas.
-	-Definir a cor do chão e do teto. 
+
+dd0	-Definir a cor do chão e do teto. 
 	-Arrumar a movimentação do player. Falta fazer o player andar para a direita e para a esquerda. 
 	-Inicializações e posição inicial do player. 
 	-Deixar o programa rodando em tempo real.
@@ -118,6 +117,7 @@ int	main(void)
 	data->rays[i].x = 0;
 	data->rays[i].y = 0;
 	data->rays[i].rotation = 0.0;
+	data->rays[i].position = 0;
 	i++;
 	}
 	
