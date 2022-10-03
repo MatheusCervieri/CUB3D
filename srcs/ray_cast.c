@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/03 15:18:55 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:35:16 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,128 +41,117 @@ int	is_horizontal_wall(double x, double y)
 	return (0);
 }
 
+
 void check_intersections_2(double *new_x, double *new_y, double rotation)
 {
-	float ray_rotation;
-	ray_rotation = rotation;
-	float aTan = -1/tan(ray_rotation);
-	float ry;
-	float rx;
-	float yo;
-	float xo;
 	float		rounded_down_number;
 	int			loop;
 	int			i = 0;
+	data->tan = -1/tan(rotation);
 	loop = lines_amount(data->map_array);
 	rounded_down_number = floor(data->player.y / MINI_MAP_SIZE);
-	if (ray_rotation > PI)
+	if (rotation > PI)
 	{
-		ry = rounded_down_number * (MINI_MAP_SIZE) - 1;
-		rx = (data->player.y - ry) * aTan + data->player.x; 
-		yo = - MINI_MAP_SIZE;
-		xo = -yo * aTan;
+		data->ry = rounded_down_number * (MINI_MAP_SIZE) - 1;
+		data->rx = (data->player.y - data->ry) * data->tan + data->player.x; 
+		data->yo = - MINI_MAP_SIZE;
+		data->xo = -data->yo * data->tan;
 	}
-	else if (ray_rotation < PI)
+	else if (rotation < PI)
 	{ 
-		ry = rounded_down_number * (MINI_MAP_SIZE) + MINI_MAP_SIZE;
-		rx = (data->player.y - ry) * aTan + data->player.x; 
-		yo = MINI_MAP_SIZE;
-		xo = -yo * aTan;
+		data->ry = rounded_down_number * (MINI_MAP_SIZE) + MINI_MAP_SIZE;
+		data->rx = (data->player.y - data->ry) * data->tan + data->player.x; 
+		data->yo = MINI_MAP_SIZE;
+		data->xo = -data->yo * data->tan;
 	}
-	if(ray_rotation == 0 || ray_rotation == PI)
+	if(rotation == 0 || rotation == PI)
 	{
-		rx=data->player.x;
-		ry=data->player.y;
+		data->rx=data->player.x;
+		data->ry=data->player.y;
 		i = lines_amount(data->map_array);
 	}
 	while (i < loop)
 	{
 			
-		if(is_horizontal_wall(rx, ry) == 1)
+		if(is_horizontal_wall(data->rx, data->ry) == 1)
 		{
-			*new_x = rx;
-			*new_y = ry;
+			*new_x = data->rx;
+			*new_y = data->ry;
 			break ;
 		}
 		else
 		{
-			rx = rx + xo;
-			ry = ry + yo;
+			data->rx = data->rx + data->xo;
+			data->ry = data->ry + data->yo;
 		}
 		i++;
 	}
-	if (rx >= 600)
-		rx = 600;
-	if (rx <= 0)
-		rx = 0;
-	if (ry <= 0)
-		ry = 0;	
-	if (ry >= 600)
-		ry = 600;
-	*new_x = rx;
-	*new_y = ry;
+	if (data->rx >= 600)
+		data->rx = 600;
+	if (data->rx <= 0)
+		data->rx = 0;
+	if (data->ry <= 0)
+		data->ry = 0;	
+	if (data->ry >= 600)
+		data->ry = 600;
+	*new_x = data->rx;
+	*new_y = data->ry;
 }
 
 void check_intersections_2_vertical(double *new_x, double *new_y, double rotation)
 {
-	float ray_rotation;
-	ray_rotation = rotation;
-	float aTan = -tan(ray_rotation);
-	float ry;
-	float rx;
-	float yo;
-	float xo;
+	data->tan = -tan(rotation);
 	float		rounded_down_number;
 	int			loop;
 	int			i = 0;
 	loop = biggest_line_size(data->map_array);
 	rounded_down_number = floor(data->player.x / MINI_MAP_SIZE);
-	if (ray_rotation > PI/2 && ray_rotation < 3*PI/2)
+	if (rotation > PI/2 && rotation < 3*PI/2)
 	{
-		rx =  rounded_down_number * (MINI_MAP_SIZE) - 1;
-		ry = (data->player.x - rx) * aTan + data->player.y; 
-		xo = - MINI_MAP_SIZE;
-		yo = -xo * aTan;
+		data->rx =  rounded_down_number * (MINI_MAP_SIZE) - 1;
+		data->ry = (data->player.x - data->rx) * data->tan + data->player.y; 
+		data->xo = - MINI_MAP_SIZE;
+		data->yo = -data->xo * data->tan;
 	}
-	if (ray_rotation < PI/2 || ray_rotation > 3*PI/2)
+	if (rotation < PI/2 || rotation > 3*PI/2)
 	{ 
-		rx = rounded_down_number * (MINI_MAP_SIZE) + MINI_MAP_SIZE;
-		ry = (data->player.x - rx) * aTan + data->player.y; 
-		xo = MINI_MAP_SIZE;
-		yo = -xo * aTan;
+		data->rx = rounded_down_number * (MINI_MAP_SIZE) + MINI_MAP_SIZE;
+		data->ry = (data->player.x - data->rx) * data->tan + data->player.y; 
+		data->xo = MINI_MAP_SIZE;
+		data->yo = -data->xo * data->tan;
 	}
-	if(ray_rotation == 0 || ray_rotation == PI)
+	if(rotation == 0 || rotation == PI)
 	{
-		rx=data->player.x;
-		ry= data->player.y;
+		data->rx=data->player.x;
+		data->ry= data->player.y;
 		i = biggest_line_size(data->map_array);
 	}
 	while (i < loop)
 	{
 			
-		if(is_horizontal_wall(rx, ry) == 1)
+		if(is_horizontal_wall(data->rx, data->ry) == 1)
 		{
-			*new_x = rx;
-			*new_y = ry;
+			*new_x = data->rx;
+			*new_y = data->ry;
 			break ;
 		}
 		else
 		{
-			rx = rx + xo;
-			ry = ry + yo;
+			data->rx = data->rx + data->xo;
+			data->ry = data->ry + data->yo;
 		}
 		i++;
 	}
-	if (rx >= 600)
-		rx = 600;
-	if (rx <= 0)
-		rx = 0;
-	if (ry <= 0)
-		ry = 0;	
-	if (ry >= 600)
-		ry = 600;
-	*new_x = rx;
-	*new_y = ry;
+	if (data->rx >= 600)
+		data->rx = 600;
+	if (data->rx <= 0)
+		data->rx = 0;
+	if (data->ry <= 0)
+		data->ry = 0;	
+	if (data->ry >= 600)
+		data->ry = 600;
+	*new_x = data->rx;
+	*new_y = data->ry;
 }
 
 

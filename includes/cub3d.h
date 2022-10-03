@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/30 16:16:10 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:25:35 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,11 @@ typedef struct s_data
     char		*so_texture;
     char		*we_texture;
     char		*ea_texture;
+	float		tan;
+	float		rx;
+	float		ry;
+	float		yo;
+	float		xo;
 	t_ray		rays[320];
 	t_img		texture_img[4];
 	t_img		game_img;

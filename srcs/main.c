@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/03 15:11:40 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:36:49 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_data *data;
 	-Concertar os segfaults e ir em busca dos segfaults.
 	-Bug texturas.
 	-Colocar o mapa no tamanho certo 64 bits. (Não me parece necessário).
-
+	-A tela fica piscando as vezes. 
 	-Váriavel global. 
 	
 	-Organizar o código que foi feito. 
