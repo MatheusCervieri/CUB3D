@@ -6,13 +6,17 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/03 15:36:49 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:56:11 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 t_data *data;
+
+/* Bug texturas:
+	Ele está tendo uma intersecção vertical quando deveria ser horizontal
+*/
 
 /*
 	-Criar um mapa aleatório e verificar os raios que estão passando entre dois blocos, descobrir o porque e concertar.

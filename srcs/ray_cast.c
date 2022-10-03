@@ -6,13 +6,13 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/03 15:44:03 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/03 17:32:55 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_horizontal_wall(double x, double y)
+int	is_wall(double x, double y)
 {
 	int i;
 	i = 0;
@@ -22,6 +22,27 @@ int	is_horizontal_wall(double x, double y)
 		{
 			return(1);
 		}
+		/*
+		if(data->walls_position[i][0] == floor(x/MINI_MAP_SIZE - 0.05) && data->walls_position[i][1] == floor(y/MINI_MAP_SIZE - 0.05))
+		{
+			return(1);
+		}
+		*/
+		/*
+		if(data->walls_position[i][0] == floor(x/MINI_MAP_SIZE - 0.05) && data->walls_position[i][1] == floor(y/MINI_MAP_SIZE - 0.05))
+		{
+			return(1);
+		}
+		*/
+		//
+		/*
+		Resolveu um problema. 
+		if(data->walls_position[i][0] == floor(x/MINI_MAP_SIZE - 0.1) && data->walls_position[i][1] == floor(y/MINI_MAP_SIZE - 0.1))
+		{
+			return(1);
+		}
+		*/
+		
 		/*
 		if(data->walls_position[i][0] + 1 == x/MINI_MAP_SIZE && data->walls_position[i][1] == floor(y/MINI_MAP_SIZE))
 		{
@@ -40,6 +61,7 @@ int	is_horizontal_wall(double x, double y)
 	}
 	return (0);
 }
+
 
 
 void check_intersections_2(double *new_x, double *new_y, double rotation)
@@ -73,7 +95,7 @@ void check_intersections_2(double *new_x, double *new_y, double rotation)
 	while (i < loop)
 	{
 			
-		if(is_horizontal_wall(data->rx, data->ry) == 1)
+		if(is_wall(data->rx, data->ry) == 1)
 		{
 			*new_x = data->rx;
 			*new_y = data->ry;
@@ -86,6 +108,7 @@ void check_intersections_2(double *new_x, double *new_y, double rotation)
 		}
 		i++;
 	}
+	
 	if (data->rx >= 600)
 		data->rx = 600;
 	if (data->rx <= 0)
@@ -96,6 +119,7 @@ void check_intersections_2(double *new_x, double *new_y, double rotation)
 		data->ry = 600;
 	*new_x = data->rx;
 	*new_y = data->ry;
+	
 }
 
 void check_intersections_2_vertical(double *new_x, double *new_y, double rotation)
@@ -129,7 +153,7 @@ void check_intersections_2_vertical(double *new_x, double *new_y, double rotatio
 	while (i < loop)
 	{
 			
-		if(is_horizontal_wall(data->rx, data->ry) == 1)
+		if(is_wall(data->rx, data->ry) == 1)
 		{
 			*new_x = data->rx;
 			*new_y = data->ry;
@@ -142,6 +166,7 @@ void check_intersections_2_vertical(double *new_x, double *new_y, double rotatio
 		}
 		i++;
 	}
+	
 	if (data->rx >= 600)
 		data->rx = 600;
 	if (data->rx <= 0)
@@ -152,6 +177,7 @@ void check_intersections_2_vertical(double *new_x, double *new_y, double rotatio
 		data->ry = 600;
 	*new_x = data->rx;
 	*new_y = data->ry;
+	
 }
 
 
@@ -175,17 +201,17 @@ void check_intersections(void)
 	check_intersections_2_vertical(&data->rays[i].v_x, &data->rays[i].v_y , data->rays[i].rotation);	
 	distance_horizontal = distance_btw_two_points(data->player.x, data->player.y, data->rays[i].h_x, data->rays[i].h_y);
 	distance_vertical = distance_btw_two_points(data->player.x, data->player.y, data->rays[i].v_x, data->rays[i].v_y);
-	if (distance_horizontal < distance_vertical)
+	if (distance_horizontal < distance_vertical) // Esse mais dois resolveu um dos problemas que estavamos tendo uma textura horizontal e vertical misturadas.
 	{
 		data->rays[i].x = data->rays[i].h_x;
 		data->rays[i].y = data->rays[i].h_y;
 		data->rays[i].distance_to_wall = distance_horizontal;
 		data->rays[i].x_texture = (int)(data->rays[i].x*4) % 64;  //Multiplicamos por 2 porque o nosso minimap é 16; 32 é o tamanho da textura. 
 		if(data->rays[i].rotation > 0 && data->rays[i].rotation < PI)
-			data->rays[i].position = 1; //Horizontal cima. Norte. 
+			data->rays[i].position = 1; //Horizontal baixo. Sul. 
 		else
 			data->rays[i].position = 0;
-			 //Horizontal baixo. 
+			 //Horizontal cima. Norte
 	}
 	else
 	{
@@ -194,9 +220,9 @@ void check_intersections(void)
 		data->rays[i].distance_to_wall = distance_vertical;
 		data->rays[i].x_texture = (int)(data->rays[i].y*4) % 64;  //Multiplicamos por 2 porque o nosso minimap é 16; 32 é o tamanho da textura. 
 		if(data->rays[i].rotation < PI/2 || data->rays[i].rotation > 3*PI/2)
-			data->rays[i].position = 2; //vertical direita. 
+			data->rays[i].position = 2; //vertical direita. Leste
 		else
-			data->rays[i].position = 3; //Vertical esquerda. 
+			data->rays[i].position = 3; //Vertical esquerda. Oeste
 
 	}
 	//Projected Slice Height = 64 / Distance to the Slice * 277 (Part 5);
