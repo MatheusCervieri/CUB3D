@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/30 16:36:30 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:18:55 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,21 @@ int	is_horizontal_wall(double x, double y)
 		if(data->walls_position[i][0] == floor(x/MINI_MAP_SIZE) && data->walls_position[i][1] == floor(y/MINI_MAP_SIZE))
 		{
 			return(1);
+		}
+		/*
+		if(data->walls_position[i][0] + 1 == x/MINI_MAP_SIZE && data->walls_position[i][1] == floor(y/MINI_MAP_SIZE))
+		{
+			return(1);
 		} 
-			
+		if(data->walls_position[i][0] == floor(x/MINI_MAP_SIZE) && data->walls_position[i][1] + 1 == y/MINI_MAP_SIZE)
+		{
+			return(1);
+		}
+		if(data->walls_position[i][0] + 1 == x/MINI_MAP_SIZE && data->walls_position[i][1] + 1 == y/MINI_MAP_SIZE)
+		{
+			return(1);
+		}
+		*/	
 		i++;
 	}
 	return (0);
@@ -59,7 +72,7 @@ void check_intersections_2(double *new_x, double *new_y, double rotation)
 	if(ray_rotation == 0 || ray_rotation == PI)
 	{
 		rx=data->player.x;
-		ry= data->player.y;
+		ry=data->player.y;
 		i = lines_amount(data->map_array);
 	}
 	while (i < loop)

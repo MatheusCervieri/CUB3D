@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/09/30 16:32:53 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:06:16 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ x=x+1;
 }
 
 
-
 void init_imgs(void)
 {
 	init_img(&data->player.img, PLAYER_SIZE , PLAYER_SIZE);
@@ -210,14 +209,13 @@ void draw_minimap()
 	i = 0;
 	while (i < 320)
 	{
-	//printf("RAY X: %f Y: %f\n", data->rays[i].x, data->rays[i].y);
 	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[i].x, data->rays[i].y, 0xFF00);
 	i++;
 	}
 	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->player.dir_x , data->player.dir_y, 0xBF40BF);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
 	draw_player_mini_map();
-
+		
 	draw_3d_world();
 	
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->game_img.mlx_img , 0, 300);
