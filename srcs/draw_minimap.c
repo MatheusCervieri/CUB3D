@@ -6,15 +6,15 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/03 15:06:16 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:50:05 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-# define PLAYER_SIZE 16
+# define PLAYER_SIZE 64
 # define BACKGROUND_SIZE 600
-# define WALL_SIZE 16
+# define WALL_SIZE 64
 # define DIR_SIZE 8
 
 //Pegar a quantidade de walls.
@@ -118,11 +118,11 @@ x=x+1;
 
 void init_imgs(void)
 {
-	init_img(&data->player.img, PLAYER_SIZE , PLAYER_SIZE);
+	init_img(&data->player.img, PLAYER_SIZE/4 , PLAYER_SIZE/4);
 	init_img(&data->game_img, WINDOW_WIDTH , WINDOW_HEIGHT);
 	init_img(&data->player.dir_img, DIR_SIZE , DIR_SIZE);
 	init_img(&data->test_img, DIR_SIZE , DIR_SIZE);
-	init_img(&data->mm_wall_img, WALL_SIZE , WALL_SIZE);
+	init_img(&data->mm_wall_img, WALL_SIZE/4 , WALL_SIZE/4);
 	init_img(&data->mm_bg_img, BACKGROUND_SIZE , BACKGROUND_SIZE);
 }
 
@@ -156,10 +156,10 @@ void draw_3d_world()
 
 void draw_minimap()
 {
-	render_square(&data->test_img, 0xBF40BF, DIR_SIZE, DIR_SIZE, 0 ,0);
-	render_square(&data->player.img, 0xFF00, PLAYER_SIZE, PLAYER_SIZE, 0 , 0);
-	render_square(&data->player.dir_img, 0xFF0000, DIR_SIZE, DIR_SIZE, 0 , 0);
-	render_square(&data->mm_wall_img, 000000, WALL_SIZE, WALL_SIZE, 0 , 0);
+	render_square(&data->test_img, 0xBF40BF, DIR_SIZE/4, DIR_SIZE/4, 0 ,0);
+	render_square(&data->player.img, 0xFF00, PLAYER_SIZE/4, PLAYER_SIZE/4, 0 , 0);
+	render_square(&data->player.dir_img, 0xFF0000, DIR_SIZE/4, DIR_SIZE/4, 0 , 0);
+	render_square(&data->mm_wall_img, 000000, WALL_SIZE/4, WALL_SIZE/4, 0 , 0);
 	render_square(&data->mm_bg_img, 0xFFFFFF, BACKGROUND_SIZE, BACKGROUND_SIZE, 0, 0);
 	
 	//mlx_put_image_to_window(data->mlx, data->win_ptr, data->line_img.mlx_img , 0, 0);
@@ -180,7 +180,7 @@ void draw_minimap()
 		{
 			if(data->map_array[i][j] == '1')
 			{
-				render_square(&data->mm_bg_img, 000000, WALL_SIZE, WALL_SIZE, height * MINI_MAP_SIZE, width * MINI_MAP_SIZE);
+				render_square(&data->mm_bg_img, 000000, WALL_SIZE/4, WALL_SIZE/4, (height * MINI_MAP_SIZE)/4, (width * MINI_MAP_SIZE)/4);
 				
 			}
 			width++;
@@ -194,14 +194,14 @@ void draw_minimap()
 	i = 0;
 	while (i < lines_amount(data->map_array))
 	{
-		DDA(&data->mm_bg_img, 0, MINI_MAP_SIZE * i , 600 , MINI_MAP_SIZE * i, 000003);
+		DDA(&data->mm_bg_img, 0, MINI_MAP_SIZE/4 * i , 600 , MINI_MAP_SIZE/4 * i, 000003);
 		i++;
 	}
 	
 	i = 0;
 	while (i < biggest_line_size(data->map_array))
 	{
-		DDA(&data->mm_bg_img, MINI_MAP_SIZE * i, 0 , MINI_MAP_SIZE * i , 600, 000003);
+		DDA(&data->mm_bg_img, MINI_MAP_SIZE/4 * i, 0 , MINI_MAP_SIZE/4 * i , 600, 000003);
 		i++;
 	}
 	//int	biggest_line_size(char **map_array)
@@ -209,19 +209,19 @@ void draw_minimap()
 	i = 0;
 	while (i < 320)
 	{
-	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[i].x, data->rays[i].y, 0xFF00);
+	DDA(&data->mm_bg_img, data->player.x/4, data->player.y/4 , data->rays[i].x/4, data->rays[i].y/4, 0xFF00);
 	i++;
 	}
-	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->player.dir_x , data->player.dir_y, 0xBF40BF);
+	DDA(&data->mm_bg_img, data->player.x/4, data->player.y/4 , data->player.dir_x/4 , data->player.dir_y/4, 0xBF40BF);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
 	draw_player_mini_map();
 		
 	draw_3d_world();
 	
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->game_img.mlx_img , 0, 300);
-	mlx_put_image_to_window(data->mlx, data->win_ptr, data->texture_img[0].mlx_img , 0, 0);
-	mlx_put_image_to_window(data->mlx, data->win_ptr, data->texture_img[1].mlx_img , 64, 0);
-	mlx_put_image_to_window(data->mlx, data->win_ptr, data->texture_img[2].mlx_img , 128, 0);
-	mlx_put_image_to_window(data->mlx, data->win_ptr, data->texture_img[3].mlx_img , 196, 0);
+	mlx_put_image_to_window(data->mlx, data->win_ptr, data->texture_img[0].mlx_img , 256, 0);
+	mlx_put_image_to_window(data->mlx, data->win_ptr, data->texture_img[1].mlx_img , 300, 0);
+	mlx_put_image_to_window(data->mlx, data->win_ptr, data->texture_img[2].mlx_img , 364, 0);
+	mlx_put_image_to_window(data->mlx, data->win_ptr, data->texture_img[3].mlx_img , 414, 0);
 	
 }

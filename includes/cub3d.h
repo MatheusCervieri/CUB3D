@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/03 15:25:35 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/03 18:40:40 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 # define PI 3.1415926535
 # define DG 0.0174533
-# define MINI_MAP_SIZE 16
+# define MINI_MAP_SIZE 64
 # define WINDOW_WIDTH 320
 # define WINDOW_HEIGHT 200
 
