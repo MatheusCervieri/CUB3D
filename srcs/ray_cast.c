@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/03 15:35:16 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/03 15:44:03 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,14 +175,14 @@ void check_intersections(void)
 	check_intersections_2_vertical(&data->rays[i].v_x, &data->rays[i].v_y , data->rays[i].rotation);	
 	distance_horizontal = distance_btw_two_points(data->player.x, data->player.y, data->rays[i].h_x, data->rays[i].h_y);
 	distance_vertical = distance_btw_two_points(data->player.x, data->player.y, data->rays[i].v_x, data->rays[i].v_y);
-	if (distance_horizontal <= distance_vertical)
+	if (distance_horizontal < distance_vertical)
 	{
 		data->rays[i].x = data->rays[i].h_x;
 		data->rays[i].y = data->rays[i].h_y;
 		data->rays[i].distance_to_wall = distance_horizontal;
 		data->rays[i].x_texture = (int)(data->rays[i].x*4) % 64;  //Multiplicamos por 2 porque o nosso minimap é 16; 32 é o tamanho da textura. 
 		if(data->rays[i].rotation > 0 && data->rays[i].rotation < PI)
-			data->rays[i].position = 1; //Horizontal cima. 
+			data->rays[i].position = 1; //Horizontal cima. Norte. 
 		else
 			data->rays[i].position = 0;
 			 //Horizontal baixo. 
