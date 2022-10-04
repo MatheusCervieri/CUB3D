@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 15:18:32 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:57:26 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,11 @@ int	main(int argc, char **argv)
 	map = open(argv[1], O_RDONLY);
 	if(map == -1)
 		return (msg_error("Map not found"));
+	/*
+		if(!validate_rgb_colors(data, rgbs))
+		return(msg_error("Invalid RGB Color\n"));
+	*/
 	data->map_string = validate_map_params(map,data);
-	
 	map_line = data->map_string;
 	while (map_line)
 	{
@@ -76,10 +79,8 @@ int	main(int argc, char **argv)
 	}
 	close(map);
 	parse_map(data);
-	//printf("return of validate map params %s\n", validate_map_params(map, data));
-	//printf("new line %s\n", get_next_line(map));
-	/*
-	if(!validate_rgb_colors(data, rgbs))
-		return(msg_error("Invalid RGB Color\n"));
-	*/
+	new_window(data);
+	handle_hooks(data);
+	mlx_loop(data->mlx);
+
 }

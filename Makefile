@@ -6,7 +6,7 @@
 #    By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/12 11:06:29 by mvieira-          #+#    #+#              #
-#    Updated: 2022/10/04 15:15:26 by mvieira-         ###   ########.fr        #
+#    Updated: 2022/10/04 16:17:03 by mvieira-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,9 @@ HEADERS_PATH = ./includes/
 SRCS_PATH = ./srcs/
 ERROR_PATH = error/
 PARSE_MAP_PATH = parse_map/
+MLX_UTILS_PATH = mlx_utils/
 TEXTURES_PATH = path_textures/
+MOVIMENTS_PATH = moviments/
 CMD_PARSER_PATH = validate_arguments/
 OBJS_PATH = ./objs/
 LIBS_PATH = ./Libft/
@@ -25,6 +27,11 @@ MKDIR = mkdir -p
 MAKE_NOPRINT = $(MAKE) --no-print-directory
 NAME = cub3D
 SRC_FILES = main.c \
+			$(MOVIMENTS_PATH)moviments.c\
+			$(MOVIMENTS_PATH)rotation_moviments.c\
+			$(MLX_UTILS_PATH)render_loop.c \
+			$(MLX_UTILS_PATH)handle_mlx_hooks.c \
+			$(MLX_UTILS_PATH)new_window.c \
 			$(PARSE_MAP_PATH)map_utils.c \
 			$(PARSE_MAP_PATH)iterate_map.c \
 			$(PARSE_MAP_PATH)normalize_map.c \
@@ -48,7 +55,7 @@ $(LIBFT_A):
 	@cd $(LIBS_PATH) && $(MAKE_NOPRINT)
 	
 $(NAME): $(LIBFT_A) $(OBJECTS) 
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LIBFT_A) -lmlx -lXext -lX11
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS) $(LIBFT_A) -lm -lmlx -lXext -lX11
 
 #-lmlx -lXext -lX11 
 
@@ -58,7 +65,9 @@ $(OBJS_PATH)%.o : $(SRCS_PATH)%.c
 	@$(MKDIR) $(OBJS_PATH)$(CMD_PARSER_PATH)
 	@$(MKDIR) $(OBJS_PATH)$(TEXTURES_PATH)
 	@$(MKDIR) $(OBJS_PATH)$(PARSE_MAP_PATH)
-	@$(CC) $(CFLAGS) -c $< -o $@
+	@$(MKDIR) $(OBJS_PATH)$(MLX_UTILS_PATH)
+	@$(MKDIR) $(OBJS_PATH)$(MOVIMENTS_PATH)
+	@$(CC) $(CFLAGS) -c $< -o $@ 
 
 bonus: all
 

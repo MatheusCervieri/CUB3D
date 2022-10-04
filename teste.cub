@@ -1,7 +1,7 @@
-NO ./srcs/main.c
-SO ./srcs/main.c
-WE ./srcs/main.c
-EA ./srcs/main.c
+NO texture.xpm
+SO texture2.xpm
+WE texture3.xpm
+EA texture4.xpm
 
 F 220,100,0
 C 225,30,0

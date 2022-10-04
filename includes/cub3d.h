@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 15:14:47 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/04 16:13:02 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,54 @@
 # include <X11/X.h> 
 # include <math.h>
 
+# define PI 3.1415926535
+# define DG 0.0174533
+# define MINI_MAP_SIZE 16
+# define WINDOW_WIDTH 320
+# define WINDOW_HEIGHT 200
+
+typedef struct s_img
+{
+	void	*mlx_img;
+	char	*addr;
+	int		bpp; /* bits per pixel */
+	int		line_len;
+	int		endian;
+}	t_img;
+
+typedef struct s_ray
+{
+	t_img	img;
+	float	x;
+	float	y;
+	float	h_x;
+	float	h_y;
+	float	v_x;
+	float 	v_y;
+	int		pixel;
+	float	x_texture;
+	float distance_to_wall;
+	float line_height;
+	float line_o;
+	float	rotation;
+	float diference_angle;
+	int		position;
+}				t_ray;
+
+typedef struct s_player
+{
+	t_img	img;
+	float	x;
+	float	y;
+	float 	dx;
+	float	dy;
+	float	dir_x;
+	float	dir_y;
+	float 	test_x;
+	float	test_y;
+	float	rotation;
+	t_img	dir_img; 
+}				t_player;
 
 typedef struct s_data
 {
@@ -35,6 +83,8 @@ typedef struct s_data
 	int			walls_nbs;
 	void		*mlx;
 	void		*win_ptr;
+	t_img		texture_img[4];
+	t_player	player;
 }				t_data;
 
 void    parse_map();
@@ -58,6 +108,9 @@ int validate_rgb_colors(t_data *data, char **rgbs);
 //print a new error msg on stderr and returns 1
 int	msg_error(char *error);
 
+//error or close
+void free_mlx_core(t_data *data);
+
 //parse_map
 void	handle_error(t_data *data, char *error_message);
 void	check_valid_space_sorround_by_wall(t_data *data, char *line,
@@ -65,7 +118,18 @@ char	*up_line, char *down_line);
 char	**normalize_map(char **map_array);
 void	iterate_map_array(t_data *data);
 
+//mlx
+void	new_window(t_data *data);
+int		render_loop(t_data *data);
+void	handle_hooks(t_data *data);
 
+//moviments
+void	move_right(t_data *data);
+void	move_left(t_data *data);
+void	move_up(t_data *data);
+void	move_down(t_data *data);
+void 	rotate_right(t_data *data);
+void 	rotate_left(t_data *data);
 
 
 #endif

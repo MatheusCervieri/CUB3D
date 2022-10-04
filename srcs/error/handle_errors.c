@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:15:15 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 15:13:14 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/04 16:00:43 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,14 @@ void	handle_error(t_data *data, char *error_message)
 	free(data->map_string); //cuidar unsuded
 	exit(1);
 }
+
+/*
+mlx_destroy_img -->
+init_textures(data, &data->texture_img[0], data->no_path);
+init_textures(data, &data->texture_img[1], data->so_path);
+init_textures(data, &data->texture_img[2], data->we_path);
+init_textures(data, &data->texture_img[3], data->ea_path);
+*/
 
 void free_mlx_core(t_data *data)
 {
