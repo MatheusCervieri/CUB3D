@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 15:57:26 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/04 21:27:44 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,55 @@ char	*validate_map_params(int map, t_data *data)
 
 }
 
+void get_player_first_position(t_data *data)
+{
+	int i;
+	int j;
+	int height;
+	int width;
+
+	height = 0; 
+	width = 0;
+	i = 0;
+	while (data->map_array[i])
+	{
+		j = 0;
+		while (data->map_array[i][j])
+		{
+			if(data->map_array[i][j] == 'N') //Add all. 
+			{
+				data->player.x = width * MINI_MAP_SIZE;
+				data->player.y = height * MINI_MAP_SIZE;
+				data->player.rotation = 3*PI/2;
+			}
+			if(data->map_array[i][j] == 'S') //Add all. 
+			{
+				data->player.x = width * MINI_MAP_SIZE;
+				data->player.y = height * MINI_MAP_SIZE;
+				data->player.rotation = PI/2;
+			}
+			if(data->map_array[i][j] == 'E') //Add all. 
+			{
+				data->player.x = width * MINI_MAP_SIZE;
+				data->player.y = height * MINI_MAP_SIZE;
+				data->player.rotation = 0;
+			}
+			if(data->map_array[i][j] == 'W') //Add all. 
+			{
+				data->player.x = width * MINI_MAP_SIZE;
+				data->player.y = height * MINI_MAP_SIZE;
+				data->player.rotation = 2*PI;
+			}
+			width++;
+			j++;
+		}
+		width = 0;
+		height++;
+		i++;
+	}
+		
+}
+
 
 int	main(int argc, char **argv)
 {
@@ -79,8 +128,31 @@ int	main(int argc, char **argv)
 	}
 	close(map);
 	parse_map(data);
+	
+	data->walls_position = malloc(sizeof(double *) * data->walls_nbs);
+	int i;
+	i = 0;
+	while (i < data->walls_nbs)
+	{
+		data->walls_position[i] = malloc(sizeof(double) * 2);
+		i++;
+	}
+	save_walls_position(data);
+	get_player_first_position(data);
+
+	i = 0;
+	while (i < 320)
+	{
+	data->rays[i].x = 0;
+	data->rays[i].y = 0;
+	data->rays[i].rotation = 0.0;
+	data->rays[i].position = 0;
+	i++;
+	}
+	check_intersections(data);
 	new_window(data);
+	init_imgs(data);
+	draw_minimap(data);
 	handle_hooks(data);
 	mlx_loop(data->mlx);
-
 }

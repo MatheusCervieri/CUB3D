@@ -6,7 +6,7 @@
 #    By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/12 11:06:29 by mvieira-          #+#    #+#              #
-#    Updated: 2022/10/04 16:17:03 by mvieira-         ###   ########.fr        #
+#    Updated: 2022/10/04 17:59:22 by mvieira-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ PARSE_MAP_PATH = parse_map/
 MLX_UTILS_PATH = mlx_utils/
 TEXTURES_PATH = path_textures/
 MOVIMENTS_PATH = moviments/
+RAY_CASTING_PATH = ray_casting/
 CMD_PARSER_PATH = validate_arguments/
 OBJS_PATH = ./objs/
 LIBS_PATH = ./Libft/
@@ -27,6 +28,9 @@ MKDIR = mkdir -p
 MAKE_NOPRINT = $(MAKE) --no-print-directory
 NAME = cub3D
 SRC_FILES = main.c \
+			$(RAY_CASTING_PATH)draw_minimap.c\
+			$(RAY_CASTING_PATH)ray_cast.c\
+			$(RAY_CASTING_PATH)using_img.c\
 			$(MOVIMENTS_PATH)moviments.c\
 			$(MOVIMENTS_PATH)rotation_moviments.c\
 			$(MLX_UTILS_PATH)render_loop.c \
@@ -67,6 +71,7 @@ $(OBJS_PATH)%.o : $(SRCS_PATH)%.c
 	@$(MKDIR) $(OBJS_PATH)$(PARSE_MAP_PATH)
 	@$(MKDIR) $(OBJS_PATH)$(MLX_UTILS_PATH)
 	@$(MKDIR) $(OBJS_PATH)$(MOVIMENTS_PATH)
+	@$(MKDIR) $(OBJS_PATH)$(RAY_CASTING_PATH)
 	@$(CC) $(CFLAGS) -c $< -o $@ 
 
 bonus: all

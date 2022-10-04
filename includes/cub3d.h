@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 16:13:02 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/04 21:19:03 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,22 @@ typedef struct s_data
     int 		*floor_color;
     int 		*ceiling_color;
 	int			walls_nbs;
+	float		**walls_position;
 	void		*mlx;
 	void		*win_ptr;
+	t_ray		rays[320];
 	t_img		texture_img[4];
 	t_player	player;
+	t_img		game_img;
+	t_img		line_img;
+	t_img		mm_wall_img;
+	t_img		mm_bg_img;
+	t_img		test_img;
+	float		tan;
+	float		rx;
+	float		ry;
+	float		yo;
+	float		xo;
 }				t_data;
 
 void    parse_map();
@@ -131,5 +143,21 @@ void	move_down(t_data *data);
 void 	rotate_right(t_data *data);
 void 	rotate_left(t_data *data);
 
+//draw
+void	img_pix_put(t_img *img, int x, int y, int color);
+void	render_square(t_img *img, int color, int x, int y, int real_x, int real_y);
+void	init_imgs(t_data *data);
+void	draw_minimap(t_data *data);
+
+//math
+float distance_btw_two_points(float x1, float y1, float x2, float y2);
+
+//ray_cast
+void	save_walls_position(t_data *data);
+void 	check_intersections(t_data *data);
+
+//map
+int	biggest_line_size(char **map_array);
+int	lines_amount(char **map_array);
 
 #endif

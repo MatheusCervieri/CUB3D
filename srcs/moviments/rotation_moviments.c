@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 23:06:55 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 16:09:35 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/04 21:26:29 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void rotate_right(t_data *data)
 	data->player.rotation = data->player.rotation + 0.1;
 	if(data->player.rotation > 2 * PI)
 		data->player.rotation = data->player.rotation - (2 * PI);
-	//check_intersections();
+	check_intersections(data);
 	//draw_minimap();
 }
 
@@ -28,6 +28,6 @@ void rotate_left(t_data *data)
 	data->player.rotation = data->player.rotation - 0.1;
 	if(data->player.rotation < 0)
 		data->player.rotation = data->player.rotation + (2 * PI);
-	//check_intersections();
+	check_intersections(data);
 	//draw_minimap();
 }
