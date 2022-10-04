@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/12 11:06:29 by mvieira-          #+#    #+#              #
-#    Updated: 2022/09/21 21:14:55 by mamaro-d         ###   ########.fr        #
+#    Updated: 2022/10/04 14:28:51 by mvieira-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,6 @@ MKDIR = mkdir -p
 MAKE_NOPRINT = $(MAKE) --no-print-directory
 NAME = cub3D
 SRC_FILES = main.c \
-			parse_map.c \
 			$(ERROR_PATH)msg_error.c \
 			$(CMD_PARSER_PATH)validate_arguments.c \
 			$(CMD_PARSER_PATH)validate_map_extension.c \
