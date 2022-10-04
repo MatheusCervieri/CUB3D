@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 14:29:31 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:14:47 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,10 @@
 
 # include "libft.h"
 # include <fcntl.h>
+# include <mlx.h>
+# include <X11/keysym.h> 
+# include <X11/X.h> 
+# include <math.h>
 
 
 typedef struct s_data
@@ -28,6 +32,9 @@ typedef struct s_data
     char		*ea_path;
     int 		*floor_color;
     int 		*ceiling_color;
+	int			walls_nbs;
+	void		*mlx;
+	void		*win_ptr;
 }				t_data;
 
 void    parse_map();
@@ -50,6 +57,14 @@ int validate_rgb_colors(t_data *data, char **rgbs);
 
 //print a new error msg on stderr and returns 1
 int	msg_error(char *error);
+
+//parse_map
+void	handle_error(t_data *data, char *error_message);
+void	check_valid_space_sorround_by_wall(t_data *data, char *line,
+char	*up_line, char *down_line);
+char	**normalize_map(char **map_array);
+void	iterate_map_array(t_data *data);
+
 
 
 

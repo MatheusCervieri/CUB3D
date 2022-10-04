@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 14:42:21 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/04 15:18:32 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,11 @@ int	main(int argc, char **argv)
 					map_line);
 	}
 	close(map);
+	parse_map(data);
 	//printf("return of validate map params %s\n", validate_map_params(map, data));
 	//printf("new line %s\n", get_next_line(map));
 	/*
 	if(!validate_rgb_colors(data, rgbs))
 		return(msg_error("Invalid RGB Color\n"));
 	*/
-    printf("%s\n", data->map_string);
-    
 }
