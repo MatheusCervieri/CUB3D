@@ -6,20 +6,9 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:24:24 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 16:20:57 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/04 22:58:38 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
-typedef struct s_img
-{
-	void	*mlx_img;
-	char	*addr;
-	int		bpp; 
-	int		line_len;
-	int		endian;
-}	t_img;
-*/
 
 #include "cub3d.h"
 
@@ -59,7 +48,6 @@ void	render_square(t_img *img, int color, int x, int y, int real_x, int real_y)
 		++i;
 	}
 }
-
 
 void	render_background(t_img *img, int color)
 {

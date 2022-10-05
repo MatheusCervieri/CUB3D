@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 21:13:18 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/04 22:58:22 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	is_wall(t_data *data, float x, float y)
 {
-	int i;
+	int	i;
+
 	i = 0;
 	while (i < data->walls_nbs)
 	{
@@ -22,51 +23,18 @@ int	is_wall(t_data *data, float x, float y)
 		{
 			return(1);
 		}
-		/*
-		if(data->walls_position[i][0] == floor(x/MINI_MAP_SIZE - 0.05) && data->walls_position[i][1] == floor(y/MINI_MAP_SIZE - 0.05))
-		{
-			return(1);
-		}
-		*/
-		/*
-		if(data->walls_position[i][0] == floor(x/MINI_MAP_SIZE - 0.05) && data->walls_position[i][1] == floor(y/MINI_MAP_SIZE - 0.05))
-		{
-			return(1);
-		}
-		*/
-		//
-		/*
-		Resolveu um problema. 
-		if(data->walls_position[i][0] == floor(x/MINI_MAP_SIZE - 0.1) && data->walls_position[i][1] == floor(y/MINI_MAP_SIZE - 0.1))
-		{
-			return(1);
-		}
-		*/
-		
-		/*
-		if(data->walls_position[i][0] + 1 == x/MINI_MAP_SIZE && data->walls_position[i][1] == floor(y/MINI_MAP_SIZE))
-		{
-			return(1);
-		} 
-		if(data->walls_position[i][0] == floor(x/MINI_MAP_SIZE) && data->walls_position[i][1] + 1 == y/MINI_MAP_SIZE)
-		{
-			return(1);
-		}
-		if(data->walls_position[i][0] + 1 == x/MINI_MAP_SIZE && data->walls_position[i][1] + 1 == y/MINI_MAP_SIZE)
-		{
-			return(1);
-		}
-		*/	
 		i++;
 	}
 	return (0);
 }
 
-void check_intersections_2(t_data *data, float *new_x, float *new_y, float rotation)
+void	check_intersections_2(t_data *data, float *new_x, float *new_y, float rotation)
 {
-	float		rounded_down_number;
-	int			loop;
-	int			i = 0;
+	float	rounded_down_number;
+	int		loop;
+	int		i;
+
+	i = 0;
 	data->tan = -1/tan(rotation);
 	loop = lines_amount(data->map_array);
 	rounded_down_number = floor(data->player.y / MINI_MAP_SIZE);
@@ -106,7 +74,6 @@ void check_intersections_2(t_data *data, float *new_x, float *new_y, float rotat
 		}
 		i++;
 	}
-	
 	if (data->rx >= 600)
 		data->rx = 600;
 	if (data->rx <= 0)
@@ -117,15 +84,15 @@ void check_intersections_2(t_data *data, float *new_x, float *new_y, float rotat
 		data->ry = 600;
 	*new_x = data->rx;
 	*new_y = data->ry;
-	
 }
 
-void check_intersections_2_vertical(t_data *data, float *new_x, float *new_y, float rotation)
+void	check_intersections_2_vertical(t_data *data, float *new_x, float *new_y, float rotation)
 {
+	float	rounded_down_number;
+	int		loop;
+	int		i = 0;
+
 	data->tan = -tan(rotation);
-	float		rounded_down_number;
-	int			loop;
-	int			i = 0;
 	loop = biggest_line_size(data->map_array);
 	rounded_down_number = floor(data->player.x / MINI_MAP_SIZE);
 	if (rotation > PI/2 && rotation < 3*PI/2)
@@ -164,7 +131,6 @@ void check_intersections_2_vertical(t_data *data, float *new_x, float *new_y, fl
 		}
 		i++;
 	}
-	
 	if (data->rx >= 600)
 		data->rx = 600;
 	if (data->rx <= 0)
@@ -175,7 +141,6 @@ void check_intersections_2_vertical(t_data *data, float *new_x, float *new_y, fl
 		data->ry = 600;
 	*new_x = data->rx;
 	*new_y = data->ry;
-	
 }
 
 
@@ -184,8 +149,7 @@ void check_intersections(t_data *data)
 	float distance_horizontal;
 	float distance_vertical;
 	int		i;
-	//Se os dois tem intersection, a intersection correta é o do ponto que está mais perto. 
-	//check_horizontal_intersections(&data->rays[0].x, &data->rays[0].y , data->rays[0].rotation);
+	
 	i = 0;
 	while (i < 320)
 	{
@@ -222,11 +186,6 @@ void check_intersections(t_data *data)
 			data->rays[i].position = 3; //Vertical esquerda. Oeste
 
 	}
-	//Projected Slice Height = 64 / Distance to the Slice * 277 (Part 5);
-	//data->rays[i].line_height = MINI_MAP_SIZE / (data->rays[i].distance_to_wall * (WINDOW_WIDTH/2)/tan(DG*30)); 
-	
-	//data->rays[i].line_o = WINDOW_HEIGHT/2 - data->rays[i].line_height/2;
-	//diference entre player angle and ray angle;
 	data->rays[i].diference_angle = data->player.rotation - data->rays[i].rotation;
 	if(data->rays[i].diference_angle < 0)
 		data->rays[i].diference_angle+= 2*PI;
@@ -237,7 +196,6 @@ void check_intersections(t_data *data)
 	if(data->rays[i].line_height > WINDOW_WIDTH)
 		data->rays[i].line_height = WINDOW_WIDTH;
 	data->rays[i].line_o = WINDOW_HEIGHT/2 - data->rays[i].line_height/2;
-	
 	i++;
 	}
 }	

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 21:27:44 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 11:54:24 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,24 +100,39 @@ void get_player_first_position(t_data *data)
 		
 }
 
-
-int	main(int argc, char **argv)
+void initialization(t_data *data)
 {
-	t_data *data;
-	int		map;
-	char	*map_line;
+	int	i;
 
-    data = (t_data *)malloc(sizeof(t_data));
-	if(!validate_arguments(argc, argv))
-		return (1);
-	map = open(argv[1], O_RDONLY);
-	if(map == -1)
-		return (msg_error("Map not found"));
-	/*
-		if(!validate_rgb_colors(data, rgbs))
-		return(msg_error("Invalid RGB Color\n"));
-	*/
-	data->map_string = validate_map_params(map,data);
+	data->walls_position = malloc(sizeof(double *) * data->walls_nbs);	
+	i = 0;
+	while (i < data->walls_nbs)
+	{
+		data->walls_position[i] = malloc(sizeof(double) * 2);
+		i++;
+	}
+	i = 0;
+	while (i < 320)
+	{
+		data->rays[i].x = 0;
+		data->rays[i].y = 0;
+		data->rays[i].rotation = 0.0;
+		data->rays[i].position = 0;
+		i++;
+	}
+	save_walls_position(data);
+	get_player_first_position(data);
+	check_intersections(data);
+	new_window(data);
+	init_imgs(data);
+	handle_hooks(data);
+	mlx_loop(data->mlx);
+}
+
+void get_map_string(t_data *data, int map)
+{
+	char *map_line;
+
 	map_line = data->map_string;
 	while (map_line)
 	{
@@ -126,33 +141,48 @@ int	main(int argc, char **argv)
 			data->map_string = ft_strjoin(data->map_string,
 					map_line);
 	}
+}
+
+/*
+	-Criar um mapa aleatório e verificar os raios que estão passando entre dois blocos, descobrir o porque e concertar.
+	-Concertar os segfaults e ir em busca dos segfaults.
+	-Bug texturas.
+	-Colocar o mapa no tamanho certo 64 bits. (Não me parece necessário).
+	-A tela fica piscando as vezes. 
+	-Váriavel global. 
+	
+	-Organizar o código que foi feito. 
+	-Inicializar variáveis...
+	-Conectar com a parte da dupla.
+	-Valgrind. 
+	Última coisa:
+	-Colocar o tamanho da janela certo e desenhar já da forma certa na tela.
+	
+	Parser
+	-Testar o parser do mapa. 
+	-If any misconfiguration of any kind is encountered in the file, the program
+	must exit properly and return "Error\n" followed by an explicit error message
+	of your choice.
+*/
+
+int	main(int argc, char **argv)
+{
+	t_data *data;
+	int		map;
+
+    data = (t_data *)malloc(sizeof(t_data));
+	if(!validate_arguments(argc, argv))
+		return (1);
+	map = open(argv[1], O_RDONLY);
+	if(map == -1)
+		return (msg_error("Map not found!\n"));
+	/*
+		if(!validate_rgb_colors(data, rgbs))
+		return(msg_error("Invalid RGB Color\n"));
+	*/
+	data->map_string = validate_map_params(map,data);
+	get_map_string(data, map);
 	close(map);
 	parse_map(data);
-	
-	data->walls_position = malloc(sizeof(double *) * data->walls_nbs);
-	int i;
-	i = 0;
-	while (i < data->walls_nbs)
-	{
-		data->walls_position[i] = malloc(sizeof(double) * 2);
-		i++;
-	}
-	save_walls_position(data);
-	get_player_first_position(data);
-
-	i = 0;
-	while (i < 320)
-	{
-	data->rays[i].x = 0;
-	data->rays[i].y = 0;
-	data->rays[i].rotation = 0.0;
-	data->rays[i].position = 0;
-	i++;
-	}
-	check_intersections(data);
-	new_window(data);
-	init_imgs(data);
-	draw_minimap(data);
-	handle_hooks(data);
-	mlx_loop(data->mlx);
+	initialization(data);
 }

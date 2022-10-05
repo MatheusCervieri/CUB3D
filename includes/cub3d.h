@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 21:19:03 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 11:40:17 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ float distance_btw_two_points(float x1, float y1, float x2, float y2);
 //ray_cast
 void	save_walls_position(t_data *data);
 void 	check_intersections(t_data *data);
+void	draw(t_data *data);
 
 //map
 int	biggest_line_size(char **map_array);
