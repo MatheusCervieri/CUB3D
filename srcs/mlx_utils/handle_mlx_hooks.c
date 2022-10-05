@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:04:34 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 12:15:27 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 14:35:06 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int	close_game(t_data *data)
 {
 	mlx_destroy_image(data->mlx, data->game_img.mlx_img);
 	mlx_destroy_image(data->mlx, data->mm_bg_img.mlx_img);
-	mlx_destroy_image(data->mlx, data->texture_img[0].mlx_img);
-	mlx_destroy_image(data->mlx, data->texture_img[1].mlx_img);
-	mlx_destroy_image(data->mlx, data->texture_img[2].mlx_img);
-	mlx_destroy_image(data->mlx, data->texture_img[3].mlx_img);
+	mlx_destroy_image(data->mlx, data->txt_img[0].mlx_img);
+	mlx_destroy_image(data->mlx, data->txt_img[1].mlx_img);
+	mlx_destroy_image(data->mlx, data->txt_img[2].mlx_img);
+	mlx_destroy_image(data->mlx, data->txt_img[3].mlx_img);
 	free_mlx_core(data);
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 12:06:25 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:48:31 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ typedef struct s_ray
 	float line_o;
 	float	rotation;
 	float diference_angle;
-	int		position;
+	int		p;
 }				t_ray;
 
 typedef struct s_player
@@ -90,7 +90,7 @@ typedef struct s_data
 	void		*mlx;
 	void		*win_ptr;
 	t_ray		rays[320];
-	t_img		texture_img[4];
+	t_img		txt_img[4];
 	t_player	player;
 	t_img		game_img;
 	t_img		line_img;
@@ -160,10 +160,18 @@ float distance_btw_two_points(float x1, float y1, float x2, float y2);
 //ray_cast
 void	save_walls_position(t_data *data);
 void 	check_intersections(t_data *data);
-void	draw(t_data *data);
+void	draw_3d_world(t_data *data);
+int	img_pix_get(t_img *img, int x, int y);
+void	check_intersections_h(t_data *data, float *new_x,
+	float *new_y, float rotation);
+void	check_intersections_v(t_data *data, float *new_x,
+	float *new_y, float rotation);
 
 //map
 int	biggest_line_size(char **map_array);
 int	lines_amount(char **map_array);
+
+//utils_ray_cast
+void find_intersection_point(t_data *data, int i, float *new_x, float *new_y, int loop);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:39:23 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 12:24:56 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 14:35:28 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,10 @@ void init_textures(t_data *data, t_img *img, char *dir)
 
 void	texture_initialization(t_data *data)
 {
-	init_textures(data, &data->texture_img[0], data->no_path);
-	init_textures(data, &data->texture_img[1], data->so_path);
-	init_textures(data, &data->texture_img[2], data->we_path);
-	init_textures(data, &data->texture_img[3], data->ea_path);
+	init_textures(data, &data->txt_img[0], data->no_path);
+	init_textures(data, &data->txt_img[1], data->so_path);
+	init_textures(data, &data->txt_img[2], data->we_path);
+	init_textures(data, &data->txt_img[3], data->ea_path);
 }
 
 void	new_window(t_data *data)
