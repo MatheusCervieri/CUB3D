@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:13:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 15:08:35 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:07:01 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ void	is_empty_line(t_data *data, char *line)
 		handle_error(data, "The map has a empty line\n");
 }
 
-void	check_sorrounded(t_data *data, size_t i, char *line, char *up_line, char *down_line)
+void	check_sorrounded(t_data *data, size_t i,
+	char *line, char *up_line, char *down_line)
 {
 	if (i != 0)
 		if (line[i - 1] != ' ' && line[i - 1] != '1')

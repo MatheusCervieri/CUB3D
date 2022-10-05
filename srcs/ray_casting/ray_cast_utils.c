@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:49:02 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 15:58:47 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:09:28 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	is_wall(t_data *data, float x, float y)
 	return (0);
 }
 
-void find_intersection_point(t_data *data, int i, float *new_x, float *new_y, int loop)
+void	find_intersection_point(t_data *data, int i, float *new_x, float *new_y, int loop)
 {
 	while (i < loop)
 	{

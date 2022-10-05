@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:56:41 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 14:47:52 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 16:07:38 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,8 @@ char	**normalize_map(char **map_array)
 {
 	char	**normalized_map;
 	int		i;
-	
-	normalized_map = malloc(sizeof(char *) * lines_amount(map_array));
 
+	normalized_map = malloc(sizeof(char *) * lines_amount(map_array));
 	i = 0;
 	while (i < lines_amount(map_array))
 	{
@@ -77,7 +76,6 @@ char	**normalize_map(char **map_array)
 	}
 	normalized_map[i] = NULL;
 	i = 0;
-	
 	while (i < lines_amount(map_array))
 	{
 		ft_memmove(normalized_map[i], map_array[i], ft_strlen(map_array[i]));
