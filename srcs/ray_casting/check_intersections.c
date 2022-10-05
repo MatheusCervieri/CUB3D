@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:39:00 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 15:57:38 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:06:41 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ int	calculate_horizontal_intersections(t_data *data,
 		data->xo = -data->yo * data->tan;
 		return (0);
 	}
-	if (rotation == 0 || rotation == PI)
-	{
-		data->rx = data->player.x;
-		data->ry = data->player.y;
-		return (lines_amount(data->map_array));
-	}
 	return (0);
 }
 
@@ -45,14 +39,12 @@ void	check_intersections_h(t_data *data, float *new_x,
 {
 	float	rounded_down_number;
 	int		loop;
-	int		i;
 
-	i = 0;
 	data->tan = -1 / tan(rotation);
 	loop = lines_amount(data->map_array);
 	rounded_down_number = floor(data->player.y / MINI_MAP_SIZE);
-	i = calculate_horizontal_intersections(data, rounded_down_number, rotation);
-	find_intersection_point(data, i, new_x, new_y, loop);
+	calculate_horizontal_intersections(data, rounded_down_number, rotation);
+	find_intersection_point(data, new_x, new_y, loop);
 }
 
 int	calculate_vertical_intersections(t_data *data,
@@ -74,12 +66,6 @@ int	calculate_vertical_intersections(t_data *data,
 		data->yo = -data->xo * data->tan;
 		return (0);
 	}
-	if (rotation == 0 || rotation == PI)
-	{
-		data->rx = data->player.x;
-		data->ry = data->player.y;
-		return (biggest_line_size(data->map_array));
-	}
 	return (0);
 }
 
@@ -88,12 +74,10 @@ void	check_intersections_v(t_data *data, float *new_x,
 {
 	float	rounded_down_number;
 	int		loop;
-	int		i;
 
-	i = 0;
 	data->tan = -tan(rotation);
 	loop = biggest_line_size(data->map_array);
 	rounded_down_number = floor(data->player.x / MINI_MAP_SIZE);
-	i = calculate_vertical_intersections(data, rounded_down_number, rotation);
-	find_intersection_point(data, i, new_x, new_y, loop);
+	calculate_vertical_intersections(data, rounded_down_number, rotation);
+	find_intersection_point(data, new_x, new_y, loop);
 }

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 15:48:31 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:08:39 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,6 @@ int	biggest_line_size(char **map_array);
 int	lines_amount(char **map_array);
 
 //utils_ray_cast
-void find_intersection_point(t_data *data, int i, float *new_x, float *new_y, int loop);
+void	find_intersection_point(t_data *data, float *new_x, float *new_y, int loop);
 
 #endif

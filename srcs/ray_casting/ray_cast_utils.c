@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:49:02 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 16:09:28 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:23:19 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,25 @@ int	is_wall(t_data *data, float x, float y)
 	return (0);
 }
 
-void	find_intersection_point(t_data *data, int i, float *new_x, float *new_y, int loop)
+void	check_map_limits(t_data *data)
 {
-	while (i < loop)
+	if (data->rx >= 600)
+		data->rx = 600;
+	if (data->rx <= 0)
+		data->rx = 0;
+	if (data->ry <= 0)
+		data->ry = 0;
+	if (data->ry >= 600)
+		data->ry = 600;
+}
+
+void	find_intersection_point(t_data *data,
+	float *new_x, float *new_y, int loop)
+{
+	int	i;
+
+	i = -1;
+	while (i++ < loop)
 	{
 		if (is_wall(data, data->rx, data->ry) == 1)
 		{
@@ -44,18 +60,17 @@ void	find_intersection_point(t_data *data, int i, float *new_x, float *new_y, in
 			data->rx = data->rx + data->xo;
 			data->ry = data->ry + data->yo;
 		}
-		i++;
 	}
-	if (data->rx >= 600)
-		data->rx = 600;
-	if (data->rx <= 0)
-		data->rx = 0;
-	if (data->ry <= 0)
-		data->ry = 0;
-	if (data->ry >= 600)
-		data->ry = 600;
+	check_map_limits(data);
 	*new_x = data->rx;
 	*new_y = data->ry;
+}
+
+void	set_wall_positions(t_data *data, int height, int width, int *z)
+{
+		data->walls_position[*z][0] = width;
+		data->walls_position[*z][1] = height;
+		*z = *z + 1;
 }
 
 void	save_walls_position(t_data *data)
@@ -76,11 +91,7 @@ void	save_walls_position(t_data *data)
 		while (data->map_array[i][j])
 		{
 			if (data->map_array[i][j] == '1')
-			{
-					data->walls_position[z][0] = width;
-					data->walls_position[z][1] = height;
-					z++;
-			}
+				set_wall_positions(data, height, width, &z);
 			width++;
 			j++;
 		}
