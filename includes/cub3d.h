@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 18:08:39 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:38:04 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ typedef struct s_data
 	float		ry;
 	float		yo;
 	float		xo;
+	size_t		tmp_i;
 }				t_data;
 
 void    parse_map();
