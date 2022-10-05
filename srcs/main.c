@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 11:54:24 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 17:58:54 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void initialization(t_data *data)
 		data->rays[i].x = 0;
 		data->rays[i].y = 0;
 		data->rays[i].rotation = 0.0;
-		data->rays[i].position = 0;
+		data->rays[i].p = 0;
 		i++;
 	}
 	save_walls_position(data);
