@@ -6,7 +6,7 @@
 #    By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/12 11:06:29 by mvieira-          #+#    #+#              #
-#    Updated: 2022/10/04 17:59:22 by mvieira-         ###   ########.fr        #
+#    Updated: 2022/10/05 12:05:18 by mvieira-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,8 @@ MKDIR = mkdir -p
 MAKE_NOPRINT = $(MAKE) --no-print-directory
 NAME = cub3D
 SRC_FILES = main.c \
-			$(RAY_CASTING_PATH)draw_minimap.c\
+			$(RAY_CASTING_PATH)draw_map.c\
+			$(RAY_CASTING_PATH)draw.c\
 			$(RAY_CASTING_PATH)ray_cast.c\
 			$(RAY_CASTING_PATH)using_img.c\
 			$(MOVIMENTS_PATH)moviments.c\

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 11:40:17 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 12:06:25 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@
 # define MINI_MAP_SIZE 16
 # define WINDOW_WIDTH 320
 # define WINDOW_HEIGHT 200
+
+# define PLAYER_SIZE 16
+# define BACKGROUND_SIZE 600
+# define WALL_SIZE 16
+# define DIR_SIZE 8
 
 typedef struct s_img
 {
