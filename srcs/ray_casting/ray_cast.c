@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 12:23:21 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 15:07:04 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,15 @@ int	is_wall(t_data *data, float x, float y)
 	return (0);
 }
 
-void	check_intersections_2(t_data *data, float *new_x, float *new_y, float rotation)
+int	calculate_horizontal_intersections(t_data *data, float rounded_down_number, float rotation)
 {
-	float	rounded_down_number;
-	int		loop;
-	int		i;
-
-	i = 0;
-	data->tan = -1 / tan(rotation);
-	loop = lines_amount(data->map_array);
-	rounded_down_number = floor(data->player.y / MINI_MAP_SIZE);
 	if (rotation > PI)
 	{
 		data->ry = rounded_down_number * (MINI_MAP_SIZE) - 1;
 		data->rx = (data->player.y - data->ry) * data->tan + data->player.x;
 		data->yo = -MINI_MAP_SIZE;
 		data->xo = -data->yo * data->tan;
+		return (0);
 	}
 	else if (rotation < PI)
 	{
@@ -52,13 +45,19 @@ void	check_intersections_2(t_data *data, float *new_x, float *new_y, float rotat
 		data->rx = (data->player.y - data->ry) * data->tan + data->player.x;
 		data->yo = MINI_MAP_SIZE;
 		data->xo = -data->yo * data->tan;
+		return (0);
 	}
 	if (rotation == 0 || rotation == PI)
 	{
 		data->rx = data->player.x;
 		data->ry = data->player.y;
-		i = lines_amount(data->map_array);
+		return (lines_amount(data->map_array));
 	}
+	return (0);
+}
+
+void find_intersection_point(t_data *data, int i, float *new_x, float *new_y, int loop)
+{
 	while (i < loop)
 	{
 		if (is_wall(data, data->rx, data->ry) == 1)
@@ -86,7 +85,23 @@ void	check_intersections_2(t_data *data, float *new_x, float *new_y, float rotat
 	*new_y = data->ry;
 }
 
-void	check_intersections_2_vertical(t_data *data, float *new_x, float *new_y, float rotation)
+void	check_intersections_h(t_data *data, float *new_x,
+	float *new_y, float rotation)
+{
+	float	rounded_down_number;
+	int		loop;
+	int		i;
+
+	i = 0;
+	data->tan = -1 / tan(rotation);
+	loop = lines_amount(data->map_array);
+	rounded_down_number = floor(data->player.y / MINI_MAP_SIZE);
+	i = calculate_horizontal_intersections(data, rounded_down_number, rotation);
+	find_intersection_point(data, i, new_x , new_y, loop);
+}
+
+void	check_intersections_v(t_data *data, float *new_x,
+	float *new_y, float rotation)
 {
 	float	rounded_down_number;
 	int		loop;
@@ -104,9 +119,9 @@ void	check_intersections_2_vertical(t_data *data, float *new_x, float *new_y, fl
 		data->yo = -data->xo * data->tan;
 	}
 	if (rotation < PI / 2 || rotation > 3 * PI / 2)
-	{ 
+	{
 		data->rx = rounded_down_number * (MINI_MAP_SIZE) + MINI_MAP_SIZE;
-		data->ry = (data->player.x - data->rx) * data->tan + data->player.y; 
+		data->ry = (data->player.x - data->rx) * data->tan + data->player.y;
 		data->xo = MINI_MAP_SIZE;
 		data->yo = -data->xo * data->tan;
 	}
@@ -158,15 +173,15 @@ void	check_intersections(t_data *data)
 			data->rays[i].rotation += 2 * PI;
 		if (data->rays[i].rotation > 2 * PI)
 			data->rays[i].rotation -= 2 * PI;
-		check_intersections_2(data, &data->rays[i].h_x, &data->rays[i].h_y,
+		check_intersections_h(data, &data->rays[i].h_x, &data->rays[i].h_y,
 			data->rays[i].rotation);
-		check_intersections_2_vertical(data, &data->rays[i].v_x,
+		check_intersections_v(data, &data->rays[i].v_x,
 			&data->rays[i].v_y, data->rays[i].rotation);
 		distance_horizontal = distance_btw_two_points(data->player.x,
 				data->player.y, data->rays[i].h_x, data->rays[i].h_y);
 		distance_vertical = distance_btw_two_points(data->player.x,
 				data->player.y, data->rays[i].v_x, data->rays[i].v_y);
-		if (distance_horizontal < distance_vertical) // Esse mais dois resolveu um dos problemas que estavamos tendo uma textura horizontal e vertical misturadas.
+		if (distance_horizontal < distance_vertical + 2) //Aqui conseguimos concertar o bug baseando-se na rotação do player.
 		{
 			data->rays[i].x = data->rays[i].h_x;
 			data->rays[i].y = data->rays[i].h_y;
@@ -184,8 +199,8 @@ void	check_intersections(t_data *data)
 			data->rays[i].distance_to_wall = distance_vertical;
 			data->rays[i].x_texture = (int)(data->rays[i].y * 4) % 64;
 			if ((data->rays[i].rotation)
-					< PI / 2 || data->rays[i].rotation > 3 * PI / 2)
-				data->rays[i].p = 2; //vertical direita. Leste
+				< PI / 2 || data->rays[i].rotation > 3 * PI / 2)
+				data->rays[i].p = 2;
 			else
 				data->rays[i].p = 3;
 		}
