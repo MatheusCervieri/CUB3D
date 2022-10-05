@@ -6,19 +6,11 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 11:50:41 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 13:52:41 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-int	img_pix_get(t_img *img, int x, int y)
-{
-	char	*pixel;
-
-	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	return (*(int *)pixel);
-}
 
 float	distance_btw_two_points(float x1, float y1, float x2, float y2)
 {
@@ -41,6 +33,14 @@ void	init_imgs(t_data *data)
 	init_img(data, &data->mm_bg_img, BACKGROUND_SIZE, BACKGROUND_SIZE);
 }
 
+void	draw_floor_ceiling(t_data *data)
+{
+	render_square(&data->game_img, *data->ceiling_color, WINDOW_WIDTH,
+		WINDOW_HEIGHT, 0, 0);
+	render_square(&data->game_img, *data->floor_color, WINDOW_WIDTH,
+		WINDOW_HEIGHT / 2, 0, 0);
+}
+
 void	draw_3d_world(t_data *data)
 {
 	int		i;
@@ -48,10 +48,7 @@ void	draw_3d_world(t_data *data)
 	float	y_texture;
 	float	y_texture_step;
 
-	render_square(&data->game_img, *data->ceiling_color, WINDOW_WIDTH,
-		WINDOW_HEIGHT, 0, 0);
-	render_square(&data->game_img, *data->floor_color, WINDOW_WIDTH,
-		WINDOW_HEIGHT / 2, 0, 0);
+	draw_floor_ceiling(data);
 	i = 0;
 	while (i < 320)
 	{
@@ -60,20 +57,15 @@ void	draw_3d_world(t_data *data)
 		j = 0;
 		while (j < data->rays[i].line_height)
 		{
-			data->rays[i].pixel = img_pix_get(&data->texture_img[data->rays[i].position],
+			data->rays[i].pixel = img_pix_get(&data->txt_img[data->rays[i].p],
 					(int) data->rays[i].x_texture, (int) y_texture);
 			img_pix_put(&data->game_img, 0 + i, j + data->rays[i].line_o,
 				data->rays[i].pixel);
-			y_texture+= y_texture_step;
+			y_texture += y_texture_step;
 			j++;
 		}
 	i++;
 	}
 	mlx_put_image_to_window(data->mlx, data->win_ptr,
 		data->game_img.mlx_img, 0, 0);
-}
-
-void	draw(t_data *data)
-{
-	draw_3d_world(data);
 }

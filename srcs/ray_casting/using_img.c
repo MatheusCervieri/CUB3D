@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:24:24 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 22:58:38 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 13:50:53 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,14 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
 		i -= 8;
 	}
+}
+
+int	img_pix_get(t_img *img, int x, int y)
+{
+	char	*pixel;
+
+	pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	return (*(int *)pixel);
 }
 
 void	render_square(t_img *img, int color, int x, int y, int real_x, int real_y)

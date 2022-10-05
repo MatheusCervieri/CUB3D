@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 22:58:22 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/05 13:43:31 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,9 +169,9 @@ void check_intersections(t_data *data)
 		data->rays[i].distance_to_wall = distance_horizontal;
 		data->rays[i].x_texture = (int)(data->rays[i].x*4) % 64;  //Multiplicamos por 2 porque o nosso minimap é 16; 32 é o tamanho da textura. 
 		if(data->rays[i].rotation > 0 && data->rays[i].rotation < PI)
-			data->rays[i].position = 1; //Horizontal baixo. Sul. 
+			data->rays[i].p = 1; //Horizontal baixo. Sul. 
 		else
-			data->rays[i].position = 0;
+			data->rays[i].p = 0;
 			 //Horizontal cima. Norte
 	}
 	else
@@ -181,9 +181,9 @@ void check_intersections(t_data *data)
 		data->rays[i].distance_to_wall = distance_vertical;
 		data->rays[i].x_texture = (int)(data->rays[i].y*4) % 64;  //Multiplicamos por 2 porque o nosso minimap é 16; 32 é o tamanho da textura. 
 		if(data->rays[i].rotation < PI/2 || data->rays[i].rotation > 3*PI/2)
-			data->rays[i].position = 2; //vertical direita. Leste
+			data->rays[i].p = 2; //vertical direita. Leste
 		else
-			data->rays[i].position = 3; //Vertical esquerda. Oeste
+			data->rays[i].p = 3; //Vertical esquerda. Oeste
 
 	}
 	data->rays[i].diference_angle = data->player.rotation - data->rays[i].rotation;
