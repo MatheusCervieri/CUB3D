@@ -6,7 +6,7 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 19:19:41 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/09/20 19:20:40 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/10/07 10:13:04 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int	validate_map_extension(char *map_name)
 
 	len = ft_strlen(map_name);
 	index = 0;
-	while(index < len)
+	while (index < len)
 	{
-		if(!ft_strncmp(&map_name[index], ".cub\0", 5))
+		if (!ft_strncmp(&map_name[index], ".cub\0", 5))
 			return (1);
 		index++;
 	}
