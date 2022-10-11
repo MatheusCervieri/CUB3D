@@ -5,12 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/01 20:23:53 by mvieira-          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/10/07 10:25:22 by mamaro-d         ###   ########.fr       */
-=======
-/*   Updated: 2022/10/05 17:58:54 by mvieira-         ###   ########.fr       */
->>>>>>> 7188b0433ac47acecfa145ab48aaab5af08522a4
+/*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
+/*   Updated: 2022/10/11 04:26:44 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,6 +125,7 @@ void initialization(t_data *data)
 	check_intersections(data);
 	new_window(data);
 	init_imgs(data);
+	init_minimap_imgs(data);
 	handle_hooks(data);
 	mlx_loop(data->mlx);
 }

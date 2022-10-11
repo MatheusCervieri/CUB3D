@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 12:02:12 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 12:07:22 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 04:31:12 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ void DDA(t_img *img, int X0, int Y0, int X1, int Y1, int color)
         Y += Yinc; // increment in y at each step
     }
 }
-/*
+
 void init_minimap_imgs(t_data *data)
 {
-	init_img(data, &data->game_img, WINDOW_WIDTH , WINDOW_HEIGHT); // Quando for fazer a versão definitiva, comentar a parte de baixo.
-	init_img(data, &data->mm_bg_img, BACKGROUND_SIZE , BACKGROUND_SIZE);
+	//init_img(data, &data->game_img, WINDOW_WIDTH , WINDOW_HEIGHT); // Quando for fazer a versão definitiva, comentar a parte de baixo.
+	//init_img(data, &data->mm_bg_img, BACKGROUND_SIZE , BACKGROUND_SIZE);
 	init_img(data, &data->player.img, PLAYER_SIZE , PLAYER_SIZE);
 	init_img(data, &data->player.dir_img, DIR_SIZE , DIR_SIZE);
 	init_img(data, &data->test_img, DIR_SIZE , DIR_SIZE);
 	init_img(data, &data->mm_wall_img, WALL_SIZE , WALL_SIZE);
 	
 }
-*/
+
 void draw_minimap(t_data *data)
 {
 	render_square(&data->test_img, 0xBF40BF, DIR_SIZE, DIR_SIZE, 0 ,0);
@@ -107,4 +107,5 @@ void draw_minimap(t_data *data)
 	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->player.dir_x , data->player.dir_y, 0xBF40BF);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->player.img.mlx_img, data->player.x, data->player.y);
+	mlx_put_image_to_window(data->mlx, data->win_ptr, data->game_img.mlx_img, 0, 400);
 }
