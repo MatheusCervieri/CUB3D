@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 16:00:57 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 05:12:11 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 void	get_ray_type_v_h(t_data *data,
 	float distance_horizontal, float distance_vertical, int i)
 {
-	if (distance_horizontal < distance_vertical + 2) //Aqui conseguimos concertar o bug baseando-se na rotação do player.
+	if (distance_horizontal < distance_vertical) //Aqui conseguimos concertar o bug baseando-se na rotação do player.
 	{
 		data->rays[i].x = data->rays[i].h_x;
 		data->rays[i].y = data->rays[i].h_y;
 		data->rays[i].distance_to_wall = distance_horizontal;
 		data->rays[i].x_texture = (int)(data->rays[i].x * 4) % 64;
 		if (data->rays[i].rotation > 0 && data->rays[i].rotation < PI)
-			data->rays[i].p = 1;
+			data->rays[i].p = 3;
 		else
-			data->rays[i].p = 0;
+			data->rays[i].p = 2;
 	}
 	else
 	{
@@ -34,9 +34,9 @@ void	get_ray_type_v_h(t_data *data,
 		data->rays[i].x_texture = (int)(data->rays[i].y * 4) % 64;
 		if ((data->rays[i].rotation)
 			< PI / 2 || data->rays[i].rotation > 3 * PI / 2)
-				data->rays[i].p = 2;
+				data->rays[i].p = 1;
 		else
-			data->rays[i].p = 3;
+			data->rays[i].p = 0;
 	}
 }
 

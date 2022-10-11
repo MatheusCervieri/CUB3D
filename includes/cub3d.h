@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 04:29:52 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 04:44:13 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ void init_minimap_imgs(t_data *data);
 void	init_img(t_data *data, t_img *img, int height, int width);
 
 //utils_ray_cast
-void	find_intersection_point(t_data *data, float *new_x, float *new_y, int loop);
-
+void	find_intersection_point_h(t_data *data, float *new_x, float *new_y, int loop);
+void	find_intersection_point_v(t_data *data,
+	float *new_x, float *new_y, int loop);
 #endif

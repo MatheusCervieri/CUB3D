@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:39:00 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 18:06:41 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 04:44:43 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	check_intersections_h(t_data *data, float *new_x,
 	loop = lines_amount(data->map_array);
 	rounded_down_number = floor(data->player.y / MINI_MAP_SIZE);
 	calculate_horizontal_intersections(data, rounded_down_number, rotation);
-	find_intersection_point(data, new_x, new_y, loop);
+	find_intersection_point_h(data, new_x, new_y, loop);
 }
 
 int	calculate_vertical_intersections(t_data *data,
@@ -79,5 +79,5 @@ void	check_intersections_v(t_data *data, float *new_x,
 	loop = biggest_line_size(data->map_array);
 	rounded_down_number = floor(data->player.x / MINI_MAP_SIZE);
 	calculate_vertical_intersections(data, rounded_down_number, rotation);
-	find_intersection_point(data, new_x, new_y, loop);
+	find_intersection_point_v(data, new_x, new_y, loop);
 }

@@ -6,13 +6,13 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:49:02 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 18:23:19 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 04:56:20 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_wall(t_data *data, float x, float y)
+int	is_wall_h(t_data *data, float x, float y)
 {
 	int	i;
 
@@ -22,6 +22,27 @@ int	is_wall(t_data *data, float x, float y)
 		if (data->walls_position[i][0] == floor(x / MINI_MAP_SIZE)
 			&& data->walls_position[i][1] == floor(y / MINI_MAP_SIZE))
 		{
+			if(y/MINI_MAP_SIZE > (data->walls_position[i][1] + 0.5) )
+				data->ry = (data->walls_position[i][1] + 1) * MINI_MAP_SIZE; //comecei a concertar.
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	is_wall_v(t_data *data, float x, float y)
+{
+	int	i;
+
+	i = 0;
+	while (i < data->walls_nbs)
+	{
+		if (data->walls_position[i][0] == floor(x / MINI_MAP_SIZE)
+			&& data->walls_position[i][1] == floor(y / MINI_MAP_SIZE))
+		{
+			if(x/MINI_MAP_SIZE > (data->walls_position[i][0] + 0.5) )
+				data->rx = (data->walls_position[i][0] + 1) * MINI_MAP_SIZE;
 			return (1);
 		}
 		i++;
@@ -41,7 +62,7 @@ void	check_map_limits(t_data *data)
 		data->ry = 600;
 }
 
-void	find_intersection_point(t_data *data,
+void	find_intersection_point_h(t_data *data,
 	float *new_x, float *new_y, int loop)
 {
 	int	i;
@@ -49,7 +70,32 @@ void	find_intersection_point(t_data *data,
 	i = -1;
 	while (i++ < loop)
 	{
-		if (is_wall(data, data->rx, data->ry) == 1)
+		if (is_wall_h(data, data->rx, data->ry) == 1)
+		{
+			*new_x = data->rx;
+			*new_y = data->ry;
+			break ;
+		}
+		else
+		{
+			data->rx = data->rx + data->xo;
+			data->ry = data->ry + data->yo;
+		}
+	}
+	check_map_limits(data);
+	*new_x = data->rx;
+	*new_y = data->ry;
+}
+
+void	find_intersection_point_v(t_data *data,
+	float *new_x, float *new_y, int loop)
+{
+	int	i;
+
+	i = -1;
+	while (i++ < loop)
+	{
+		if (is_wall_v(data, data->rx, data->ry) == 1)
 		{
 			*new_x = data->rx;
 			*new_y = data->ry;
