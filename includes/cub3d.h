@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 17:32:32 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:47:20 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,9 @@ typedef struct s_data
 	t_img		txt_img3;
 	t_img		txt_img4;
 	int			texture1[64][64];
+	int			texture2[64][64];
+	int			texture3[64][64];
+	int			texture4[64][64];
 	void		*win_ptr;
 	t_ray		rays[320];
 	t_img		txt_img[4];
@@ -187,6 +190,6 @@ void	find_intersection_point_v(t_data *data,
 	float *new_x, float *new_y, int loop);
 
 
-int get_texture_pixel(t_data *data, int x, int y);
-	
+int get_texture_pixel(t_data *data, int x, int y, int pos);
+
 #endif
