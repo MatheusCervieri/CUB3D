@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:49:02 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 04:56:20 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 06:25:12 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ int	is_wall_h(t_data *data, float x, float y)
 		{
 			if(y/MINI_MAP_SIZE > (data->walls_position[i][1] + 0.5) )
 				data->ry = (data->walls_position[i][1] + 1) * MINI_MAP_SIZE; //comecei a concertar.
+		
 			return (1);
 		}
+		//checar o ponto 
 		i++;
 	}
 	return (0);
@@ -45,6 +47,7 @@ int	is_wall_v(t_data *data, float x, float y)
 				data->rx = (data->walls_position[i][0] + 1) * MINI_MAP_SIZE;
 			return (1);
 		}
+
 		i++;
 	}
 	return (0);

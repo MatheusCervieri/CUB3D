@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 04:44:13 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:32:32 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,11 @@ typedef struct s_data
 	int			walls_nbs;
 	float		**walls_position;
 	void		*mlx;
+	t_img		txt_img1;
+	t_img		txt_img2;
+	t_img		txt_img3;
+	t_img		txt_img4;
+	int			texture1[64][64];
 	void		*win_ptr;
 	t_ray		rays[320];
 	t_img		txt_img[4];
@@ -168,6 +173,8 @@ void	check_intersections_h(t_data *data, float *new_x,
 void	check_intersections_v(t_data *data, float *new_x,
 	float *new_y, float rotation);
 
+void save_texture_pixels(t_data *data);
+
 //map
 int	biggest_line_size(char **map_array);
 int	lines_amount(char **map_array);
@@ -178,4 +185,8 @@ void	init_img(t_data *data, t_img *img, int height, int width);
 void	find_intersection_point_h(t_data *data, float *new_x, float *new_y, int loop);
 void	find_intersection_point_v(t_data *data,
 	float *new_x, float *new_y, int loop);
+
+
+int get_texture_pixel(t_data *data, int x, int y);
+	
 #endif

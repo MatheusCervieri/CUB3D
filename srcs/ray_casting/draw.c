@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 04:30:24 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:36:21 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,18 @@ void	draw_3d_world(t_data *data)
 		j = 0;
 		while (j < data->rays[i].line_height)
 		{
-			data->rays[i].pixel = img_pix_get(&data->txt_img[data->rays[i].p],
-					(int) data->rays[i].x_texture, (int) y_texture);
+			/*
+			if(data->rays[i].p == 0)
+				data->rays[i].pixel = img_pix_get(&data->txt_img1, (int) data->rays[i].x_texture, (int) y_texture);
+			else if(data->rays[i].p == 1)
+				data->rays[i].pixel = img_pix_get(&data->txt_img2, (int) data->rays[i].x_texture, (int) y_texture);
+			else if(data->rays[i].p == 2)
+				data->rays[i].pixel = img_pix_get(&data->txt_img3, (int) data->rays[i].x_texture, (int) y_texture);		
+			else if(data->rays[i].p == 3)
+				data->rays[i].pixel = img_pix_get(&data->txt_img4, (int) data->rays[i].x_texture, (int) y_texture);
+			*/
+			//data->rays[i].pixel = img_pix_get(&data->txt_img3, (int) data->rays[i].x_texture, (int) y_texture);
+			data->rays[i].pixel = get_texture_pixel(data, data->rays[i].x_texture, (int) y_texture);
 			img_pix_put(&data->game_img, 0 + i, j + data->rays[i].line_o,
 				data->rays[i].pixel);
 			y_texture += y_texture_step;

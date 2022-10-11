@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 05:12:11 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:14:34 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ void	get_ray_type_v_h(t_data *data,
 		data->rays[i].distance_to_wall = distance_horizontal;
 		data->rays[i].x_texture = (int)(data->rays[i].x * 4) % 64;
 		if (data->rays[i].rotation > 0 && data->rays[i].rotation < PI)
-			data->rays[i].p = 3;
+			data->rays[i].p = 1;
 		else
-			data->rays[i].p = 2;
+			data->rays[i].p = 0;
 	}
 	else
 	{
@@ -34,9 +34,9 @@ void	get_ray_type_v_h(t_data *data,
 		data->rays[i].x_texture = (int)(data->rays[i].y * 4) % 64;
 		if ((data->rays[i].rotation)
 			< PI / 2 || data->rays[i].rotation > 3 * PI / 2)
-				data->rays[i].p = 1;
+				data->rays[i].p = 2;
 		else
-			data->rays[i].p = 0;
+			data->rays[i].p = 3;
 	}
 }
 
