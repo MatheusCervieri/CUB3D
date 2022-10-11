@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 17:14:34 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 23:43:34 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,13 @@ void	check_intersections(t_data *data)
 				data->player.y, data->rays[i].v_x, data->rays[i].v_y);
 		get_ray_type_v_h(data, distance_horizontal, distance_vertical, i);
 		get_ray_height(data, i);
+		i++;
+	}
+	i = 0;
+	while (i < 320)
+	{
+		if (i != 0 && data->rays[i - 1].p == data->rays[i + 1].p)
+			data->rays[i].p = data->rays[i - 1].p;
 		i++;
 	}
 }	

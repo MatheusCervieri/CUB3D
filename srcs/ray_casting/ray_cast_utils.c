@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:49:02 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 06:25:12 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 23:32:19 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ int	is_wall_h(t_data *data, float x, float y)
 	{
 		if (data->walls_position[i][0] == floor(x / MINI_MAP_SIZE)
 			&& data->walls_position[i][1] == floor(y / MINI_MAP_SIZE))
-		{
-			if(y/MINI_MAP_SIZE > (data->walls_position[i][1] + 0.5) )
-				data->ry = (data->walls_position[i][1] + 1) * MINI_MAP_SIZE; //comecei a concertar.
+		{ //comecei a concertar.
 		
 			return (1);
 		}
