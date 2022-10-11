@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 17:47:20 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/11 17:32:32 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@
 
 # define PI 3.1415926535
 # define DG 0.0174533
-# define MINI_MAP_SIZE 16
+# define MINI_MAP_SIZE 64
 # define WINDOW_WIDTH 320
 # define WINDOW_HEIGHT 200
 
-# define PLAYER_SIZE 16
+# define PLAYER_SIZE 64
 # define BACKGROUND_SIZE 600
-# define WALL_SIZE 16
-# define DIR_SIZE 8
+# define WALL_SIZE 64
+# define DIR_SIZE 32
 
 typedef struct s_img
 {
@@ -191,5 +191,5 @@ void	find_intersection_point_v(t_data *data,
 
 
 int get_texture_pixel(t_data *data, int x, int y, int pos);
-
+	
 #endif

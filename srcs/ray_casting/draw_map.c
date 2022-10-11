@@ -42,19 +42,19 @@ void init_minimap_imgs(t_data *data)
 {
 	//init_img(data, &data->game_img, WINDOW_WIDTH , WINDOW_HEIGHT); // Quando for fazer a versão definitiva, comentar a parte de baixo.
 	//init_img(data, &data->mm_bg_img, BACKGROUND_SIZE , BACKGROUND_SIZE);
-	init_img(data, &data->player.img, PLAYER_SIZE , PLAYER_SIZE);
-	init_img(data, &data->player.dir_img, DIR_SIZE , DIR_SIZE);
-	init_img(data, &data->test_img, DIR_SIZE , DIR_SIZE);
-	init_img(data, &data->mm_wall_img, WALL_SIZE , WALL_SIZE);
+	init_img(data, &data->player.img, PLAYER_SIZE/4 , PLAYER_SIZE/4);
+	init_img(data, &data->player.dir_img, DIR_SIZE/4 , DIR_SIZE/4);
+	init_img(data, &data->test_img, DIR_SIZE/4 , DIR_SIZE/4);
+	init_img(data, &data->mm_wall_img, WALL_SIZE/4 , WALL_SIZE/4);
 	
 }
 
 void draw_minimap(t_data *data)
 {
-	render_square(&data->test_img, 0xBF40BF, DIR_SIZE, DIR_SIZE, 0 ,0);
-	render_square(&data->player.img, 0xFF00, PLAYER_SIZE, PLAYER_SIZE, 0 , 0);
-	render_square(&data->player.dir_img, 0xFF0000, DIR_SIZE, DIR_SIZE, 0 , 0);
-	render_square(&data->mm_wall_img, 000000, WALL_SIZE, WALL_SIZE, 0 , 0);
+	render_square(&data->test_img, 0xBF40BF, DIR_SIZE/4, DIR_SIZE/4, 0 ,0);
+	render_square(&data->player.img, 0xFF00, PLAYER_SIZE/4, PLAYER_SIZE/4, 0 , 0);
+	render_square(&data->player.dir_img, 0xFF0000, DIR_SIZE/4, DIR_SIZE/4, 0 , 0);
+	render_square(&data->mm_wall_img, 000000, WALL_SIZE/4, WALL_SIZE/4, 0 , 0);
 	render_square(&data->mm_bg_img, 0xFFFFFF, BACKGROUND_SIZE, BACKGROUND_SIZE, 0, 0);
 	
 	int i;
@@ -72,7 +72,7 @@ void draw_minimap(t_data *data)
 		{
 			if(data->map_array[i][j] == '1')
 			{
-				render_square(&data->mm_bg_img, 000000, WALL_SIZE, WALL_SIZE, height * MINI_MAP_SIZE, width * MINI_MAP_SIZE);
+				render_square(&data->mm_bg_img, 000000, WALL_SIZE/4, WALL_SIZE/4, height * MINI_MAP_SIZE/4, width * MINI_MAP_SIZE/4);
 				
 			}
 			width++;
@@ -86,26 +86,26 @@ void draw_minimap(t_data *data)
 	i = 0;
 	while (i < lines_amount(data->map_array))
 	{
-		DDA(&data->mm_bg_img, 0, MINI_MAP_SIZE * i , 600 , MINI_MAP_SIZE * i, 000003);
+		DDA(&data->mm_bg_img, 0, MINI_MAP_SIZE/4 * i , 600 , MINI_MAP_SIZE/4 * i, 000003);
 		i++;
 	}
 	
 	i = 0;
 	while (i < biggest_line_size(data->map_array))
 	{
-		DDA(&data->mm_bg_img, MINI_MAP_SIZE * i, 0 , MINI_MAP_SIZE * i , 600, 000003);
+		DDA(&data->mm_bg_img, MINI_MAP_SIZE/4 * i, 0 , MINI_MAP_SIZE/4 * i , 600, 000003);
 		i++;
 	}
 	
 	i = 0;
 	while (i < 320)
 	{
-	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->rays[i].x, data->rays[i].y, 0xFF00);
+	DDA(&data->mm_bg_img, data->player.x/4, data->player.y/4 , data->rays[i].x/4, data->rays[i].y/4, 0xFF00);
 	i++;
 	}
 	
 	DDA(&data->mm_bg_img, data->player.x, data->player.y , data->player.dir_x , data->player.dir_y, 0xBF40BF);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->mm_bg_img.mlx_img , 0, 0);
-	mlx_put_image_to_window(data->mlx, data->win_ptr, data->player.img.mlx_img, data->player.x, data->player.y);
+	//mlx_put_image_to_window(data->mlx, data->win_ptr, data->player.img.mlx_img, data->player.x, data->player.y);
 	mlx_put_image_to_window(data->mlx, data->win_ptr, data->game_img.mlx_img, 0, 400);
 }

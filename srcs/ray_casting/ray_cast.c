@@ -20,7 +20,7 @@ void	get_ray_type_v_h(t_data *data,
 		data->rays[i].x = data->rays[i].h_x;
 		data->rays[i].y = data->rays[i].h_y;
 		data->rays[i].distance_to_wall = distance_horizontal;
-		data->rays[i].x_texture = (int)(data->rays[i].x * 4) % 64;
+		data->rays[i].x_texture = (int)(data->rays[i].x) % 64;
 		if (data->rays[i].rotation > 0 && data->rays[i].rotation < PI)
 			data->rays[i].p = 1;
 		else
@@ -31,7 +31,7 @@ void	get_ray_type_v_h(t_data *data,
 		data->rays[i].x = data->rays[i].v_x;
 		data->rays[i].y = data->rays[i].v_y;
 		data->rays[i].distance_to_wall = distance_vertical;
-		data->rays[i].x_texture = (int)(data->rays[i].y * 4) % 64;
+		data->rays[i].x_texture = (int)(data->rays[i].y) % 64;
 		if ((data->rays[i].rotation)
 			< PI / 2 || data->rays[i].rotation > 3 * PI / 2)
 				data->rays[i].p = 2;

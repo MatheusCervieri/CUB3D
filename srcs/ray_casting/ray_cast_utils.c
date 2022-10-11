@@ -43,8 +43,6 @@ int	is_wall_v(t_data *data, float x, float y)
 		if (data->walls_position[i][0] == floor(x / MINI_MAP_SIZE)
 			&& data->walls_position[i][1] == floor(y / MINI_MAP_SIZE))
 		{
-			if(x/MINI_MAP_SIZE > (data->walls_position[i][0] + 0.5) )
-				data->rx = (data->walls_position[i][0] + 1) * MINI_MAP_SIZE;
 			return (1);
 		}
 
@@ -85,7 +83,7 @@ void	find_intersection_point_h(t_data *data,
 			data->ry = data->ry + data->yo;
 		}
 	}
-	check_map_limits(data);
+	//check_map_limits(data);
 	*new_x = data->rx;
 	*new_y = data->ry;
 }
@@ -110,7 +108,7 @@ void	find_intersection_point_v(t_data *data,
 			data->ry = data->ry + data->yo;
 		}
 	}
-	check_map_limits(data);
+	//check_map_limits(data);
 	*new_x = data->rx;
 	*new_y = data->ry;
 }
