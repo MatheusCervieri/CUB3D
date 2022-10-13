@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:15:15 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 18:41:28 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:51:08 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,16 @@ void more_free(t_data *data)
 	}
 	if (data->map_array != NULL)
 		free(data->map_array);
+	i = 0;
+	if(data->walls_position != NULL)
+	{
+	while (i < data->walls_nbs)
+	{
+		free(data->walls_position[i]);
+		i++;
+	}
+		free(data->walls_position);
+	}
 }
 
 void	handle_error(t_data *data, char *error_message)
@@ -43,6 +53,7 @@ void	handle_error(t_data *data, char *error_message)
 	ft_putstr_fd(error_message, 2);
 	free(data->map_string);
 	more_free(data);
+	free(data);
 	exit(1);
 }
 
