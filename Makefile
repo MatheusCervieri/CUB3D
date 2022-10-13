@@ -6,7 +6,7 @@
 #    By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/12 11:06:29 by mvieira-          #+#    #+#              #
-#    Updated: 2022/10/13 21:21:09 by mvieira-         ###   ########.fr        #
+#    Updated: 2022/10/13 23:50:07 by mvieira-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ MKDIR = mkdir -p
 MAKE_NOPRINT = $(MAKE) --no-print-directory
 NAME = cub3D
 SRC_FILES = main.c \
+			main_utils.c \
 			$(RAY_CASTING_PATH)ray_casting_utils2.c\
 			$(RAY_CASTING_PATH)textures_handler.c\
 			$(RAY_CASTING_PATH)check_intersections.c\

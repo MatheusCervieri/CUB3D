@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 21:27:29 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 23:49:49 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,5 +196,8 @@ void more_free(t_data *data);
 void	free_matrix_char(char **matrix);
 void	set_wall_positions(t_data *data, int height, int width, int *z);
 void	save_walls_position(t_data *data);
-	
+void	get_player_first_position(t_data *data);
+int	check_type(char *string, t_data *data);
+char	*validate_map_params(int map, t_data *data);
+
 #endif
