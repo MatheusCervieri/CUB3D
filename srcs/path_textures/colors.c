@@ -6,31 +6,50 @@
 /*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:41:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/10/07 10:23:17 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/10/13 00:38:18 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	is_valid_rgb_value(char *rgb)
+void	free_matrix(void **matrix)
+{
+	int	i;
+
+	i = 0;
+	while(matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
+	matrix = NULL;
+}
+
+
+int	is_valid_rgb_value(char *rgb, char **rgbs)
 {
 	int	value;
 
 	value = ft_atoi(rgb);
 	if (value > 255 || value < 0)
+	{
+		free_matrix((void**)rgbs);
 		return (-1);
+	}
 	return (value);
 }
+
 
 int	get_floor_color(char *rgb, t_data *data)
 {
 	char	**rgb_array;
 	int		index;
-	int		*int_rgb_array;
+	int		*int_array;
 	char	*tmp;
 
 	rgb_array = ft_split(rgb, ',');
-	int_rgb_array = (int *)malloc(sizeof(int) * 3);
+	int_array = (int *)malloc(sizeof(int) * 3);
 	index = 0;
 	while (rgb_array[index])
 	{
@@ -42,12 +61,13 @@ int	get_floor_color(char *rgb, t_data *data)
 	}
 	while (--index >= 0)
 	{
-		if (is_valid_rgb_value(rgb_array[index]) != -1)
-			int_rgb_array[index] = is_valid_rgb_value(rgb_array[index]);
+		if (is_valid_rgb_value(rgb_array[index], rgb_array) != -1)
+			int_array[index] = is_valid_rgb_value(rgb_array[index], rgb_array);
 		else
 			return (0);
 	}
-	data->floor_color = int_rgb_array;
+	data->floor_color = int_array;
+	free_matrix((void**)rgb_array);
 	return (1);
 }
 
@@ -55,12 +75,12 @@ int	get_ceiling_color(char *rgb, t_data *data)
 {
 	char	**rgb_array;
 	int		index;
-	int		*int_rgb_array;
+	int		*int_array;
 	char	*tmp;
 
 	rgb_array = ft_split(rgb, ',');
 	index = 0;
-	int_rgb_array = (int *)malloc(sizeof(int) * 3);
+	int_array = (int *)malloc(sizeof(int) * 3);
 	while (rgb_array[index])
 	{
 		tmp = ft_strdup(rgb_array[index]);
@@ -71,12 +91,13 @@ int	get_ceiling_color(char *rgb, t_data *data)
 	}
 	while (--index >= 0)
 	{
-		if (is_valid_rgb_value(rgb_array[index]) != -1)
-			int_rgb_array[index] = is_valid_rgb_value(rgb_array[index]);
+		if (is_valid_rgb_value(rgb_array[index], rgb_array) != -1)
+			int_array[index] = is_valid_rgb_value(rgb_array[index], rgb_array);
 		else
 			return (0);
 	}
-	data->ceiling_color = int_rgb_array;
+	data->ceiling_color = int_array;
+	free_matrix((void**)rgb_array);
 	return (1);
 }
 

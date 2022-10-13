@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/12 16:33:14 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 01:15:00 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,15 +132,22 @@ void initialization(t_data *data)
 
 void get_map_string(t_data *data, int map)
 {
-	char *map_line;
+	char	*map_line;
+	char	*tmp;
 
-	map_line = data->map_string;
+	map_line = ft_strdup("");
 	while (map_line)
 	{
+		free(map_line);
 		map_line = get_next_line(map);
 		if(map_line)
-			data->map_string = ft_strjoin(data->map_string,
+		{
+			tmp = ft_strdup(data->map_string);
+			free(data->map_string);
+			data->map_string = ft_strjoin(tmp,
 					map_line);
+			free(tmp);
+		}
 	}
 }
 

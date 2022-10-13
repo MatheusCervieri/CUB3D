@@ -3,24 +3,43 @@
 /*                                                        :::      ::::::::   */
 /*   handle_mlx_hooks.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:04:34 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 14:35:06 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 01:30:54 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+void	free_params(t_data *data)
+{
+	free(data->ceiling_color);
+	free(data->floor_color);
+	free(data->ea_path);
+	free(data->we_path);
+	free(data->no_path);
+	free(data->so_path);
+	while(*(data->map_array))
+	{
+		free(*(data->map_array));
+		data->map_array++;
+	}
+	free(data->map_array);
+	free(data->map_string);
+
+}
+
 int	close_game(t_data *data)
 {
 	mlx_destroy_image(data->mlx, data->game_img.mlx_img);
 	mlx_destroy_image(data->mlx, data->mm_bg_img.mlx_img);
-	mlx_destroy_image(data->mlx, data->txt_img[0].mlx_img);
-	mlx_destroy_image(data->mlx, data->txt_img[1].mlx_img);
-	mlx_destroy_image(data->mlx, data->txt_img[2].mlx_img);
-	mlx_destroy_image(data->mlx, data->txt_img[3].mlx_img);
+	mlx_destroy_image(data->mlx, data->txt_img1.mlx_img);
+	mlx_destroy_image(data->mlx, data->txt_img2.mlx_img);
+	mlx_destroy_image(data->mlx, data->txt_img3.mlx_img);
+	mlx_destroy_image(data->mlx, data->txt_img4.mlx_img);
 	free_mlx_core(data);
+	free_params(data);
 	exit(0);
 }
 

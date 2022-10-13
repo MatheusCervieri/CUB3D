@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:19:05 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/05 16:07:52 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 01:48:27 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,18 @@ void	is_there_empty_line(t_data *data)
 			handle_error(data, "There is a empty line in the map\n");
 		i++;
 	}
+}
+
+void free_matrix_char(char **matrix)
+{
+	int	i;
+
+	while(matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
 }
 
 void	valid_number_of_players(t_data *data)
@@ -61,6 +73,6 @@ void	parse_map(t_data *data)
 	valid_number_of_players(data);
 	map_array = ft_split(data->map_string, '\n');
 	data->map_array = normalize_map(map_array);
-	free(map_array);
+	free_matrix_char(map_array);
 	iterate_map_array(data);
 }

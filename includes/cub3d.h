@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 17:32:32 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 00:45:16 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ int	msg_error(char *error);
 
 //error or close
 void free_mlx_core(t_data *data);
+void free_matrix(void **matrix);
 
 //parse_map
 void	handle_error(t_data *data, char *error_message);
