@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 17:16:28 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/14 00:26:55 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ typedef struct s_data
 	size_t		tmp_i;
 }				t_data;
 
-void	parse_map(void);
+void	parse_map(t_data *data);
 //Arguments parsing
 int		validate_map_extension(char *map_name);
 int		validate_save_argument(char *save_param);

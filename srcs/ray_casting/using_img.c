@@ -6,12 +6,13 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:24:24 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 23:56:45 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/14 00:49:23 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/*
 void	img_pix_put(t_img *img, int x, int y, int color)
 {
 	char	*pixel;
@@ -27,6 +28,15 @@ void	img_pix_put(t_img *img, int x, int y, int color)
 			*pixel++ = (color >> (img->bpp - 8 - i)) & 0xFF;
 		i -= 8;
 	}
+}
+*/
+
+void	img_pix_put(t_img *img, int x, int y, int color)
+{
+	char    *pixel;
+
+    pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+	*(int *)pixel = color;
 }
 
 int	img_pix_get(t_img *img, int x, int y)
