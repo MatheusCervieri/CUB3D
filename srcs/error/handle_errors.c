@@ -6,16 +6,38 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:15:15 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 20:22:52 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:30:46 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void more_free(t_data *data)
+void	more_free2(t_data *data)
 {
-	int i;
+	int	i;
 
+	i = 0;
+	while (data->map_array[i])
+	{
+		free(data->map_array[i]);
+		i++;
+	}
+	if (data->map_array != NULL)
+		free(data->map_array);
+	i = 0;
+	if (data->walls_position != NULL)
+	{
+		while (i < data->walls_nbs)
+		{
+			free(data->walls_position[i]);
+			i++;
+		}
+		free(data->walls_position);
+	}
+}
+
+void	more_free(t_data *data)
+{
 	if (data->no_path != NULL)
 		free(data->no_path);
 	if (data->so_path != NULL)
@@ -28,24 +50,7 @@ void more_free(t_data *data)
 		free(data->floor_color);
 	if (data->ceiling_color != NULL)
 		free(data->ceiling_color);
-	i = 0;
-	while (data->map_array[i])
-	{
-		free(data->map_array[i]);
-		i++;
-	}
-	if (data->map_array != NULL)
-		free(data->map_array);
-	i = 0;
-	if(data->walls_position != NULL)
-	{
-	while (i < data->walls_nbs)
-	{
-		free(data->walls_position[i]);
-		i++;
-	}
-		free(data->walls_position);
-	}
+	more_free2(data);
 }
 
 void	handle_error(t_data *data, char *error_message)
@@ -58,8 +63,6 @@ void	handle_error(t_data *data, char *error_message)
 	free(data);
 	exit(1);
 }
-
-
 
 void	free_mlx_core(t_data *data)
 {
