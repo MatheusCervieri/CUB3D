@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:56:41 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 17:18:27 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:48:54 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ char	*ft_calloc_space(size_t nelem, size_t elsize)
 	if (allocated_memory == NULL)
 		return (NULL);
 	ft_memset(allocated_memory, ' ', nelem * elsize);
-	allocated_memory[nelem * elsize - 1] = '\0'; 
 	return (allocated_memory);
 }
 
@@ -67,12 +66,13 @@ char	**normalize_map(char **map_array)
 	char	**normalized_map;
 	int		i;
 
-	normalized_map = malloc(sizeof(char *) * lines_amount(map_array));
+	normalized_map = malloc(sizeof(char *) * (lines_amount(map_array) + 1));
+	normalized_map[lines_amount(map_array)] = NULL;
 	i = 0;
 	while (i < lines_amount(map_array))
 	{
-		normalized_map[i] = ft_calloc_space(biggest_line_size(map_array),
-				sizeof(char));
+		normalized_map[i] = ft_calloc_space(sizeof(char), biggest_line_size(map_array) + 1);
+		normalized_map[i][biggest_line_size(map_array)] = '\0';
 		i++;
 	}
 	i = 0;

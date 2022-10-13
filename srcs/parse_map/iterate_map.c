@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:10:18 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/04 15:09:25 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:45:42 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	check_valid_first_and_last_line(t_data *data, char *line)
 	size_t	i;
 
 	i = 0;
-	while (line[i])
+	while (i < ft_strlen(line))
 	{
 		if (line[i] != '\n' && !ft_strrchr("1  ", line[i]))
 			handle_error(data, "The map is not sorrounded by Walls\n");
