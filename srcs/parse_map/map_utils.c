@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:13:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 13:32:32 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 21:01:58 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,17 @@ void	check_valid_space_sorround_by_wall(t_data *data, char *line,
 		}		
 		i++;
 	}
+}
+
+void	free_matrix_char(char **matrix)
+{
+	int	i;
+
+	i = 0;
+	while (matrix[i])
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free(matrix);
 }

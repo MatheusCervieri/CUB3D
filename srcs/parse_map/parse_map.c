@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:19:05 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 13:34:32 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 21:01:53 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,6 @@ void	is_there_empty_line(t_data *data)
 			handle_error(data, "There is a empty line in the map\n");
 		i++;
 	}
-}
-
-void	free_matrix_char(char **matrix)
-{
-	int	i;
-
-	i = 0;
-	while (matrix[i])
-	{
-		free(matrix[i]);
-		i++;
-	}
-	free(matrix);
 }
 
 void	valid_number_of_players(t_data *data)

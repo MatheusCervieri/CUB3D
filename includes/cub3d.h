@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 19:44:51 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 21:09:01 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,5 +193,8 @@ void	find_intersection_point_v(t_data *data,
 
 int get_texture_pixel(t_data *data, int x, int y, int pos);
 void more_free(t_data *data);
+void	free_matrix_char(char **matrix);
+void	set_wall_positions(t_data *data, int height, int width, int *z);
+void	save_walls_position(t_data *data);
 	
 #endif
