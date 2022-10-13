@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 19:41:57 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:39:12 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,8 @@ void	draw_3d_world(t_data *data)
 		j = 0;
 		while (j < data->rays[i].line_height)
 		{
-			data->rays[i].pixel = get_texture_pixel(data, data->rays[i].x_texture, (int) y_texture, data->rays[i].p);
+			data->rays[i].pixel = get_texture_pixel(data,
+					data->rays[i].x_texture, (int) y_texture, data->rays[i].p);
 			img_pix_put(&data->game_img, 0 + i, j + data->rays[i].line_o,
 				data->rays[i].pixel);
 			y_texture += y_texture_step;
@@ -65,6 +66,6 @@ void	draw_3d_world(t_data *data)
 		}
 	i++;
 	}
-	mlx_put_image_to_window(data->mlx, data->win_ptr, data->game_img.mlx_img, 0, 0);
-	//draw_minimap(data);
+	mlx_put_image_to_window(data->mlx, data->win_ptr,
+		data->game_img.mlx_img, 0, 0);
 }

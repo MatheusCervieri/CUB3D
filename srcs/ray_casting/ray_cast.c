@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 18:36:52 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:41:35 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	get_ray_type_v_h(t_data *data,
 	float distance_horizontal, float distance_vertical, int i)
 {
-	if (distance_horizontal < distance_vertical) //Aqui conseguimos concertar o bug baseando-se na rotação do player.
+	if (distance_horizontal < distance_vertical)
 	{
 		data->rays[i].x = data->rays[i].h_x;
 		data->rays[i].y = data->rays[i].h_y;
@@ -99,8 +99,6 @@ void	check_intersections(t_data *data)
 			data->rays[i + 4].p = data->rays[i - 1].p;
 			data->rays[i + 5].p = data->rays[i - 1].p;
 		}
-			
-		//da até para colocar que a posição certa do x; 
 		i++;
 	}
 }

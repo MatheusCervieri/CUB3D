@@ -6,26 +6,26 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 20:29:34 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:49:14 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int check_type(char *string, t_data *data)
+int	check_type(char *string, t_data *data)
 {
-	if(!ft_strncmp(string, "NO ", 3))
-		return(get_no_texture(string, data));
-	if(!ft_strncmp(string, "SO ", 3))
-		return(get_so_texture(string, data));
-	if(!ft_strncmp(string, "EA ", 3))
-		return(get_ea_texture(string, data));
-	if(!ft_strncmp(string, "WE ", 3))
-		return(get_we_texture(string, data));
-	if(!ft_strncmp(string, "F ", 2))
-		return(get_floor_color(string, data));
-	if(!ft_strncmp(string, "C ", 2))
-		return(get_ceiling_color(string, data));
+	if (!ft_strncmp(string, "NO ", 3))
+		return (get_no_texture(string, data));
+	if (!ft_strncmp(string, "SO ", 3))
+		return (get_so_texture(string, data));
+	if (!ft_strncmp(string, "EA ", 3))
+		return (get_ea_texture(string, data));
+	if (!ft_strncmp(string, "WE ", 3))
+		return (get_we_texture(string, data));
+	if (!ft_strncmp(string, "F ", 2))
+		return (get_floor_color(string, data));
+	if (!ft_strncmp(string, "C ", 2))
+		return (get_ceiling_color(string, data));
 	return (2);
 }
 
@@ -35,30 +35,29 @@ char	*validate_map_params(int map, t_data *data)
 	char	*current_line;
 
 	status = 1;
-	while(status != 2)
+	while (status != 2)
 	{
 		current_line = get_next_line(map);
 		status = check_type(current_line, data);
-		if(!ft_strncmp(current_line, "\n\0", 2))
+		if (!ft_strncmp(current_line, "\n\0", 2))
 			status = 1;
-		if(status == 2)
+		if (status == 2)
 			break ;
 		free(current_line);
-		if(status == 0)
+		if (status == 0)
 			return ("");
 	}
 	return (current_line);
-
 }
 
-void get_player_first_position(t_data *data)
+void	get_player_first_position(t_data *data)
 {
-	int i;
-	int j;
-	int height;
-	int width;
+	int	i;
+	int	j;
+	int	height;
+	int	width;
 
-	height = 0; 
+	height = 0;
 	width = 0;
 	i = 0;
 	while (data->map_array[i])
@@ -66,29 +65,29 @@ void get_player_first_position(t_data *data)
 		j = 0;
 		while (data->map_array[i][j])
 		{
-			if(data->map_array[i][j] == 'N') //Add all. 
+			if (data->map_array[i][j] == 'N')
 			{
 				data->player.x = width * MINI_MAP_SIZE;
 				data->player.y = height * MINI_MAP_SIZE;
-				data->player.rotation = 3*PI/2;
+				data->player.rotation = 3 * PI / 2;
 			}
-			if(data->map_array[i][j] == 'S') //Add all. 
+			if (data->map_array[i][j] == 'S')
 			{
 				data->player.x = width * MINI_MAP_SIZE;
 				data->player.y = height * MINI_MAP_SIZE;
-				data->player.rotation = PI/2;
+				data->player.rotation = PI / 2;
 			}
-			if(data->map_array[i][j] == 'E') //Add all. 
+			if (data->map_array[i][j] == 'E')
 			{
 				data->player.x = width * MINI_MAP_SIZE;
 				data->player.y = height * MINI_MAP_SIZE;
 				data->player.rotation = 0;
 			}
-			if(data->map_array[i][j] == 'W') //Add all. 
+			if (data->map_array[i][j] == 'W')
 			{
 				data->player.x = width * MINI_MAP_SIZE;
 				data->player.y = height * MINI_MAP_SIZE;
-				data->player.rotation = 2*PI;
+				data->player.rotation = 2 * PI;
 			}
 			width++;
 			j++;
@@ -97,16 +96,14 @@ void get_player_first_position(t_data *data)
 		height++;
 		i++;
 	}
-		
 }
 
-void initialization(t_data *data)
+void	initialization(t_data *data)
 {
 	int	i;
 
 	data->walls_position = NULL;
-	data->walls_position = malloc(sizeof(double *) * data->walls_nbs);	
-	
+	data->walls_position = malloc(sizeof(double *) * data->walls_nbs);
 	i = 0;
 	while (i < data->walls_nbs)
 	{
@@ -131,7 +128,7 @@ void initialization(t_data *data)
 	mlx_loop(data->mlx);
 }
 
-void get_map_string(t_data *data, int map)
+void	get_map_string(t_data *data, int map)
 {
 	char	*map_line;
 	char	*tmp;
@@ -141,7 +138,7 @@ void get_map_string(t_data *data, int map)
 	{
 		free(map_line);
 		map_line = get_next_line(map);
-		if(map_line)
+		if (map_line)
 		{
 			tmp = ft_strdup(data->map_string);
 			free(data->map_string);
@@ -152,28 +149,12 @@ void get_map_string(t_data *data, int map)
 	}
 }
 
-/*
-	1- Tirar o minimap.
-	2- Valgrind.
-	3- Norm. 
-	4- Testar mapas com problemas. 
-	5- Bug do raio louco. 
-
-	0- Norm moacir - falta o moacir passar a norma na parte dele.
-    1- Valgrind em todo o código. 
-    2- Testar diversos tipos de arquivos cub em busca de erros e corrigir os erros.
-    2.1 - Adicionar "Error\n" nas mensagens de erro. 
-    3- Bug louco das texturas - ao se aproximar das paredes as texturas trocam de cores.
-    4- Bug da textura não estar sendo desenhada por completo em algumas direções - provavelmente a solução é criar uma função is_wall melhor
-    5- Bug dos raios atravessarem entre dois blocos. Acredito que se resolva da mesma forma que o de cima.
-*/
-
 int	main(int argc, char **argv)
 {
-	t_data *data;
+	t_data	*data;
 	int		map;
 
-    data = (t_data *)malloc(sizeof(t_data));
+	data = (t_data *)malloc(sizeof(t_data));
 	data->walls_position = NULL;
 	data->map_string = NULL;
 	data->no_path = NULL;
@@ -183,23 +164,19 @@ int	main(int argc, char **argv)
 	data->floor_color = NULL;
 	data->ceiling_color = NULL;
 	data->map_array = NULL;
-	if(!validate_arguments(argc, argv))
+	if (!validate_arguments(argc, argv))
 	{
 		free(data);
 		return (1);
 	}
 	map = open(argv[1], O_RDONLY);
-	if(map == -1)
+	if (map == -1)
 	{
 		free(data);
 		return (msg_error("Map not found!\n"));
 	}
-	/*
-		if(!validate_rgb_colors(data, rgbs))
-		return(msg_error("Invalid RGB Color\n"));
-	*/
 	data->walls_nbs = 0;
-	data->map_string = validate_map_params(map,data);
+	data->map_string = validate_map_params(map, data);
 	data->player_nbs = 0;
 	get_map_string(data, map);
 	close(map);

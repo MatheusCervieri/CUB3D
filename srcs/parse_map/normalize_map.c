@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 11:56:41 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 17:48:54 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:32:59 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ char	**normalize_map(char **map_array)
 	i = 0;
 	while (i < lines_amount(map_array))
 	{
-		normalized_map[i] = ft_calloc_space(sizeof(char), biggest_line_size(map_array) + 1);
+		normalized_map[i] = ft_calloc_space(sizeof(char),
+				biggest_line_size(map_array) + 1);
 		normalized_map[i][biggest_line_size(map_array)] = '\0';
 		i++;
 	}

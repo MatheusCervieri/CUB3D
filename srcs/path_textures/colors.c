@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:41:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/10/13 00:38:18 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:37:30 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	free_matrix(void **matrix)
 	int	i;
 
 	i = 0;
-	while(matrix[i])
+	while (matrix[i])
 	{
 		free(matrix[i]);
 		i++;
@@ -26,7 +26,6 @@ void	free_matrix(void **matrix)
 	matrix = NULL;
 }
 
-
 int	is_valid_rgb_value(char *rgb, char **rgbs)
 {
 	int	value;
@@ -34,12 +33,11 @@ int	is_valid_rgb_value(char *rgb, char **rgbs)
 	value = ft_atoi(rgb);
 	if (value > 255 || value < 0)
 	{
-		free_matrix((void**)rgbs);
+		free_matrix((void **) rgbs);
 		return (-1);
 	}
 	return (value);
 }
-
 
 int	get_floor_color(char *rgb, t_data *data)
 {
@@ -67,7 +65,7 @@ int	get_floor_color(char *rgb, t_data *data)
 			return (0);
 	}
 	data->floor_color = int_array;
-	free_matrix((void**)rgb_array);
+	free_matrix((void **) rgb_array);
 	return (1);
 }
 
@@ -97,7 +95,7 @@ int	get_ceiling_color(char *rgb, t_data *data)
 			return (0);
 	}
 	data->ceiling_color = int_array;
-	free_matrix((void**)rgb_array);
+	free_matrix( (void ** ) rgb_array);
 	return (1);
 }
 

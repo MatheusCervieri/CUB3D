@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:19:05 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 17:07:11 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 13:34:32 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	is_there_empty_line(t_data *data)
 	}
 }
 
-void free_matrix_char(char **matrix)
+void	free_matrix_char(char **matrix)
 {
 	int	i;
 
 	i = 0;
-	while(matrix[i])
+	while (matrix[i])
 	{
 		free(matrix[i]);
 		i++;
