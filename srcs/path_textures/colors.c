@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:41:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/10/14 00:06:18 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/14 00:09:39 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,18 +39,6 @@ int	is_valid_rgb_value(char *rgb, char **rgbs)
 	return (value);
 }
 
-int	color_util(int index, char ***rgb_array, int **int_array)
-{
-	while (--index >= 0)
-	{
-		if (is_valid_rgb_value(rgb_array[0][index], rgb_array[0]) != -1)
-			int_array[0][index] = is_valid_rgb_value(rgb_array[0][index], rgb_array[0]);
-		else
-			return (0);
-	}
-	return (1);
-}
-
 int	get_floor_color(char *rgb, t_data *data)
 {
 	char	**rgb_array;
@@ -69,7 +57,7 @@ int	get_floor_color(char *rgb, t_data *data)
 		free(tmp);
 		index++;
 	}
-	if(!(color_util(index, &rgb_array, &int_array)))
+	if(! (color_util(index, &rgb_array, &int_array)))
 		return (0);
 	data->floor_color = int_array;
 	free_matrix((void **) rgb_array);
@@ -94,7 +82,7 @@ int	get_ceiling_color(char *rgb, t_data *data)
 		free(tmp);
 		index++;
 	}
-	if(!(color_util(index, &rgb_array, &int_array)))
+	if(! (color_util(index, &rgb_array, &int_array)))
 		return (0);
 	data->ceiling_color = int_array;
 	free_matrix( (void ** ) rgb_array);

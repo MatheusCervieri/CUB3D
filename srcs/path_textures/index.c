@@ -3,14 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   index.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 19:56:23 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/10/07 10:17:56 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/10/14 00:09:45 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	color_util(int index, char ***rgb_array, int **int_array)
+{
+	while (--index >= 0)
+	{
+		if (is_valid_rgb_value(rgb_array[0][index], rgb_array[0]) != -1)
+			int_array[0][index] = is_valid_rgb_value(rgb_array[0][index],
+					rgb_array[0]);
+		else
+			return (0);
+	}
+	return (1);
+}
 
 int	get_no_texture(char *no_path, t_data *data)
 {
