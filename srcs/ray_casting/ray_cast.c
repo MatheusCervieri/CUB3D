@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 23:43:34 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 05:01:48 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,17 @@ void	check_intersections(t_data *data)
 	{
 		if (i != 0 && data->rays[i - 1].p == data->rays[i + 1].p)
 			data->rays[i].p = data->rays[i - 1].p;
+		if (i != 0 && i <= 315 && data->rays[i - 1].p == data->rays[i + 5].p)
+		{
+			data->rays[i].p = data->rays[i - 1].p;
+			data->rays[i + 1].p = data->rays[i - 1].p;
+			data->rays[i + 2].p = data->rays[i - 1].p;
+			data->rays[i + 3].p = data->rays[i - 1].p;
+			data->rays[i + 4].p = data->rays[i - 1].p;
+			data->rays[i + 5].p = data->rays[i - 1].p;
+		}
+			
+		//da até para colocar que a posição certa do x; 
 		i++;
 	}
-}	
+}

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 04:26:44 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/12 16:33:14 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,25 +145,19 @@ void get_map_string(t_data *data, int map)
 }
 
 /*
-	-Criar um mapa aleatório e verificar os raios que estão passando entre dois blocos, descobrir o porque e concertar.
-	-Concertar os segfaults e ir em busca dos segfaults.
-	-Bug texturas.
-	-Colocar o mapa no tamanho certo 64 bits. (Não me parece necessário).
-	-A tela fica piscando as vezes. 
-	-Váriavel global. 
-	
-	-Organizar o código que foi feito. 
-	-Inicializar variáveis...
-	-Conectar com a parte da dupla.
-	-Valgrind. 
-	Última coisa:
-	-Colocar o tamanho da janela certo e desenhar já da forma certa na tela.
-	
-	Parser
-	-Testar o parser do mapa. 
-	-If any misconfiguration of any kind is encountered in the file, the program
-	must exit properly and return "Error\n" followed by an explicit error message
-	of your choice.
+	1- Tirar o minimap.
+	2- Valgrind.
+	3- Norm. 
+	4- Testar mapas com problemas. 
+	5- Bug do raio louco. 
+
+	0- Norm moacir - falta o moacir passar a norma na parte dele.
+    1- Valgrind em todo o código. 
+    2- Testar diversos tipos de arquivos cub em busca de erros e corrigir os erros.
+    2.1 - Adicionar "Error\n" nas mensagens de erro. 
+    3- Bug louco das texturas - ao se aproximar das paredes as texturas trocam de cores.
+    4- Bug da textura não estar sendo desenhada por completo em algumas direções - provavelmente a solução é criar uma função is_wall melhor
+    5- Bug dos raios atravessarem entre dois blocos. Acredito que se resolva da mesma forma que o de cima.
 */
 
 int	main(int argc, char **argv)
