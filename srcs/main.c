@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 19:49:31 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:09:52 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,10 @@ int	main(int argc, char **argv)
 	data->ceiling_color = NULL;
 	data->map_array = NULL;
 	if(!validate_arguments(argc, argv))
+	{
+		free(data);
 		return (1);
+	}
 	map = open(argv[1], O_RDONLY);
 	if(map == -1)
 		return (msg_error("Map not found!\n"));
