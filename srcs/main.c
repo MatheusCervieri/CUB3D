@@ -6,11 +6,22 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 23:49:14 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 23:56:09 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	initialization_functions(t_data *data)
+{
+	save_walls_position(data);
+	get_player_first_position(data);
+	check_intersections(data);
+	new_window(data);
+	init_imgs(data);
+	handle_hooks(data);
+	mlx_loop(data->mlx);
+}
 
 void	initialization(t_data *data)
 {
@@ -33,37 +44,10 @@ void	initialization(t_data *data)
 		data->rays[i].p = 0;
 		i++;
 	}
-	save_walls_position(data);
-	get_player_first_position(data);
-	check_intersections(data);
-	new_window(data);
-	init_imgs(data);
-	handle_hooks(data);
-	mlx_loop(data->mlx);
+	initialization_functions(data);
 }
 
-void	get_map_string(t_data *data, int map)
-{
-	char	*map_line;
-	char	*tmp;
-
-	map_line = ft_strdup("");
-	while (map_line)
-	{
-		free(map_line);
-		map_line = get_next_line(map);
-		if (map_line)
-		{
-			tmp = ft_strdup(data->map_string);
-			free(data->map_string);
-			data->map_string = ft_strjoin(tmp,
-					map_line);
-			free(tmp);
-		}
-	}
-}
-
-void init_vars(t_data *data)
+void	init_vars(t_data *data)
 {
 	data->walls_position = NULL;
 	data->map_string = NULL;
@@ -76,7 +60,7 @@ void init_vars(t_data *data)
 	data->map_array = NULL;
 }
 
-void invalid_file(t_data *data)
+void	invalid_file(t_data *data)
 {
 	if (data->no_path == NULL)
 		handle_error(data, "Invalid Texture \n");
