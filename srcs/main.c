@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 20:09:52 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:12:45 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ int	main(int argc, char **argv)
 	int		map;
 
     data = (t_data *)malloc(sizeof(t_data));
+	data->walls_position = NULL;
 	data->map_string = NULL;
 	data->no_path = NULL;
 	data->so_path = NULL;
