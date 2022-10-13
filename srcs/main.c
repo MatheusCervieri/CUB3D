@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 17:08:09 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:55:36 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,9 @@ void initialization(t_data *data)
 {
 	int	i;
 
+	data->walls_position = NULL;
 	data->walls_position = malloc(sizeof(double *) * data->walls_nbs);	
+	
 	i = 0;
 	while (i < data->walls_nbs)
 	{
@@ -182,6 +184,7 @@ int	main(int argc, char **argv)
 		if(!validate_rgb_colors(data, rgbs))
 		return(msg_error("Invalid RGB Color\n"));
 	*/
+	data->walls_nbs = 0;
 	data->map_string = validate_map_params(map,data);
 	data->player_nbs = 0;
 	get_map_string(data, map);
