@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:15:15 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 19:50:33 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:22:52 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void more_free(t_data *data)
 
 void	handle_error(t_data *data, char *error_message)
 {
+	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(error_message, 2);
 	if (data->map_string != NULL)
 		free(data->map_string);

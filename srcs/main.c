@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 20:14:35 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:22:14 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -204,5 +204,13 @@ int	main(int argc, char **argv)
 	get_map_string(data, map);
 	close(map);
 	parse_map(data);
+	if (data->no_path == NULL)
+		handle_error(data, "Invalid Texture \n");
+	if (data->so_path == NULL)
+		handle_error(data, "Invalid Texture \n");
+	if (data->we_path == NULL)
+		handle_error(data, "Invalid Texture \n");
+	if (data->ea_path == NULL)
+		handle_error(data, "Invalid Texture \n");
 	initialization(data);
 }
