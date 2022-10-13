@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 23:39:17 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 23:45:18 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,33 @@ char	*validate_map_params(int map, t_data *data)
 	return (current_line);
 }
 
-
+void	set_player_p(t_data *data, char c, int width, int height)
+{
+	if (c == 'N')
+	{
+		data->player.x = width * MINI_MAP_SIZE;
+		data->player.y = height * MINI_MAP_SIZE;
+		data->player.rotation = 3 * PI / 2;
+	}
+	if (c == 'S')
+	{
+		data->player.x = width * MINI_MAP_SIZE;
+		data->player.y = height * MINI_MAP_SIZE;
+		data->player.rotation = PI / 2;
+	}
+	if (c == 'E')
+	{
+		data->player.x = width * MINI_MAP_SIZE;
+		data->player.y = height * MINI_MAP_SIZE;
+		data->player.rotation = 0;
+	}
+	if (c == 'W')
+	{
+		data->player.x = width * MINI_MAP_SIZE;
+		data->player.y = height * MINI_MAP_SIZE;
+		data->player.rotation = 2 * PI;
+	}	
+}
 
 void	get_player_first_position(t_data *data)
 {
@@ -67,30 +93,7 @@ void	get_player_first_position(t_data *data)
 		j = 0;
 		while (data->map_array[i][j])
 		{
-			if (data->map_array[i][j] == 'N')
-			{
-				data->player.x = width * MINI_MAP_SIZE;
-				data->player.y = height * MINI_MAP_SIZE;
-				data->player.rotation = 3 * PI / 2;
-			}
-			if (data->map_array[i][j] == 'S')
-			{
-				data->player.x = width * MINI_MAP_SIZE;
-				data->player.y = height * MINI_MAP_SIZE;
-				data->player.rotation = PI / 2;
-			}
-			if (data->map_array[i][j] == 'E')
-			{
-				data->player.x = width * MINI_MAP_SIZE;
-				data->player.y = height * MINI_MAP_SIZE;
-				data->player.rotation = 0;
-			}
-			if (data->map_array[i][j] == 'W')
-			{
-				data->player.x = width * MINI_MAP_SIZE;
-				data->player.y = height * MINI_MAP_SIZE;
-				data->player.rotation = 2 * PI;
-			}
+			set_player_p(data, data->map_array[i][j], width, height);
 			width++;
 			j++;
 		}
