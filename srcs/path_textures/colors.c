@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:41:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/10/14 00:09:39 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:09:34 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	get_floor_color(char *rgb, t_data *data)
 		free(tmp);
 		index++;
 	}
-	if(! (color_util(index, &rgb_array, &int_array)))
+	if (!(color_util(index, &rgb_array, &int_array)))
 		return (0);
 	data->floor_color = int_array;
 	free_matrix((void **) rgb_array);
@@ -82,10 +82,10 @@ int	get_ceiling_color(char *rgb, t_data *data)
 		free(tmp);
 		index++;
 	}
-	if(! (color_util(index, &rgb_array, &int_array)))
+	if (!(color_util(index, &rgb_array, &int_array)))
 		return (0);
 	data->ceiling_color = int_array;
-	free_matrix( (void ** ) rgb_array);
+	free_matrix((void **) rgb_array);
 	return (1);
 }
 
