@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 20:22:14 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 20:29:34 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,5 +212,9 @@ int	main(int argc, char **argv)
 		handle_error(data, "Invalid Texture \n");
 	if (data->ea_path == NULL)
 		handle_error(data, "Invalid Texture \n");
+	if (data->floor_color == NULL)
+		handle_error(data, "Invalid Color \n");
+	if (data->ceiling_color == NULL)
+		handle_error(data, "Invalid Color \n");
 	initialization(data);
 }
