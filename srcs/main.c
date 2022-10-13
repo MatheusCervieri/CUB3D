@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 17:55:36 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:41:54 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void initialization(t_data *data)
 		i++;
 	}
 	i = 0;
-	while (i < 320)
+	while (i < 326)
 	{
 		data->rays[i].x = 0;
 		data->rays[i].y = 0;
@@ -175,6 +175,13 @@ int	main(int argc, char **argv)
 	int		map;
 
     data = (t_data *)malloc(sizeof(t_data));
+	data->no_path = NULL;
+	data->so_path = NULL;
+	data->we_path = NULL;
+	data->ea_path = NULL;
+	data->floor_color = NULL;
+	data->ceiling_color = NULL;
+	data->map_array = NULL;
 	if(!validate_arguments(argc, argv))
 		return (1);
 	map = open(argv[1], O_RDONLY);

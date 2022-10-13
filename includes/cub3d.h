@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 00:45:16 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:13:06 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ typedef struct s_data
 	int			texture3[64][64];
 	int			texture4[64][64];
 	void		*win_ptr;
-	t_ray		rays[320];
+	t_ray		rays[326];
 	t_img		txt_img[4];
 	t_player	player;
 	t_img		game_img;
