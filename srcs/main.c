@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 18:51:02 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 19:49:31 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ void initialization(t_data *data)
 	check_intersections(data);
 	new_window(data);
 	init_imgs(data);
-	init_minimap_imgs(data);
 	handle_hooks(data);
 	mlx_loop(data->mlx);
 }
@@ -175,6 +174,7 @@ int	main(int argc, char **argv)
 	int		map;
 
     data = (t_data *)malloc(sizeof(t_data));
+	data->map_string = NULL;
 	data->no_path = NULL;
 	data->so_path = NULL;
 	data->we_path = NULL;

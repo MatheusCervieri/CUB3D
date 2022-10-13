@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/11 17:48:02 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 19:41:57 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ void	draw_3d_world(t_data *data)
 		}
 	i++;
 	}
-	//mlx_put_image_to_window(data->mlx, data->win_ptr,
-		//data->game_img.mlx_img, 0, 0);
-	draw_minimap(data);
+	mlx_put_image_to_window(data->mlx, data->win_ptr, data->game_img.mlx_img, 0, 0);
+	//draw_minimap(data);
 }

@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 18:13:06 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 19:44:51 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,5 +192,6 @@ void	find_intersection_point_v(t_data *data,
 
 
 int get_texture_pixel(t_data *data, int x, int y, int pos);
+void more_free(t_data *data);
 	
 #endif
