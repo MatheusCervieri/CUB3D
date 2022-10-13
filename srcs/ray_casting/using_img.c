@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 16:24:24 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 21:19:21 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 21:28:17 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	img_pix_get(t_img *img, int x, int y)
 	return (*(int *)pixel);
 }
 
-void	render_square(t_img *img, int color, int x, int y, int real_x, int real_y)
+void	render_square(t_img *img, int color, int x, int y)
 {
 	int	i;
 	int	j;
@@ -48,7 +48,7 @@ void	render_square(t_img *img, int color, int x, int y, int real_x, int real_y)
 		j = 0;
 		while (j < x)
 		{
-			img_pix_put(img, j++ + real_y, i + real_x, color);
+			img_pix_put(img, j++, i, color);
 		}
 		++i;
 	}

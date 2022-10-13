@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 21:09:01 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 21:27:29 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void 	rotate_left(t_data *data);
 
 //draw
 void	img_pix_put(t_img *img, int x, int y, int color);
-void	render_square(t_img *img, int color, int x, int y, int real_x, int real_y);
+void	render_square(t_img *img, int color, int x, int y);
 void	init_imgs(t_data *data);
 void	draw_minimap(t_data *data);
 

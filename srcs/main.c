@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 13:49:14 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/13 23:39:17 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char	*validate_map_params(int map, t_data *data)
 	}
 	return (current_line);
 }
+
+
 
 void	get_player_first_position(t_data *data)
 {
@@ -149,12 +151,8 @@ void	get_map_string(t_data *data, int map)
 	}
 }
 
-int	main(int argc, char **argv)
+void init_vars(t_data *data)
 {
-	t_data	*data;
-	int		map;
-
-	data = (t_data *)malloc(sizeof(t_data));
 	data->walls_position = NULL;
 	data->map_string = NULL;
 	data->no_path = NULL;
@@ -164,6 +162,31 @@ int	main(int argc, char **argv)
 	data->floor_color = NULL;
 	data->ceiling_color = NULL;
 	data->map_array = NULL;
+}
+
+void invalid_file(t_data *data)
+{
+	if (data->no_path == NULL)
+		handle_error(data, "Invalid Texture \n");
+	if (data->so_path == NULL)
+		handle_error(data, "Invalid Texture \n");
+	if (data->we_path == NULL)
+		handle_error(data, "Invalid Texture \n");
+	if (data->ea_path == NULL)
+		handle_error(data, "Invalid Texture \n");
+	if (data->floor_color == NULL)
+		handle_error(data, "Invalid Color \n");
+	if (data->ceiling_color == NULL)
+		handle_error(data, "Invalid Color \n");
+}
+
+int	main(int argc, char **argv)
+{
+	t_data	*data;
+	int		map;
+
+	data = (t_data *)malloc(sizeof(t_data));
+	init_vars(data);
 	if (!validate_arguments(argc, argv))
 	{
 		free(data);
@@ -181,17 +204,6 @@ int	main(int argc, char **argv)
 	get_map_string(data, map);
 	close(map);
 	parse_map(data);
-	if (data->no_path == NULL)
-		handle_error(data, "Invalid Texture \n");
-	if (data->so_path == NULL)
-		handle_error(data, "Invalid Texture \n");
-	if (data->we_path == NULL)
-		handle_error(data, "Invalid Texture \n");
-	if (data->ea_path == NULL)
-		handle_error(data, "Invalid Texture \n");
-	if (data->floor_color == NULL)
-		handle_error(data, "Invalid Color \n");
-	if (data->ceiling_color == NULL)
-		handle_error(data, "Invalid Color \n");
+	invalid_file(data);
 	initialization(data);
 }
