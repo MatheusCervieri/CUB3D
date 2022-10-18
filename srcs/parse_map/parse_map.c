@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 09:19:05 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 21:01:53 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/18 15:00:42 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	count_players(t_data *data, char c)
 void	only_valid_caracters(t_data *data, char c)
 {
 	if (c != '\n' && !ft_strrchr("01NSEW ", c))
-		handle_error(data, "Invalid char found in the map!");
+		handle_error(data, "Invalid char found in the file!");
 }
 
 void	parse_map(t_data *data)
