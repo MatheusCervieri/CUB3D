@@ -1,10 +1,10 @@
-NO texture3.xpm
-SO texture4.xpm
-WE texture.xpm
-EA texture2.xpm
+NO texture_red.xpm
+SO texture_green.xpm
+WE texture_orange.xpm
+EA texture_purple.xpm
 
-F 220,100,0
-C 225,30,0
+F 30, 30, 30
+C 15, 15, 15 
 
 111111111111111111
 100000000000000001
