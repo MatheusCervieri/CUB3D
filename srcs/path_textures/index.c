@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 19:56:23 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/10/14 00:09:45 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:54:30 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	get_no_texture(char *no_path, t_data *data)
 		close(fd);
 		return (1);
 	}
+	if (parsed_path != NULL)
+		free(parsed_path);
 	return (0);
 }
 
@@ -54,6 +56,8 @@ int	get_so_texture(char *so_path, t_data *data)
 		close(fd);
 		return (1);
 	}
+	if (parsed_path != NULL)
+		free(parsed_path);
 	return (0);
 }
 
@@ -70,6 +74,8 @@ int	get_ea_texture(char *ea_path, t_data *data)
 		close(fd);
 		return (1);
 	}
+	if (parsed_path != NULL)
+		free(parsed_path);
 	return (0);
 }
 
@@ -86,5 +92,7 @@ int	get_we_texture(char *we_path, t_data *data)
 		close(fd);
 		return (1);
 	}
+	if (parsed_path != NULL)
+		free(parsed_path);
 	return (0);
 }

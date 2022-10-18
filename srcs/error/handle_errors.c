@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:15:15 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 13:30:46 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:24:30 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,15 @@ void	more_free2(t_data *data)
 	int	i;
 
 	i = 0;
-	while (data->map_array[i])
-	{
-		free(data->map_array[i]);
-		i++;
-	}
 	if (data->map_array != NULL)
+	{
+		while (data->map_array[i])
+		{
+			free(data->map_array[i]);
+			i++;
+		}
 		free(data->map_array);
+	}
 	i = 0;
 	if (data->walls_position != NULL)
 	{

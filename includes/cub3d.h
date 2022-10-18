@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/14 00:26:55 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:39:02 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct s_data
 	t_img		mm_wall_img;
 	t_img		mm_bg_img;
 	t_img		test_img;
+	int			texture_ok;
 	float		tan;
 	float		rx;
 	float		ry;

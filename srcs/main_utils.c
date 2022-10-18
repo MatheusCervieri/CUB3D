@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:47:33 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 23:56:22 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/18 14:52:30 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,10 @@ char	*validate_map_params(int map, t_data *data)
 			break ;
 		free(current_line);
 		if (status == 0)
-			return ("");
+		{
+			data->texture_ok = 0;
+			return (ft_strdup("INVALID_TEXTURE"));
+		}
 	}
 	return (current_line);
 }
@@ -107,7 +110,7 @@ void	get_map_string(t_data *data, int map)
 {
 	char	*map_line;
 	char	*tmp;
-
+	
 	map_line = ft_strdup("");
 	while (map_line)
 	{
