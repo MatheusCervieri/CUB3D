@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/19 01:58:19 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/19 02:23:43 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ int	main(int argc, char **argv)
 	data->walls_nbs = 0;
 	data->map_string = validate_map_params(map, data);
 	data->player_nbs = 0;
+	//converter rgb para hexadecimal. 
 	*data->floor_color = 0x000000;
 	*data->ceiling_color = 0x08000;
 	get_map_string(data, map);

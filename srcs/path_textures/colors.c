@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:41:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/10/13 17:09:34 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/19 02:26:07 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	get_floor_color(char *rgb, t_data *data)
 	if (!(color_util(index, &rgb_array, &int_array)))
 		return (0);
 	data->floor_color = int_array;
+	printf("%d\n", *data->floor_color);
 	free_matrix((void **) rgb_array);
 	return (1);
 }
