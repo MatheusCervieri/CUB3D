@@ -1,7 +1,7 @@
-NO texture3.xpm
-SO texture4.xpm
-WE texture.xpm
-EA texture2.xpm
+NO ./textures/texture_red.xpm
+SO ./textures/texture_green.xpm
+WE ./textures/texture_orange.xpm
+EA ./textures/texture_purple.xpm
 
 C 225,30,0
 

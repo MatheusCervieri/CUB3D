@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/19 01:13:30 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/19 04:11:36 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ void	get_ray_type_v_h(t_data *data,
 		data->rays[i].x_texture = (int)(data->rays[i].y) % 64;
 		if ((data->rays[i].rotation)
 			< PI / 2 || data->rays[i].rotation > 3 * PI / 2)
-				data->rays[i].p = 2;
+				data->rays[i].p = 3;
 		else
-			data->rays[i].p = 3;
+			data->rays[i].p = 2;
 	}
 }
 
