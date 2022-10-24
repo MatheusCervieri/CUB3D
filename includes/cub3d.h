@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/24 16:07:49 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 23:35:02 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,7 +187,7 @@ void	get_player_first_position(t_data *data);
 int		check_type(char *string, t_data *data);
 char	*validate_map_params(int map, t_data *data);
 void	get_map_string(t_data *data, int map);
-int		color_util(int index, char ***rgb_array, int **int_array);
+int		color_util(int index, char ***rgb_array, int *int_array);
 int		is_valid_rgb_value(char *rgb, char **rgbs);
 
 #endif

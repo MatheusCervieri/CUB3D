@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/24 16:13:41 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 23:31:17 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,18 @@ void	initialization_functions(t_data *data)
 	init_imgs(data);
 	handle_hooks(data);
 	mlx_loop(data->mlx);
+}
+
+void	invalid_file(t_data *data)
+{
+	if (data->no_path == NULL)
+		handle_error(data, "Invalid Texture \n");
+	if (data->so_path == NULL)
+		handle_error(data, "Invalid Texture \n");
+	if (data->we_path == NULL)
+		handle_error(data, "Invalid Texture \n");
+	if (data->ea_path == NULL)
+		handle_error(data, "Invalid Texture \n");
 }
 
 void	initialization(t_data *data)
@@ -58,18 +70,6 @@ void	init_vars(t_data *data)
 	data->ea_path = NULL;
 	data->map_array = NULL;
 	data->texture_ok = 1;
-}
-
-void	invalid_file(t_data *data)
-{
-	if (data->no_path == NULL)
-		handle_error(data, "Invalid Texture \n");
-	if (data->so_path == NULL)
-		handle_error(data, "Invalid Texture \n");
-	if (data->we_path == NULL)
-		handle_error(data, "Invalid Texture \n");
-	if (data->ea_path == NULL)
-		handle_error(data, "Invalid Texture \n");
 }
 
 int	main(int argc, char **argv)
