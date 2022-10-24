@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/25 00:25:44 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 23:55:05 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ typedef struct s_data
 	int			texture4[64][64];
 	void		*win_ptr;
 	t_ray		rays[326];
-	t_ray		c_rays[4];
 	t_img		txt_img[4];
 	t_player	player;
 	t_img		game_img;
@@ -115,9 +114,6 @@ typedef struct s_data
 	size_t		tmp_i;
 }				t_data;
 
-int		check_intersections_c_ray(t_data *data);
-void	get_ray_type_v_h(t_data *data,
-	float distance_horizontal, float distance_vertical, int i);
 void	parse_map(t_data *data);
 //Arguments parsing
 int		validate_map_extension(char *map_name);

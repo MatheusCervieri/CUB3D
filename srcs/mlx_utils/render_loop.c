@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 21:47:18 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/25 00:05:35 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:29:17 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,8 @@ int	player_on_wall(t_data *data, float x, float y)
 
 int	render_loop(t_data *data)
 {
+	check_intersections(data);
 	if (player_on_wall(data, data->player.x, data->player.y) != 1)
-	{
-		check_intersections(data);
 		draw_3d_world(data);
-	}
 	return (0);
 }
