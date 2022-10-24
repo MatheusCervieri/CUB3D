@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/24 17:22:30 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 17:55:16 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,16 @@ void	init_imgs(t_data *data)
 {
 	init_img(data, &data->game_img, WINDOW_WIDTH, WINDOW_HEIGHT);
 	init_img(data, &data->mm_bg_img, BACKGROUND_SIZE, BACKGROUND_SIZE);
+
+	
+	init_imgs2(data);
 }
 
 void	draw_floor_ceiling(t_data *data)
 {
-	render_square(&data->game_img, data->floor_color, WINDOW_WIDTH,
+	render_square(&data->game_img, 0xffa500, WINDOW_WIDTH,
 		WINDOW_HEIGHT);
-	render_square(&data->game_img, data->ceiling_color, WINDOW_WIDTH,
+	render_square(&data->game_img, 0x0000ff, WINDOW_WIDTH,
 		WINDOW_HEIGHT / 2);
 }
 
@@ -68,4 +71,5 @@ void	draw_3d_world(t_data *data)
 	}
 	mlx_put_image_to_window(data->mlx, data->win_ptr,
 		data->game_img.mlx_img, 0, 0);
+	draw_minimap(data);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/20 02:38:24 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/10/24 18:01:07 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 # define WINDOW_HEIGHT 200
 
 # define PLAYER_SIZE 64
-# define BACKGROUND_SIZE 600
+# define BACKGROUND_SIZE 800
 # define WALL_SIZE 64
 # define DIR_SIZE 32
 
@@ -113,6 +113,10 @@ typedef struct s_data
 	float		xo;
 	size_t		tmp_i;
 }				t_data;
+
+
+void init_imgs2(t_data *data);
+void draw_minimap(t_data *data);
 
 void	parse_map(t_data *data);
 //Arguments parsing

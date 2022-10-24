@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 20:39:23 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/13 19:42:12 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 17:44:13 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	new_window(t_data *data)
 	data->mlx = mlx_init();
 	if (data->mlx == NULL)
 		handle_error(data, "MLX Error - Can't initialise mlx\n");
-	data->win_ptr = mlx_new_window(data->mlx, 320, 200, "CUB3D");
+	data->win_ptr = mlx_new_window(data->mlx, 800, 800, "CUB3D");
 	texture_initialization(data);
 }

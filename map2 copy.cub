@@ -1,7 +1,7 @@
-NO texture.xpm
-SO texture2.xpm
-WE texture3.xpm
-EA texture4.xpm
+NO ./textures/texture_red.xpm
+SO ./textures/texture_green.xpm
+WE ./textures/texture_orange.xpm
+EA ./textures/texture_purple.xpm
 
 F 128,128,128
 
