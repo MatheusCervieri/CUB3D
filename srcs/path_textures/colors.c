@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:41:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/10/24 16:22:25 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 20:38:48 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,25 +63,28 @@ int	get_floor_color(char *rgb, t_data *data)
 {
 	char	**rgb_array;
 	int		index;
-	int		*int_array;
+	int		int_array[3];
 	char	*tmp;
 
 	rgb_array = ft_split(rgb, ',');
-	int_array = (int *)malloc(sizeof(int) * 3);
 	index = 0;
 	while (rgb_array[index])
 	{
 		tmp = ft_strdup(rgb_array[index]);
 		free(rgb_array[index]);
 		rgb_array[index] = ft_strtrim(tmp, "F \n");
+		int_array[index] = ft_atoi(rgb_array[index]);
 		free(tmp);
 		index++;
 	}
-	if (!(color_util(index, &rgb_array, &int_array)))
-		return (0);
+	/* if (!(color_util(index, &rgb_array, &int_array)))
+		return (0); */
 	data->floor_color = convert_to_hex(int_array);
+	printf("%d\n", data->floor_color);
+	printf("R %d\n", int_array[0]);
+	printf("G %d\n", int_array[1]);
+	printf("B %d\n", int_array[2]);
 	free_matrix((void **) rgb_array);
-	free(int_array);
 	return (1);
 }
 
@@ -89,12 +92,11 @@ int	get_ceiling_color(char *rgb, t_data *data)
 {
 	char	**rgb_array;
 	int		index;
-	int		*int_array;
+	int		int_array[3];
 	char	*tmp;
 
 	rgb_array = ft_split(rgb, ',');
 	index = 0;
-	int_array = (int *)malloc(sizeof(int) * 3);
 	while (rgb_array[index])
 	{
 		tmp = ft_strdup(rgb_array[index]);
@@ -103,11 +105,10 @@ int	get_ceiling_color(char *rgb, t_data *data)
 		free(tmp);
 		index++;
 	}
-	if (!(color_util(index, &rgb_array, &int_array)))
-		return (0);
+	/* if (!(color_util(index, &rgb_array, int_array)))
+		return (0); */
 	data->ceiling_color = convert_to_hex(int_array);
 	free_matrix((void **) rgb_array);
-	free(int_array);
 
 	return (1);
 }

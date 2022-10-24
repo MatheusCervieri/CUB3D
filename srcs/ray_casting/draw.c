@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <coder@student.42.fr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/24 17:55:16 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 20:18:06 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	init_imgs(t_data *data)
 
 void	draw_floor_ceiling(t_data *data)
 {
-	render_square(&data->game_img, 0xffa500, WINDOW_WIDTH,
+	render_square(&data->game_img, data->floor_color, WINDOW_WIDTH,
 		WINDOW_HEIGHT);
-	render_square(&data->game_img, 0x0000ff, WINDOW_WIDTH,
+	render_square(&data->game_img, data->ceiling_color, WINDOW_WIDTH,
 		WINDOW_HEIGHT / 2);
 }
 
