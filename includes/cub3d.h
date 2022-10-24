@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/24 23:35:02 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 23:55:05 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,5 +189,7 @@ char	*validate_map_params(int map, t_data *data);
 void	get_map_string(t_data *data, int map);
 int		color_util(int index, char ***rgb_array, int *int_array);
 int		is_valid_rgb_value(char *rgb, char **rgbs);
+int		convert_to_hex(int *rgb);
+int		validate_rgb_colors(t_data *data, char **rgbs);
 
 #endif
