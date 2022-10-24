@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/24 20:16:53 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:16:11 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,28 +58,6 @@ void	get_ray_height(t_data *data, int i)
 		- data->rays[i].line_height / 2;
 }
 
-void	fix_texture(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	while (i < 320)
-	{
-		if (i != 0 && data->rays[i - 1].p == data->rays[i + 1].p)
-			data->rays[i].p = data->rays[i - 1].p;
-		if (i != 0 && data->rays[i - 1].p == data->rays[i + 5].p)
-		{
-			data->rays[i].p = data->rays[i - 1].p;
-			data->rays[i + 1].p = data->rays[i - 1].p;
-			data->rays[i + 2].p = data->rays[i - 1].p;
-			data->rays[i + 3].p = data->rays[i - 1].p;
-			data->rays[i + 4].p = data->rays[i - 1].p;
-			data->rays[i + 5].p = data->rays[i - 1].p;
-		}
-		i++;
-	}
-}
-
 void	check_intersections_utils(t_data *data,
 		float *distance_horizontal, float *distance_vertical, int i)
 {
@@ -114,5 +92,4 @@ void	check_intersections(t_data *data)
 			&distance_vertical, i);
 		i++;
 	}
-	//fix_texture(data);
 }

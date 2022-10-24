@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 15:39:00 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/24 19:40:39 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:22:09 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	calculate_horizontal_intersections(t_data *data,
 	(void)rounded_down_number;
 	if (rotation > PI)
 	{
-		data->ry = (((int)data->player.y>>6)<<6) -0.0001;
+		data->ry = (((int)data->player.y >> 6) << 6) - 0.0001;
 		data->rx = (data->player.y - data->ry) * data->tan + data->player.x;
 		data->yo = -MINI_MAP_SIZE;
 		data->xo = -data->yo * data->tan;
@@ -26,7 +26,7 @@ int	calculate_horizontal_intersections(t_data *data,
 	}
 	else if (rotation < PI)
 	{
-		data->ry = (((int)data->player.y>>6)<<6)+64;
+		data->ry = (((int)data->player.y >> 6) << 6) + 64;
 		data->rx = (data->player.y - data->ry) * data->tan + data->player.x;
 		data->yo = MINI_MAP_SIZE;
 		data->xo = -data->yo * data->tan;
@@ -54,7 +54,7 @@ int	calculate_vertical_intersections(t_data *data,
 	(void)rounded_down_number;
 	if (rotation > PI / 2 && rotation < 3 * PI / 2)
 	{
-		data->rx = (((int)data->player.x>>6)<<6) -0.0001;
+		data->rx = (((int)data->player.x >> 6) << 6) - 0.0001;
 		data->ry = (data->player.x - data->rx) * data->tan + data->player.y;
 		data->xo = -MINI_MAP_SIZE;
 		data->yo = -data->xo * data->tan;
@@ -62,7 +62,7 @@ int	calculate_vertical_intersections(t_data *data,
 	}
 	if (rotation < PI / 2 || rotation > 3 * PI / 2)
 	{
-		data->rx = (((int)data->player.x>>6)<<6)+64; 
+		data->rx = (((int)data->player.x >> 6) << 6) + 64;
 		data->ry = (data->player.x - data->rx) * data->tan + data->player.y;
 		data->xo = MINI_MAP_SIZE;
 		data->yo = -data->xo * data->tan;
