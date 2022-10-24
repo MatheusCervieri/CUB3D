@@ -39,6 +39,11 @@ int	is_valid_rgb_value(char *rgb, char **rgbs)
 	return (value);
 }
 
+int convert_to_hex(int *rgb)
+{
+	return (rgb[0] << 16 | rgb[1] << 8 | rgb[])
+}
+
 int	get_floor_color(char *rgb, t_data *data)
 {
 	char	**rgb_array;
@@ -59,9 +64,9 @@ int	get_floor_color(char *rgb, t_data *data)
 	}
 	if (!(color_util(index, &rgb_array, &int_array)))
 		return (0);
-	data->floor_color = int_array;
-	printf("%d\n", *data->floor_color);
+	data->floor_color = convert_to_hex(int_array);
 	free_matrix((void **) rgb_array);
+	free(int_array);
 	return (1);
 }
 
@@ -85,8 +90,9 @@ int	get_ceiling_color(char *rgb, t_data *data)
 	}
 	if (!(color_util(index, &rgb_array, &int_array)))
 		return (0);
-	data->ceiling_color = int_array;
+	data->ceiling_color = convert_to_hex(int_array);
 	free_matrix((void **) rgb_array);
+	free(int_array);
 	return (1);
 }
 

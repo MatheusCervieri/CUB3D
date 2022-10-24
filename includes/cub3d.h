@@ -83,8 +83,8 @@ typedef struct s_data
 	char		*so_path;
 	char		*we_path;
 	char		*ea_path;
-	int			*floor_color;
-	int			*ceiling_color;
+	int			floor_color;
+	int			ceiling_color;
 	int			walls_nbs;
 	float		**walls_position;
 	void		*mlx;
