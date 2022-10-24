@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/22 22:41:48 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/24 19:26:25 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 20:16:53 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	get_ray_type_v_h(t_data *data,
 		data->rays[i].x = data->rays[i].h_x;
 		data->rays[i].y = data->rays[i].h_y;
 		data->rays[i].distance_to_wall = distance_horizontal;
-		data->rays[i].x_texture = (int) floor(data->rays[i].x) % 64;
+		data->rays[i].x_texture = (int) data->rays[i].x % 64;
 		if (data->rays[i].rotation > 0 && data->rays[i].rotation < PI)
 			data->rays[i].p = 1;
 		else
