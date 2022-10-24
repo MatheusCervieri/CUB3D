@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 14:49:02 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/24 17:36:48 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 20:12:04 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,15 @@ int	is_wall_h(t_data *data, float x, float y)
 {
 	int	i;
 
+	int mx;
+	int my;
+	mx=(int)(x) >> 6;
+	
+	my=(int)(y) >> 6;
 	i = 0;
 	while (i < data->walls_nbs)
 	{
-		if (data->walls_position[i][0] == floor(x / MINI_MAP_SIZE)
-			&& data->walls_position[i][1] == floor(y / MINI_MAP_SIZE))
+		if (data->walls_position[i][0] == mx && data->walls_position[i][1] == my)
 		{
 			return (1);
 		}
@@ -32,12 +36,14 @@ int	is_wall_h(t_data *data, float x, float y)
 int	is_wall_v(t_data *data, float x, float y)
 {
 	int	i;
-
+	int mx;
+	int my;
+	mx=(int)(x)>>6; my=(int)(y)>>6;
 	i = 0;
 	while (i < data->walls_nbs)
 	{
-		if (data->walls_position[i][0] == floor(x / MINI_MAP_SIZE)
-			&& data->walls_position[i][1] == floor(y / MINI_MAP_SIZE))
+		if (data->walls_position[i][0] == mx
+			&& data->walls_position[i][1] == my)
 			return (1);
 		i++;
 	}
