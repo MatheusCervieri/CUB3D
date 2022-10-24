@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 12:15:15 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/18 14:24:30 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 15:48:19 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,6 @@ void	more_free(t_data *data)
 		free(data->we_path);
 	if (data->ea_path != NULL)
 		free(data->ea_path);
-	if (data->floor_color != NULL)
-		free(data->floor_color);
-	if (data->ceiling_color != NULL)
-		free(data->ceiling_color);
 	more_free2(data);
 }
 

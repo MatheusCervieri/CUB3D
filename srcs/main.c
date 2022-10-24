@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/19 04:16:43 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 15:47:47 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,6 @@ void	init_vars(t_data *data)
 	data->so_path = NULL;
 	data->we_path = NULL;
 	data->ea_path = NULL;
-	data->floor_color = NULL;
-	data->ceiling_color = NULL;
 	data->map_array = NULL;
 	data->texture_ok = 1;
 }
@@ -71,10 +69,6 @@ void	invalid_file(t_data *data)
 		handle_error(data, "Invalid Texture \n");
 	if (data->ea_path == NULL)
 		handle_error(data, "Invalid Texture \n");
-	if (data->floor_color == NULL)
-		handle_error(data, "Invalid Color \n");
-	if (data->ceiling_color == NULL)
-		handle_error(data, "Invalid Color \n");
 }
 
 int	main(int argc, char **argv)
@@ -99,8 +93,6 @@ int	main(int argc, char **argv)
 	data->map_string = validate_map_params(map, data);
 	data->player_nbs = 0;
 	//converter rgb para hexadecimal. 
-	*data->floor_color = 0x008000;
-	*data->ceiling_color = 0x00080;
 	get_map_string(data, map);
 	close(map);
 	if(data->texture_ok == 0)

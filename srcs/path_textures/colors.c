@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:41:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/10/20 02:24:59 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:22:25 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	is_valid_rgb_value(char *rgb, char **rgbs)
 
 int convert_to_hex(int *rgb)
 {
-	return (rgb[0] << 16 | rgb[1] << 8 | rgb[])
+	return (rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
 }
 
 int	get_floor_color(char *rgb, t_data *data)

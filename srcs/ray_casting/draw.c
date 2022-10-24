@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/19 01:39:24 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 17:22:30 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ void	init_imgs(t_data *data)
 
 void	draw_floor_ceiling(t_data *data)
 {
-	render_square(&data->game_img, *data->floor_color, WINDOW_WIDTH,
+	render_square(&data->game_img, data->floor_color, WINDOW_WIDTH,
 		WINDOW_HEIGHT);
-	render_square(&data->game_img, *data->ceiling_color, WINDOW_WIDTH,
+	render_square(&data->game_img, data->ceiling_color, WINDOW_WIDTH,
 		WINDOW_HEIGHT / 2);
 }
 
