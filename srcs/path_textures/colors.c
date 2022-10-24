@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 20:41:17 by mamaro-d          #+#    #+#             */
-/*   Updated: 2022/10/19 02:26:07 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/20 02:24:59 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,21 @@ void	free_matrix(void **matrix)
 	matrix = NULL;
 }
 
+void clear_rgb_array(char ***rgb_array)
+{
+	char	*tmp;
+	int		index;
+
+	index = -1;
+	while ((*rgb_array)[++index])
+	{
+		tmp = ft_strdup((*rgb_array)[index]);
+		free((*rgb_array)[index]);
+		(*rgb_array)[index] = ft_strtrim(tmp, "CF \n");
+		free(tmp);
+	}
+}
+
 int	is_valid_rgb_value(char *rgb, char **rgbs)
 {
 	int	value;
@@ -33,10 +48,10 @@ int	is_valid_rgb_value(char *rgb, char **rgbs)
 	value = ft_atoi(rgb);
 	if (value > 255 || value < 0)
 	{
-		free_matrix((void **) rgbs);
-		return (-1);
+		free_matrix((void **)rgbs);
+		return (0);
 	}
-	return (value);
+	return (1);
 }
 
 int convert_to_hex(int *rgb)
@@ -93,6 +108,7 @@ int	get_ceiling_color(char *rgb, t_data *data)
 	data->ceiling_color = convert_to_hex(int_array);
 	free_matrix((void **) rgb_array);
 	free(int_array);
+
 	return (1);
 }
 

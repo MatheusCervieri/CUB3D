@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mamaro-d <mamaro-d@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 20:24:39 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/18 14:39:02 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/20 02:38:24 by mamaro-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,7 @@ int		get_we_texture(char *we_path, t_data *data);
 int		get_floor_color(char *rgb, t_data *data);
 int		get_ceiling_color(char *rgb, t_data *data);
 int		validate_rgb_colors(t_data *data, char **rgbs);
+char	*ft_rgb_to_hex(int rgb);
 //print a new error msg on stderr and returns 1
 int		msg_error(char *error);
 //error or close
