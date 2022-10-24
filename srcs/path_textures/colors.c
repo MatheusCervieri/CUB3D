@@ -54,7 +54,12 @@ int	is_valid_rgb_value(char *rgb, char **rgbs)
 	return (1);
 }
 
-/*int	get_floor_color(char *rgb, t_data *data)
+int convert_to_hex(int *rgb)
+{
+	return (rgb[0] << 16 | rgb[1] << 8 | rgb[])
+}
+
+int	get_floor_color(char *rgb, t_data *data)
 {
 	char	**rgb_array;
 	int		index;
@@ -74,71 +79,13 @@ int	is_valid_rgb_value(char *rgb, char **rgbs)
 	}
 	if (!(color_util(index, &rgb_array, &int_array)))
 		return (0);
-	data->floor_color = int_array;
-	printf("%d\n", *data->floor_color);
+	data->floor_color = convert_to_hex(int_array);
 	free_matrix((void **) rgb_array);
-	return (1);
-}*/
-
-
-
-int get_ceiling_color(char *rgb, t_data *data)
-{
-	char	**rgb_array;
-	char	*hex;
-	char	*tmp;
-	int		i;
-
-	rgb_array = ft_split(rgb, ',');
-	hex = ft_strdup("0x");
-	i = -1;
-	while(rgb_array[++i])
-		if(!is_valid_rgb_value(rgb_array[i], rgb_array))
-			return (0);
-	
-	i = -1;
-	clear_rgb_array(&rgb_array);
-	while(rgb_array[++i])
-	{
-		tmp = ft_strdup(hex);
-		free(hex);
-		hex = ft_strjoin(tmp, ft_rgb_to_hex(ft_atoi(rgb_array[i])));
-		free(tmp);
-	}
-	free_matrix((void **)rgb_array);
-	data->ceiling_color = hex;
+	free(int_array);
 	return (1);
 }
 
-int get_floor_color(char *rgb, t_data *data)
-{
-	char	**rgb_array;
-	char	*hex;
-	char	*tmp;
-	int		i;
-
-	rgb_array = ft_split(rgb, ',');
-	hex = ft_strdup("0x");
-	i = -1;
-	while(rgb_array[++i])
-		if(!is_valid_rgb_value(rgb_array[i], rgb_array))
-			return (0);
-	
-	i = -1;
-	clear_rgb_array(&rgb_array);
-	while(rgb_array[++i])
-	{
-		tmp = ft_strdup(hex);
-		free(hex);
-		hex = ft_strjoin(tmp, ft_rgb_to_hex(ft_atoi(rgb_array[i])));
-		free(tmp);
-	}
-	free_matrix((void **)rgb_array);
-	data->floor_color = hex;
-	return (1);
-}
-
-/*int	get_ceiling_color(char *rgb, t_data *data)
+int	get_ceiling_color(char *rgb, t_data *data)
 {
 	char	**rgb_array;
 	int		index;
@@ -158,10 +105,12 @@ int get_floor_color(char *rgb, t_data *data)
 	}
 	if (!(color_util(index, &rgb_array, &int_array)))
 		return (0);
-	data->ceiling_color = int_array;
-	free_matrix(&rgb_array);
+	data->ceiling_color = convert_to_hex(int_array);
+	free_matrix((void **) rgb_array);
+	free(int_array);
+
 	return (1);
-}*/
+}
 
 int	validate_rgb_colors(t_data *data, char **rgbs)
 {
