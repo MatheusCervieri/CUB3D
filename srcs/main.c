@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/11 04:24:46 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/24 15:47:47 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:12:56 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ void	initialization(t_data *data)
 {
 	int	i;
 
+	invalid_file(data);
 	data->walls_position = NULL;
 	data->walls_position = malloc(sizeof(double *) * data->walls_nbs);
 	i = 0;
@@ -92,12 +93,11 @@ int	main(int argc, char **argv)
 	data->walls_nbs = 0;
 	data->map_string = validate_map_params(map, data);
 	data->player_nbs = 0;
-	//converter rgb para hexadecimal. 
 	get_map_string(data, map);
 	close(map);
-	if(data->texture_ok == 0)
+	if (data->texture_ok == 0)
 		handle_error(data, "Invalid Texture \n");
 	parse_map(data);
-	invalid_file(data);
 	initialization(data);
 }
+

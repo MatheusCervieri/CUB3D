@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:47:33 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/18 14:52:30 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/24 16:08:53 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	get_map_string(t_data *data, int map)
 {
 	char	*map_line;
 	char	*tmp;
-	
+
 	map_line = ft_strdup("");
 	while (map_line)
 	{
