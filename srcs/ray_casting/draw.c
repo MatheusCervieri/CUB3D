@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamaro-d <coder@student.42.fr>             +#+  +:+       +#+        */
+/*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/21 17:59:31 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/24 20:18:06 by mamaro-d         ###   ########.fr       */
+/*   Updated: 2022/10/24 22:54:51 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ void	init_imgs(t_data *data)
 {
 	init_img(data, &data->game_img, WINDOW_WIDTH, WINDOW_HEIGHT);
 	init_img(data, &data->mm_bg_img, BACKGROUND_SIZE, BACKGROUND_SIZE);
-
-	
-	init_imgs2(data);
 }
 
 void	draw_floor_ceiling(t_data *data)
@@ -71,5 +68,4 @@ void	draw_3d_world(t_data *data)
 	}
 	mlx_put_image_to_window(data->mlx, data->win_ptr,
 		data->game_img.mlx_img, 0, 0);
-	draw_minimap(data);
 }
