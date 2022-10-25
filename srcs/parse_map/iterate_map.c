@@ -58,7 +58,7 @@ void	iterate_map_array(t_data *data)
 	{
 		if (i == 0)
 			check_valid_first_and_last_line(data, data->map_array[i]);
-		if (i == last_map_lines(data))
+		if (i == last_map_lines(data) - 1)
 			check_valid_first_and_last_line(data, data->map_array[i]);
 		check_first_and_last_collum_element(data, data->map_array[i]);
 		if (i == 0)
