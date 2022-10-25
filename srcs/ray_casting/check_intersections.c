@@ -13,9 +13,8 @@
 #include "cub3d.h"
 
 int	calculate_horizontal_intersections(t_data *data,
-	float rounded_down_number, float rotation)
+	float rotation)
 {
-	(void)rounded_down_number;
 	if (rotation > PI)
 	{
 		data->ry = (((int)data->player.y >> 6) << 6) - 0.0001;
@@ -38,20 +37,17 @@ int	calculate_horizontal_intersections(t_data *data,
 void	check_intersections_h(t_data *data, float *new_x,
 	float *new_y, float rotation)
 {
-	float	rounded_down_number;
 	int		loop;
 
 	data->tan = -1 / tan(rotation);
 	loop = lines_amount(data->map_array);
-	rounded_down_number = floor(data->player.y / MINI_MAP_SIZE);
-	calculate_horizontal_intersections(data, rounded_down_number, rotation);
+	calculate_horizontal_intersections(data, rotation);
 	find_intersection_point_h(data, new_x, new_y, loop);
 }
 
 int	calculate_vertical_intersections(t_data *data,
-	float rounded_down_number, float rotation)
+	float rotation)
 {
-	(void)rounded_down_number;
 	if (rotation > PI / 2 && rotation < 3 * PI / 2)
 	{
 		data->rx = (((int)data->player.x >> 6) << 6) - 0.0001;
@@ -74,12 +70,10 @@ int	calculate_vertical_intersections(t_data *data,
 void	check_intersections_v(t_data *data, float *new_x,
 	float *new_y, float rotation)
 {
-	float	rounded_down_number;
 	int		loop;
 
 	data->tan = -tan(rotation);
 	loop = biggest_line_size(data->map_array);
-	rounded_down_number = floor(data->player.x / MINI_MAP_SIZE);
-	calculate_vertical_intersections(data, rounded_down_number, rotation);
+	calculate_vertical_intersections(data, rotation);
 	find_intersection_point_v(data, new_x, new_y, loop);
 }
