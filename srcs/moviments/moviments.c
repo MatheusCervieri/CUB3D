@@ -108,9 +108,9 @@ void	move_down(t_data *data)
 	else
 		xo =-110;
 	if (data->player.rotation > PI)
-		yo =+100;
+		yo =+110;
 	else
-		yo =-100;                                   
+		yo =-110;                                   
 	if(is_wall(data, data->player.x, data->player.y + yo) == 0)
 		data->player.y = data->player.y - sin(data->player.rotation) * 5;
 	if(is_wall(data, data->player.x + xo, data->player.y) == 0)
