@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:35:32 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/25 03:28:02 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/25 04:42:31 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,10 @@ int	is_wall(t_data *data, float x, float y)
 
 void	move_up(t_data *data)
 {
-
 	int xo=0; if (data->player.rotation > PI / 2 && data->player.rotation < 3 * PI / 2){ xo=-110;} else{ xo=110;}                                    
  	int yo=0; if (data->player.rotation > PI){ yo=-110;} else{ yo=110;}                                   
- 	int ipx=data->player.x, ipx_add_xo=(data->player.x+xo), ipx_sub_xo=(data->player.x-xo);             
- 	int ipy=data->player.y, ipy_add_yo=(data->player.y+yo), ipy_sub_yo=(data->player.y-yo);   
-	 (void)ipx_sub_xo;
-	 (void)ipy_sub_yo;  
+ 	int ipx=data->player.x, ipx_add_xo=(data->player.x+xo);          
+ 	int ipy=data->player.y, ipy_add_yo=(data->player.y+yo);
 	if(is_wall(data, ipx, ipy_add_yo) == 0)
 	{
 	data->player.y = data->player.y + sin(data->player.rotation) * 5;
@@ -62,15 +59,13 @@ void	move_up(t_data *data)
 	{
 	data->player.x = data->player.x + cos(data->player.rotation) * 5;
 	}
-	
 	/*
 	if(is_wall(data, ipx, ipy) == 0)
 	{
 	data->player.y = data->player.y + sin(data->player.rotation) * 5;
 	data->player.x = data->player.x + cos(data->player.rotation) * 5;
 	}
-	*/
-	
+	*/	
 }
 
 void	move_down(t_data *data)
