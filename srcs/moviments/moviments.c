@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:35:32 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/25 16:28:44 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/25 11:21:28 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,84 +35,90 @@ int	is_wall(t_data *data, float x, float y)
 
 void	move_right(t_data *data)
 {
-	int xo;                                  
- 	int yo;
+	int		xo;
+	int		yo;
+	float	aux;
 
 	xo = 0;
 	yo = 0;
 	if (data->player.rotation > PI / 2 && data->player.rotation < 3 * PI / 2)
-		xo =+110;
+		xo = xo + 110;
 	else
-		xo =-110;
+		xo = xo - 110;
 	if (data->player.rotation > PI)
-		yo =+110;
+		yo = yo + 110;
 	else
-		yo =-110;                                   
-	if(is_wall(data, data->player.x, data->player.y + yo) == 0)
-		data->player.y = data->player.y + sin(data->player.rotation + PI / 2) * 5;
-	if(is_wall(data, data->player.x + xo, data->player.y) == 0)
-		data->player.x = data->player.x + cos(data->player.rotation + PI / 2) * 5;
+		yo = yo - 110;
+	aux = sin(data->player.rotation + PI / 2) * 5;
+	if (is_wall(data, data->player.x, data->player.y + yo) == 0)
+		data->player.y = data->player.y + aux;
+	aux = cos(data->player.rotation + PI / 2) * 5;
+	if (is_wall(data, data->player.x + xo, data->player.y) == 0)
+		data->player.x = data->player.x + aux;
 }
 
 void	move_left(t_data *data)
 {
-	int xo;                                  
- 	int yo;
+	int		xo;
+	int		yo;
+	float	aux;
 
 	xo = 0;
 	yo = 0;
 	if (data->player.rotation > PI / 2 && data->player.rotation < 3 * PI / 2)
-		xo =-110;
+		xo = xo - 110;
 	else
-		xo =+110;
+		xo = xo + 110;
 	if (data->player.rotation > PI)
-		yo =-110;
+		yo = yo - 110;
 	else
-		yo =+110;                                   
-	if(is_wall(data, data->player.x, data->player.y + yo) == 0)
-		data->player.y = data->player.y + sin(data->player.rotation - PI / 2) * 5;
-	if(is_wall(data, data->player.x + xo, data->player.y) == 0)
-		data->player.x = data->player.x + cos(data->player.rotation - PI / 2) * 5;
+		yo = yo + 110;
+	aux = sin(data->player.rotation - PI / 2) * 5;
+	if (is_wall(data, data->player.x, data->player.y + yo) == 0)
+		data->player.y = data->player.y + aux;
+	aux = cos(data->player.rotation - PI / 2) * 5;
+	if (is_wall(data, data->player.x + xo, data->player.y) == 0)
+		data->player.x = data->player.x + aux;
 }
 
 void	move_up(t_data *data)
 {
-	int xo;                                  
- 	int yo;
+	int	xo;
+	int	yo;
 
 	xo = 0;
 	yo = 0;
 	if (data->player.rotation > PI / 2 && data->player.rotation < 3 * PI / 2)
-		xo =-110;
+		xo = xo - 110;
 	else
-		xo =+110;
+		xo = xo + 110;
 	if (data->player.rotation > PI)
-		yo =-110;
+		yo = yo - 110;
 	else
-		yo =+110;                                   
-	if(is_wall(data, data->player.x, data->player.y + yo) == 0)
+		yo = yo + 110;
+	if (is_wall(data, data->player.x, data->player.y + yo) == 0)
 		data->player.y = data->player.y + sin(data->player.rotation) * 5;
-	if(is_wall(data, data->player.x + xo, data->player.y) == 0)
+	if (is_wall(data, data->player.x + xo, data->player.y) == 0)
 		data->player.x = data->player.x + cos(data->player.rotation) * 5;
 }
 
 void	move_down(t_data *data)
 {
-	int xo;                                  
- 	int yo;
+	int	xo;
+	int	yo;
 
 	xo = 0;
 	yo = 0;
 	if (data->player.rotation > PI / 2 && data->player.rotation < 3 * PI / 2)
-		xo =+110;
+		xo = xo + 110;
 	else
-		xo =-110;
+		xo = xo - 110;
 	if (data->player.rotation > PI)
-		yo =+110;
+		yo = yo + 110;
 	else
-		yo =-110;                                   
-	if(is_wall(data, data->player.x, data->player.y + yo) == 0)
+		yo = yo - 110;
+	if (is_wall(data, data->player.x, data->player.y + yo) == 0)
 		data->player.y = data->player.y - sin(data->player.rotation) * 5;
-	if(is_wall(data, data->player.x + xo, data->player.y) == 0)
+	if (is_wall(data, data->player.x + xo, data->player.y) == 0)
 		data->player.x = data->player.x - cos(data->player.rotation) * 5;
 }
