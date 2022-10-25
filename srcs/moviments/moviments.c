@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/20 21:35:32 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/25 03:26:13 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/25 03:28:02 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,14 +53,16 @@ void	move_up(t_data *data)
  	int ipx=data->player.x, ipx_add_xo=(data->player.x+xo), ipx_sub_xo=(data->player.x-xo);             
  	int ipy=data->player.y, ipy_add_yo=(data->player.y+yo), ipy_sub_yo=(data->player.y-yo);   
 	 (void)ipx_sub_xo;
-	 (void)ipy_sub_yo;
-	 (void)ipx_add_xo;     
-	 (void) ipy;    
+	 (void)ipy_sub_yo;  
 	if(is_wall(data, ipx, ipy_add_yo) == 0)
 	{
 	data->player.y = data->player.y + sin(data->player.rotation) * 5;
 	}
+	if(is_wall(data, ipx_add_xo, ipy) == 0)
+	{
 	data->player.x = data->player.x + cos(data->player.rotation) * 5;
+	}
+	
 	/*
 	if(is_wall(data, ipx, ipy) == 0)
 	{
