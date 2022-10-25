@@ -12,23 +12,6 @@
 
 #include "cub3d.h"
 
-int	player_on_wall(t_data *data, float x, float y)
-{
-	int	i;
-
-	i = 0;
-	while (i < data->walls_nbs)
-	{
-		if (data->walls_position[i][0] == floor(x / MINI_MAP_SIZE)
-			&& data->walls_position[i][1] == floor(y / MINI_MAP_SIZE))
-		{
-			return (1);
-		}
-		i++;
-	}
-	return (0);
-}
-
 int	render_loop(t_data *data)
 {
 	check_intersections(data);
