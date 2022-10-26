@@ -41,15 +41,15 @@ void	clear_rgb_array(char ***rgb_array)
 	}
 }
 
-int	is_valid_rgb_value(char *rgb, char **rgbs)
+int	is_valid_rgb_value(int *array)
 {
-	int	value;
+	int	index;
 
-	value = ft_atoi(rgb);
-	if (value > 255 || value < 0)
+	while(array[index])
 	{
-		free_matrix((void **)rgbs);
-		return (0);
+	if (value > 255 || value < 0)
+			return (0);
+		index++;
 	}
 	return (1);
 }
@@ -72,8 +72,10 @@ int	get_floor_color(char *rgb, t_data *data)
 		free(tmp);
 		index++;
 	}
-	data->floor_color = convert_to_hex(int_array);
 	free_matrix((void **) rgb_array);
+	if(!is_valid_rgb_value(int_array))
+		return (0);
+	data->floor_color = convert_to_hex(int_array);
 	return (1);
 }
 
@@ -95,7 +97,9 @@ int	get_ceiling_color(char *rgb, t_data *data)
 		free(tmp);
 		index++;
 	}
-	data->ceiling_color = convert_to_hex(int_array);
 	free_matrix((void **) rgb_array);
+	if(!is_valid_rgb_value(int_array))
+		return (0);
+	data->ceiling_color = convert_to_hex(int_array);
 	return (1);
 }
