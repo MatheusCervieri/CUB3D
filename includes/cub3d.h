@@ -127,8 +127,8 @@ int		get_we_texture(char *we_path, t_data *data);
 //set and validate rgb colors
 int		get_floor_color(char *rgb, t_data *data);
 int		get_ceiling_color(char *rgb, t_data *data);
-int		validate_rgb_colors(t_data *data, char **rgbs);
-char	*ft_rgb_to_hex(int rgb);
+int		convert_to_hex(int *rgb);
+int		is_valid_rgb_value(int *array);
 //print a new error msg on stderr and returns 1
 int		msg_error(char *error);
 //error or close
@@ -188,8 +188,5 @@ int		check_type(char *string, t_data *data);
 char	*validate_map_params(int map, t_data *data);
 void	get_map_string(t_data *data, int map);
 int		color_util(int index, char ***rgb_array, int *int_array);
-int		is_valid_rgb_value(char *rgb, char **rgbs);
-int		convert_to_hex(int *rgb);
-int		validate_rgb_colors(t_data *data, char **rgbs);
 
 #endif
