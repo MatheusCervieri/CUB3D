@@ -75,13 +75,12 @@ int	get_floor_color(char *rgb, t_data *data)
 		free(tmp);
 		index++;
 	}
-	free_matrix((void **) rgb_array);
-<<<<<<< Updated upstream
-	if(!is_valid_rgb_value(int_array))
-=======
-	if (!is_valid_rgb_value(int_array))
->>>>>>> Stashed changes
+	if (!is_valid_rgb_value(int_array) || !is_only_numbers(rgb_array))
+	{
+		free_matrix((void **) rgb_array);
 		return (0);
+	}
+	free_matrix((void **) rgb_array);
 	data->floor_color = convert_to_hex(int_array);
 	return (1);
 }
@@ -104,13 +103,12 @@ int	get_ceiling_color(char *rgb, t_data *data)
 		free(tmp);
 		index++;
 	}
-	free_matrix((void **) rgb_array);
-<<<<<<< Updated upstream
-	if(!is_valid_rgb_value(int_array))
-=======
-	if (!is_valid_rgb_value(int_array))
->>>>>>> Stashed changes
+	if (!is_valid_rgb_value(int_array) || !is_only_numbers(rgb_array))
+	{
+		free_matrix((void **) rgb_array);
 		return (0);
+	}
+	free_matrix((void **) rgb_array);
 	data->ceiling_color = convert_to_hex(int_array);
 	return (1);
 }

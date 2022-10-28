@@ -129,6 +129,7 @@ int		get_floor_color(char *rgb, t_data *data);
 int		get_ceiling_color(char *rgb, t_data *data);
 int		convert_to_hex(int *rgb);
 int		is_valid_rgb_value(int *array);
+int		is_only_numbers(char **rgb);
 //print a new error msg on stderr and returns 1
 int		msg_error(char *error);
 //error or close

@@ -4,6 +4,7 @@ WE ./textures/texture3.xpm
 EA ./textures/texture4.xpm
 
 C 255, 255, 255
+F 235, 255, 255
 
 111111111111111111
 100000000000000001
