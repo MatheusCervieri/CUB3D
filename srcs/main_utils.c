@@ -6,7 +6,7 @@
 /*   By: mvieira- <mvieira-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 23:47:33 by mvieira-          #+#    #+#             */
-/*   Updated: 2022/10/24 16:08:53 by mvieira-         ###   ########.fr       */
+/*   Updated: 2022/10/28 15:34:38 by mvieira-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,11 @@ char	*validate_map_params(int map, t_data *data)
 		{
 			data->texture_ok = 0;
 			return (ft_strdup("INVALID_TEXTURE"));
+		}
+		if (status == 5)
+		{
+			data->texture_ok = -5;
+			return (ft_strdup("Invalid RGB!"));
 		}
 	}
 	return (current_line);
